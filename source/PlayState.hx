@@ -1,5 +1,6 @@
 package;
 
+import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -103,6 +104,7 @@ class PlayState extends MusicBeatState
 
 	public var songSpeedTween:FlxTween;
 	public var songSpeed(default, set):Float = 1;
+	public var songSpeedType:String = "multiplicative";
 	
 	public var boyfriendGroup:FlxSpriteGroup;
 	public var dadGroup:FlxSpriteGroup;
@@ -264,9 +266,7 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		#if MODS_ALLOWED
-		Paths.destroyLoadedImages();
-		#end
+		Paths.clearStoredMemory();
 
 		// for lua
 		instance = this;
@@ -341,6 +341,7 @@ class PlayState extends MusicBeatState
 
 		GameOverSubstate.resetVariables();
 		var songName:String = Paths.formatToSongPath(SONG.song);
+
 		curStage = PlayState.SONG.stage;
 		//trace('stage is: ' + curStage);
 		if(PlayState.SONG.stage == null || PlayState.SONG.stage.length < 1) {
@@ -1036,7 +1037,6 @@ class PlayState extends MusicBeatState
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
 
-
 		// SONG SPECIFIC SCRIPTS
 		#if LUA_ALLOWED
 		var filesPushed:Array<String> = [];
@@ -1155,6 +1155,8 @@ class PlayState extends MusicBeatState
 		callOnLuas('onCreatePost', []);
 		
 		super.create();
+
+		Paths.clearUnusedMemory();
 	}
 
 	function set_songSpeed(value:Float):Float
@@ -1314,6 +1316,11 @@ class PlayState extends MusicBeatState
 			return;
 		} else {
 			FlxG.log.warn('Couldnt find video file: ' + fileName);
+                        if(endingSong) {
+		                endSong();
+		        } else {
+				startCountdown();
+			}
 		}
 		#end
 		if(endingSong) {
@@ -1659,7 +1666,15 @@ class PlayState extends MusicBeatState
 	private function generateSong(dataPath:String):Void
 	{
 		// FlxG.log.add(ChartParser.parse());
-		songSpeed = SONG.speed * ClientPrefs.getGameplaySetting('scrollspeed', 1);
+		songSpeedType = ClientPrefs.getGameplaySetting('scrolltype','multiplicative');
+
+		switch(songSpeedType)
+		{
+			case "multiplicative":
+				songSpeed = SONG.speed * ClientPrefs.getGameplaySetting('scrollspeed', 1);
+			case "constant":
+				songSpeed = ClientPrefs.getGameplaySetting('scrollspeed', 1);
+		}
 		
 		var songData = SONG;
 		Conductor.changeBPM(songData.bpm);
@@ -2928,6 +2943,8 @@ class PlayState extends MusicBeatState
 				if(bgGirls != null) bgGirls.swapDanceType();
 			
 			case 'Change Scroll Speed':
+				if (songSpeedType == "constant")
+					return;
 				var val1:Float = Std.parseFloat(value1);
 				var val2:Float = Std.parseFloat(value2);
 				if(Math.isNaN(val1)) val1 = 1;
