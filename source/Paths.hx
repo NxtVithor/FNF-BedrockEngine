@@ -43,7 +43,8 @@ class Paths
 		'stages',
 		'weeks',
 		'fonts',
-		'scripts'
+		'scripts',
+		'achievements'
 	];
 	#end
 
@@ -104,7 +105,7 @@ class Paths
 	}
 
 	static public var currentModDirectory:String = '';
-	static var currentLevel:String;
+	static public var currentLevel:String;
 	static public function setCurrentLevel(name:String)
 	{
 		currentLevel = name.toLowerCase();
@@ -357,7 +358,7 @@ class Paths
 		#if MODS_ALLOWED
 			currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
 		#else
-			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(gottenPath));
+			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(getPath('$path/$key.$SOUND_EXT', SOUND, library)));
 		#end
 		localTrackedAssets.push(key);
 		return currentTrackedSounds.get(gottenPath);
@@ -394,6 +395,10 @@ class Paths
 
 	inline static public function modsTxt(key:String) {
 		return modFolders('images/' + key + '.txt');
+	}
+
+	inline static public function modsAchievements(key:String) {
+		return modFolders('achievements/' + key + '.json');
 	}
 
 	static public function modFolders(key:String) {
