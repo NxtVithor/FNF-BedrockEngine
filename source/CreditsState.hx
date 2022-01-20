@@ -33,6 +33,7 @@ class CreditsState extends MusicBeatState
 	public var creditsStuff:Array<Array<String>> = [];
 
 	var bg:FlxSprite;
+	var descBox:FlxSprite;
 	var descText:FlxText;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
@@ -96,14 +97,21 @@ class CreditsState extends MusicBeatState
 				'FFFF00'
 			],
 			[
+				'Luisinh010',
+				'placeholder',
+				'Engine Coder',
+				'https://github.com/Luisinhi010',
+				'31b0d1'
+			],
+			[
 				'AquaStrikr',
 				'aqua',
-				'Judgements Design',
+				'Artist, Judgements Design',
 				'https://twitter.com/aqua_strikr',
 				'2596be'
 			],
 			[''],
-			['Original Pull Requests'],
+			['Original Pull Requests/Scripts'],
 			[
 				'CerBor',
 				'placeholder',
@@ -118,6 +126,13 @@ class CreditsState extends MusicBeatState
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1792',
 				'31b0d1'
 			],
+			[
+				'i-winxd',
+				'placeholder',
+				'Complex Accuracy',
+				'https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917',
+				'31b0d1'
+			]
 			[
 				'lemz1',
 				'placeholder',
@@ -137,13 +152,6 @@ class CreditsState extends MusicBeatState
 				'placeholder',
 				'Freeplay Bump, Max Optimization',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809',
-				'31b0d1'
-			],
-			[
-				'tposejank',
-				'placeholder',
-				'Better Sustains',
-				'https://github.com/ShadowMario/FNF-PsychEngine/pull/2817',
 				'31b0d1'
 			],
 			[
@@ -310,6 +318,10 @@ class CreditsState extends MusicBeatState
 			}
 		}
 
+		descBox = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
+		descBox.alpha = 0.6;
+		add(descBox);
+
 		descText = new FlxText(50, 600, 1180, "", 32);
 		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		descText.scrollFactor.set();
@@ -431,7 +443,14 @@ class CreditsState extends MusicBeatState
 				}
 			}
 		}
+
 		descText.text = creditsStuff[curSelected][2];
+		descText.screenCenter(Y);
+		descText.y += 270;
+
+		descBox.setPosition(descText.x - 10, descText.y - 10);
+		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(descText.height + 25));
+		descBox.updateHitbox();
 	}
 
 	function getCurrentBGColor()
