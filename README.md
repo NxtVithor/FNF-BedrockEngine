@@ -22,6 +22,7 @@ a fork of Psych Engine which adds a bunch of features from Pull Requests around 
 Credits:
 * CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
 * HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
+* i-winxd - Kade Engine (Complex) Accuracy - https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917
 * lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
 * l1ttleO - Made ProjectFNF 2.X, Original Hit Sound Code, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
 * magnumsrtisswag - Stage Editor - https://github.com/ShadowMario/FNF-PsychEngine/pull/3502
