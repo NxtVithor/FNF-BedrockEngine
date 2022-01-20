@@ -37,6 +37,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Center Notes', 'If checked, your notes get centered.', 'middleScroll', 'bool', false);
 	addOption(option);
 
+		var Option = new Option('Complex Accuracy', "If checked, the Accuracy will be more Complex, making it Harsher than before, good for Competitive Players", 'keAccuracy', 'bool', false);
+	addOption(Option);
+
 		var option:Option = new Option('Controller Mode', 'Check this if you want to play with\na controller instead of using your Keyboard.', 'controllerMode', 'bool', false);
 	addOption(option);
 
@@ -56,9 +59,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 
 		var Option = new Option('Judgement Counters', "If checked, Shows Judgement Statistics below the Info Bar", 'judgementCounters', 'bool', true);
 	addOption(Option);
-
-		var Option = new Option('Kade Engine Accuracy', "If checked, the Accuracy will be more Complex, making it Harsher than before, good for Competitive Players", 'keAccuracy', 'bool', true);
-	//addOption(Option);
 
 		var option:Option = new Option('Marvelous Ratings', 'If unchecked, marvelous ratings will disappear.', 'marvelouses', 'bool', true);
 	addOption(option);

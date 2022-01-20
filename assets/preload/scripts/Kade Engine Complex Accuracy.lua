@@ -1,4 +1,3 @@
-if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
 local a1 = 0.254829592;
 local a2 = -0.284496736;
 local a3 = 1.421413741;
@@ -8,6 +7,7 @@ local p = 0.3275911;
 local curTotalNotesHit = 0
 local counterUpdated = 0
 function goodNoteHit(id, direction, noteType, isSustainNote)
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
     if not isSustainNote then
         strumTime = getPropertyFromGroup('notes', id, 'strumTime')
         songPos = getPropertyFromClass('Conductor', 'songPosition')
@@ -15,8 +15,10 @@ function goodNoteHit(id, direction, noteType, isSustainNote)
         updateAccuracy(strumTime, songPos, rOffset)
     end
 end
+end
 
 function updateAccuracy(strumTime, songPos, rOffset) -- HELPER FUNCTION
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
     local noteDiffSign = strumTime - songPos + rOffset
     local noteDiffAbs = math.abs(noteDiffSign)
     local totalNotesForNow = handleNoteDiff(noteDiffAbs)
@@ -27,9 +29,11 @@ function updateAccuracy(strumTime, songPos, rOffset) -- HELPER FUNCTION
     ratingStr = accuracyToRatingString(curAccuracy * 100)
     setProperty('ratingPercent', math.max(0, curAccuracy))
     setProperty('ratingName', ratingStr)
+    end
 end
 
-function cancelExistingJudgements(diff) -- HELPER FUNCTION
+function cancelExistingJudgements(diff)
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then -- HELPER FUNCTION
     if diff < 46.0 then
         return 1.0
     elseif diff < 91.0 then
@@ -40,46 +44,50 @@ function cancelExistingJudgements(diff) -- HELPER FUNCTION
         return 0.0
     end
 end
+end
 
 
 function accuracyToRatingString(accuracy) -- HELPER FUNCTION
     -- Please don't cancel me for repeat if else statements blame python 3.10 for not releasing sooner
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
     if accuracy >= 99.9935 then
-        return 'AAAAA'
+        return '(AAAAA)'
     elseif accuracy >= 99.980 then
-        return 'AAAA:'
+        return '(AAAA:)'
     elseif accuracy >= 99.970 then
-        return 'AAAA.'
+        return '(AAAA.)'
     elseif accuracy >= 99.955 then
-        return 'AAAA'
+        return '(AAAA)'
     elseif accuracy >= 99.90 then
-        return 'AAA:'
+        return '(AAA:)'
     elseif accuracy >= 99.80 then
-        return 'AAA.'
+        return '(AAA.)'
     elseif accuracy >= 99.70 then
-        return 'AAA'
+        return '(AAA)'
     elseif accuracy >= 99 then
-        return 'AA:'
+        return '(AA:)'
     elseif accuracy >= 96.50 then
-        return 'AA.'
+        return '(AA.)'
     elseif accuracy >= 93 then
-        return 'AA'
+        return '(AA)'
     elseif accuracy >= 90 then
-        return 'A:'
+        return '(A:)'
     elseif accuracy >= 85 then
-        return 'A.'
+        return '(A.)'
     elseif accuracy >= 80 then
-        return 'A'
+        return '(A)'
     elseif accuracy >= 70 then
-        return 'B'
+        return '(B)'
     elseif accuracy >= 60 then
-        return 'C'
+        return '(C)'
     else
-        return 'D'
+        return '(D)'
     end
+end
 end
 
 function handleNoteDiff(diff) -- HELPER FUNCTION
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
     local maxms = diff
     local ts = 1
 
@@ -102,8 +110,10 @@ function handleNoteDiff(diff) -- HELPER FUNCTION
         return miss_weight
     end
 end
+end
 
 function erf(x)  -- HELPER FUNCTION
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
     local sign = 1;
     if (x < 0) then
         sign = -1;
@@ -114,11 +124,16 @@ function erf(x)  -- HELPER FUNCTION
 
     return sign * y;
 end
+end
 
 function noteMissPress(direction)
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
     updateAccuracy(400, 0, 0)
+    end
 end
 
 function noteMiss(id, direction, noteType, isSustainNote)
+    if getPropertyFromClass('ClientPrefs', 'keAccuracy', true) then
     updateAccuracy(400, 0, 0)
+    end
 end
