@@ -132,7 +132,7 @@ class CreditsState extends MusicBeatState
 				'Complex Accuracy',
 				'https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917',
 				'31b0d1'
-			]
+			],
 			[
 				'lemz1',
 				'placeholder',
