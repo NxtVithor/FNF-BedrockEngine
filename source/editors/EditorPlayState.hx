@@ -17,6 +17,7 @@ import flixel.system.FlxSound;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
+import flixel.input.gamepad.FlxGamepad;
 import openfl.events.KeyboardEvent;
 import FunkinLua;
 
