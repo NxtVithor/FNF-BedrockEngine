@@ -388,6 +388,11 @@ class TitleState extends MusicBeatState
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
+		if(ClientPrefs.watermarkTitle)
+		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
+		else
+		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
+
 		if (initialized)
 			skipIntro();
 		else
@@ -514,11 +519,9 @@ class TitleState extends MusicBeatState
 							trace('Easter egg triggered!');
 							FlxG.save.data.psykaEasterEgg = !FlxG.save.data.psykaEasterEgg;
 							FlxG.sound.play(Paths.sound('secretSound'));
-
 							var black:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 							black.alpha = 0;
 							add(black);
-
 							FlxTween.tween(black, {alpha: 1}, 1, {onComplete:
 								function(twn:FlxTween) {
 									FlxTransitionableState.skipNextTransIn = true;
@@ -587,6 +590,24 @@ class TitleState extends MusicBeatState
 		}
 	}
 
+	function textDataText(line:Int)
+		{
+			var lineText:Null<String> = titleTextData[line];
+
+			if(lineText != null)
+			{
+				if(lineText.contains(";"))
+				{
+					var coolText = lineText.split(";"); 
+					createCoolText(coolText);
+				}
+				else
+					addMoreText(lineText);
+			}
+		}
+
+	public var titleTextData:Array<String>;
+
 	private var sickBeats:Int = 0; // Basically curBeat but won't be skipped if you hold the tab or resize the screen
 
 	public static var closedState:Bool = false;
@@ -611,7 +632,7 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		if (!closedState)
+		if (!closedState) //so you might want to edit delays
 		{
 			sickBeats++;
 			switch (sickBeats)
@@ -624,20 +645,15 @@ class TitleState extends MusicBeatState
 						FlxG.sound.music.fadeIn(4, 0, 0.7);
 					}
 				case 2:
-					#if PSYCH_WATERMARKS
-					createCoolText(['Psych Engine by'], 15);
-					#else
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
-					#end
+					textDataText(0);
+					textDataText(1);
+					textDataText(2);
+					textDataText(3);
+					addMoreText('');
 				// credTextShit.visible = true;
 				case 4:
-					#if PSYCH_WATERMARKS
-					addMoreText('Shadow Mario', 15);
-					addMoreText('RiverOaken', 15);
-					addMoreText('bb-panzu', 15);
-					#else
-					addMoreText('present');
-					#end
+					deleteCoolText();
+					textDataText(4);
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
 				case 5:
@@ -646,13 +662,9 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
 				case 6:
-					#if PSYCH_WATERMARKS
-					createCoolText(['Bedrock Engine', 'by'], -40);
-					#else
-					createCoolText(['In association', 'with'], -40);
-					#end
+					textDataText(5);
 				case 8:
-					addMoreText('Gui iago', -40);
+					textDataText(6);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
 				case 9:
