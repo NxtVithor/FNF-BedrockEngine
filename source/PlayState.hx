@@ -3042,8 +3042,6 @@ class PlayState extends MusicBeatState
 
 		if (!inCutscene)
 		{
-			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-			keyPressByController = (gamepad != null && (!gamepad.justReleased.ANY || gamepad.pressed.ANY));
 
 			if (!cpuControlled)
 			{
@@ -4338,6 +4336,9 @@ class PlayState extends MusicBeatState
 	// Hold notes
 	private function keyShit():Void
 	{
+		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+		keyPressByController = (gamepad != null && (!gamepad.justReleased.ANY || gamepad.pressed.ANY));
+
 		// HOLDING
 		var up = controls.NOTE_UP;
 		var right = controls.NOTE_RIGHT;
