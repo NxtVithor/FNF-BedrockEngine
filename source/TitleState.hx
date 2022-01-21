@@ -391,7 +391,7 @@ class TitleState extends MusicBeatState
 		#if PSYCH_WATERMARKS
 		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
 		#else
-		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
+		titleTextData = CoolUtil.coolTextFile(Paths.txt("titleText", "preload"));
 		#end
 
 		if (initialized)
