@@ -388,10 +388,11 @@ class TitleState extends MusicBeatState
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
-		if(ClientPrefs.watermarkTitle)
+		#if PSYCH_WATERMARKS
 		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
-		else
+		#else
 		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
+		end
 
 		if (initialized)
 			skipIntro();
