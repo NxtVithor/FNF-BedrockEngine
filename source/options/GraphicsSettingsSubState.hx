@@ -53,7 +53,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.displayFormat = '%v FPS';
 		option.onChange = onChangeFramerate;
 
-		var option:Option = new Option('Hide Girlfriend', "If checked, this will hide Girlfriend from Stages and improves performance, this does not apply if she's the Opponent", 'hideGf', 'bool', false);
+		var option:Option = new Option('Hide Girlfriend', "If checked, this will hide Girlfriend from Stages, improving performance, this does not apply if she's the Opponent", 'hideGf', 'bool', false);
 		addOption(option);
 
 		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
