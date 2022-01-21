@@ -392,7 +392,7 @@ class TitleState extends MusicBeatState
 		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
 		#else
 		titleTextData = CoolUtil.coolTextFile(Paths.txt("wtitleText", "preload"));
-		end
+		#end
 
 		if (initialized)
 			skipIntro();
