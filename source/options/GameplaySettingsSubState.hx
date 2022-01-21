@@ -40,9 +40,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var Option = new Option('Complex Accuracy', "If checked, the accuracy will follow a harsher system, Based on Etterna and Kade Engine", 'keAccuracy', 'bool', false);
 	addOption(Option);
 
-		var option:Option = new Option('Controller Mode', 'Check this if you want to play with\na controller instead of using your Keyboard.', 'controllerMode', 'bool', false);
-	addOption(option);
-
 		var option:Option = new Option('Disable Reset Button', "If checked, pressing Reset won't do anything.", 'noReset', 'bool', false);
 	addOption(option);
 

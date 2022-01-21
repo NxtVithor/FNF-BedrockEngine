@@ -10,7 +10,7 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 # Future Plans
 * Softcoded Judgement Skins
 * Separated Noteskins for each Player (already possible with lua so...)
-*  Fix all current issues with Opponent Mode
+* Fix all current issues with Opponent Mode
 
 # UPDATES:
 * 01-13-22: did remove the additional hitsounds, now for the hard part I suppose!
@@ -27,7 +27,7 @@ Credits:
 * l1ttleO - Made ProjectFNF 2.X, Original Hit Sound Code, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
 * magnumsrtisswag - Stage Editor, Credits Warning - https://github.com/ShadowMario/FNF-PsychEngine/pull/3502
 * Starmapo - Time Signatures - https://github.com/ShadowMario/FNF-PsychEngine/pull/3428
-* Stilic - Freeplay Bump, Max Optimization, Menu Animations - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
+* Stilic - Freeplay Bump, Max Optimization, Menu Animations, Automatic Controller Detection - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
 * Verwex - made Mic'd Up Engine, Winning Icons - https://github.com/Verwex/Funkin-Mic-d-Up-SC
 * XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
 * Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy
@@ -72,14 +72,14 @@ Linux (Arch based Distros):
 
 - for Windows and Mac: https://haxe.org/download/
 
-- Linux (Ubuntu and Debian based Distros):
+- Linux (Ubuntu and Debian based distros):
 
 * sudo add-apt-repository ppa:haxe/releases -y
 * sudo apt-get update
 * sudo apt-get install haxe -y
 * mkdir ~/haxelib && haxelib setup ~/haxelib
 
-- Linux (Arch based Distros)
+- Linux (Arch based distros)
 
 * sudo pacman -Sy haxe --noconfirm
 
@@ -99,7 +99,7 @@ now wait until it finishes, it is recommended to reboot your PC once it finishes
 - on Windows: press "Windows+R" and type in "cmd", if you don't like cmd, or you just use something different, open that program instead
 cmd is usually faster, that's why I'm recommending it!
 
-- on Some Linux Distros: Press "CTRL+ALT+T" and a Terminal window should open -- although, if you are on linux, you probably know that already
+- on some Linux Distros: Press "CTRL+ALT+T" and a Terminal window should open -- although, if you are on linux, you probably know that already
 - on other Linux Distros: Usually in your applications menu, or press Ctrl+Alt+2-6, Ctrl+Alt+7 usually get you back to your desktop
 
 - on Mac: Press cmd+space and type "Terminal" into spotlight or open Launchpad and look for Terminal
@@ -145,7 +145,7 @@ add a "-debug" flag at the end of "lime test <platform>"
 ### VS Code Installation
 - Windows and Mac: https://code.visualstudio.com/Download
 
-Linux (Ubuntu and Debian based Distros):
+Linux (Ubuntu and Debian based distros):
 * sudo apt install software-properties-common apt-transport-https wget
 * wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 * sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
