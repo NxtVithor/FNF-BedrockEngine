@@ -68,7 +68,7 @@ Linux (Arch based Distros):
 
 * sudo pacman -Sy git --noconfirm
 
-### Haxel
+### Haxe
 
 - for Windows and Mac: https://haxe.org/download/
 
