@@ -2,6 +2,3 @@ psych engine by;
 shadowmario
 bbpanzu 
 riveroaken
-
-bedrock engine;by
-gui iago
