@@ -54,9 +54,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Ghost Tapping', "If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.", 'ghostTapping', 'bool', true);
 	addOption(option);
 
-		var Option = new Option('Judgement Counters', "If checked, shows Judgement Statistics below the Info Bar", 'judgementCounters', 'bool', true);
-	addOption(Option);
-
 		var option:Option = new Option('Marvelous Ratings', 'If unchecked, marvelous ratings will disappear.', 'marvelouses', 'bool', true);
 	addOption(option);
 
@@ -79,6 +76,10 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.minValue = 0;
 		option.maxValue = 500;
 		addOption(option);*/
+
+		var option:Option = new Option('Judgement Counters:', "In which position should the Judgement Counters be?", 'judgCounters', 'string', 'Left',
+		['Left', /*'Right',*/ 'Info', 'Disabled']);
+	addOption(option);
 
 		var option:Option = new Option('Rating Offset',
 			'Changes how late/early you have to hit for a "Sick!"\nHigher values mean you have to hit later.',

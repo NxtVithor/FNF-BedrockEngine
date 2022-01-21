@@ -243,7 +243,8 @@ class PlayState extends MusicBeatState
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
 	public var scoreTxt:FlxText;
-	public var judgementTxt:FlxText;
+	public var judgementCounterInfo:FlxText;
+	var judgementCounter:FlxText;
 
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
@@ -1172,12 +1173,49 @@ class PlayState extends MusicBeatState
 		add(debugWatermark2);
 		#end
 
-		judgementTxt = new FlxText(0, healthBarBG.y + 56, FlxG.width, "", 20);
-		judgementTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		judgementTxt.scrollFactor.set();
-		judgementTxt.borderSize = 1.25;
-		judgementTxt.visible = !ClientPrefs.hideHud;
-		add(judgementTxt);
+		// left and right judgement counters
+		judgementCounter = new FlxText(20, 0, 0, "", 20);
+		// below Info Bar
+		judgementCounterInfo = new FlxText(0, healthBarBG.y + 56, FlxG.width, "", 20);
+
+		// Set Text Stuffs
+		if (ClientPrefs.judgCounters == "Left")
+			judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+
+		if (ClientPrefs.judgCounters == "Right")
+			judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		//note to self: make this work later. - Gui iago
+
+		// Set Border Size, quality, etc
+		judgementCounter.borderSize = 2;
+		judgementCounter.borderQuality = 2;
+		judgementCounter.scrollFactor.set();
+		judgementCounter.screenCenter(Y);
+
+		// Just in case.
+		if (ClientPrefs.marvelouses)
+			judgementCounter.text = 'Marvs: ${marvelouses}\nSicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nMisses: ${songMisses}';
+		else
+			judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nMisses: ${songMisses}';
+
+		//then we add them
+		add(judgementCounter);
+
+		// Set Border Size, quality, etc, for Info
+		judgementCounterInfo.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		judgementCounterInfo.scrollFactor.set();
+		judgementCounterInfo.borderSize = 1.25;
+		judgementCounterInfo.visible = !ClientPrefs.hideHud;
+
+		//Show it on Info Bar and Hide the Left/Right ones
+		if (ClientPrefs.judgCounters == "Info")
+		remove(judgementCounter);
+		add(judgementCounterInfo);
+
+		//Completely Disabled
+		if (ClientPrefs.judgCounters == "Disabled")
+			remove(judgementCounter);
+			remove(judgementCounterInfo);
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		if(ClientPrefs.downScroll)
@@ -1202,7 +1240,8 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		judgementTxt.cameras = [camHUD];
+		judgementCounter.cameras = [camHUD];
+		judgementCounterInfo.cameras = [camHUD];
 		beWatermark.cameras = [camHUD];
 		peWatermark.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
@@ -2674,14 +2713,7 @@ class PlayState extends MusicBeatState
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
 			scoreTxt.text = '';
-
-		if (ClientPrefs.judgementCounters)
-			judgementTxt.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
-		if (ClientPrefs.judgementCounters && ClientPrefs.marvelouses)
-			judgementTxt.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
-
-		if (ClientPrefs.judgementCounters == false)
-			judgementTxt.text = '';
+			
 
 		if (botplayTxt.visible)
 		{
@@ -5240,6 +5272,16 @@ class PlayState extends MusicBeatState
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
 		setOnLuas('ratingFC', ratingFC);
+		if (ClientPrefs.marvelouses)
+			judgementCounter.text = 'Marvelouses: ${marvelouses}\nSicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nMisses: ${songMisses}';
+		else
+			judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nMisses: ${songMisses}';
+
+		if (ClientPrefs.judgCounters == 'Info' && ClientPrefs.marvelouses)
+			judgementCounterInfo.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
+		else
+		if (ClientPrefs.judgCounters == 'Info')
+			judgementCounterInfo.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
 	}
 
 	public static var othersCodeName:String = 'otherAchievements';
