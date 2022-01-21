@@ -3043,7 +3043,7 @@ class PlayState extends MusicBeatState
 		if (!inCutscene)
 		{
 			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-			keyPressByController = (gamepad != null && gamepad.pressed.ANY);
+			keyPressByController = (gamepad != null && (!gamepad.justReleased.ANY || gamepad.pressed.ANY));
 
 			if (!cpuControlled)
 			{
