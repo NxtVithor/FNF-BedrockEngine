@@ -171,12 +171,12 @@ class ClientPrefs {
 		FlxG.save.data.strumLineAlpha = strumLineAlpha;
 		FlxG.save.data.judgementCounters = judgementCounters;
 		FlxG.save.data.timeBarUi = timeBarUi;
+		FlxG.save.data.underlay = underlay;
+		FlxG.save.data.keAccuracy = keAccuracy;
 
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
-		FlxG.save.data.underlay = underlay;
-		FlxG.save.data.keAccuracy = keAccuracy;
 
 		FlxG.save.flush();
 
