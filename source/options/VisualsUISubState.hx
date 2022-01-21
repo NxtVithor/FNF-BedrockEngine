@@ -59,7 +59,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Score Text Zoom on Hit', "If unchecked, disables the Score text zooming\neverytime you hit a note.", 'scoreZoom', 'bool', true);
 		addOption(option);
 
-		var option:Option = new Option('Show Watermarks', "If unchecked, hides engine watermarks from the top left corner.", 'showWatermarks', 'bool', true);
+		var option:Option = new Option('Show Watermarks', "If unchecked, hides Engine Watermarks from the bottom left corner.", 'showWatermarks', 'bool', true);
 		addOption(option);
 
 		var option:Option = new Option('Health Bar Opacity',
@@ -75,7 +75,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Lane Opacity',
-			"Change your lane underlay's opacity here",
+			"How much opaque should your Lane Underlay be.",
 			'underlay',
 			'float',
 		true);
@@ -107,7 +107,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		['Psych Engine', 'Kade Engine']);
 		addOption(option);
 
-		var option:Option = new Option('Judgement Skin:', "What should your judgements look like?", 'uiSkin', 'string', 'Bedrock',
+		var option:Option = new Option('Judgement Skin:', "What should your Judgements look like?", 'uiSkin', 'string', 'Bedrock',
 		['Classic', 'Bedrock', 'BEAT!']);
 		addOption(option);
 

@@ -37,7 +37,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Center Notes', 'If checked, your notes get centered.', 'middleScroll', 'bool', false);
 	addOption(option);
 
-		var Option = new Option('Complex Accuracy', "If checked, the Accuracy will be more Complex, making it Harsher than before, good for Competitive Players", 'keAccuracy', 'bool', false);
+		var Option = new Option('Complex Accuracy', "If checked, the accuracy will follow a harsher system, Based on Etterna and Kade Engine", 'keAccuracy', 'bool', false);
 	addOption(Option);
 
 		var option:Option = new Option('Controller Mode', 'Check this if you want to play with\na controller instead of using your Keyboard.', 'controllerMode', 'bool', false);
@@ -57,7 +57,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Ghost Tapping', "If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.", 'ghostTapping', 'bool', true);
 	addOption(option);
 
-		var Option = new Option('Judgement Counters', "If checked, Shows Judgement Statistics below the Info Bar", 'judgementCounters', 'bool', true);
+		var Option = new Option('Judgement Counters', "If checked, shows Judgement Statistics below the Info Bar", 'judgementCounters', 'bool', true);
 	addOption(Option);
 
 		var option:Option = new Option('Marvelous Ratings', 'If unchecked, marvelous ratings will disappear.', 'marvelouses', 'bool', true);
@@ -66,10 +66,10 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Play Hit Sounds', "If checked, will play a sound when you hit a note", 'playHitSounds', 'bool', false);
 	addOption(option);
 
-		var option:Option = new Option('Play Miss Sounds', "If unchecked, Sounds for when you Miss a Note will be disabled entirely", 'playMissSounds', 'bool', true);
+		var option:Option = new Option('Play Miss Sounds', "If unchecked, sounds for when you miss a Note will be disabled entirely", 'playMissSounds', 'bool', true);
 	addOption(option);
 
-		var Option = new Option('Light CPU Strums', "If disabled, CPU Notes will no longer light once the CPU hits them", 'lightcpustrums', 'bool', true);
+		var Option = new Option('Light CPU Strums', "If disabled, the CPU's Notes will no longer light once the CPU hits them", 'lightcpustrums', 'bool', true);
 	addOption(Option);
 
 		/*var option:Option = new Option('Note Delay',
