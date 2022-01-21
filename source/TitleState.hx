@@ -707,8 +707,8 @@ class TitleState extends MusicBeatState
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
-			skippedIntro = true;
 			FlxG.sound.music.time = 9400; // 9.4 seconds
+			skippedIntro = true;
 		}
 	}
 }
