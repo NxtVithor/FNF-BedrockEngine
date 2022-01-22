@@ -98,7 +98,7 @@ class MainMenuStateNew extends MusicBeatState
 		add(camFollow);
 		add(camFollowPos);
 
-		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBGdark'));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
 		bg.setGraphicSize(Std.int(bg.width * 1.175 * scaleRatio));
 		bg.updateHitbox();
@@ -344,7 +344,7 @@ class MainMenuStateNew extends MusicBeatState
 		}
 
 		danote('update');
-		danote('move then');
+		danote('move them');
 
 		FlxG.watch.addQuick("note1.y:", note1.y);
 		FlxG.watch.addQuick("note2.y:", note2.y);
@@ -564,7 +564,7 @@ class MainMenuStateNew extends MusicBeatState
 					if (note4.y > 700)
 						note4go = true;
 				}
-			case 'move then':
+			case 'move them':
 				{
 					if (note1go)
 					{
