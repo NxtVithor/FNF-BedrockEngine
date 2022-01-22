@@ -483,7 +483,7 @@ class TitleState extends MusicBeatState
 					}
 					else
 					{
-						MusicBeatState.switchState(new MainMenuStateNew());
+						MusicBeatState.switchState(new MainMenuState());
 						if (ClientPrefs.lowEndMode)
 						{
 							MusicBeatState.switchState(new SimpleMenuState());
