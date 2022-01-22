@@ -17,7 +17,6 @@ import flixel.system.FlxSound;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
-import flixel.input.gamepad.FlxGamepad;
 import openfl.events.KeyboardEvent;
 import FunkinLua;
 
@@ -61,9 +60,6 @@ class EditorPlayState extends MusicBeatState
 	
 	// Less laggy controls
 	private var keysArray:Array<Dynamic>;
-
-	// Shit used for controller
-	private var keyPressByController:Bool = false;
 
 	public static var instance:EditorPlayState;
 
@@ -180,8 +176,11 @@ class EditorPlayState extends MusicBeatState
 		FlxG.mouse.visible = false;
 
 		//sayGo();
-		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		if(!ClientPrefs.controllerMode)
+		{
+			FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		}
 		super.create();
 	}
 
@@ -567,7 +566,7 @@ class EditorPlayState extends MusicBeatState
 		var key:Int = getKeyFromEvent(eventKey);
 		//trace('Pressed: ' + eventKey);
 
-		if (key > -1 && (FlxG.keys.checkStatus(eventKey, JUST_PRESSED) || keyPressByController))
+		if (key > -1 && (FlxG.keys.checkStatus(eventKey, JUST_PRESSED) || ClientPrefs.controllerMode))
 		{
 			if(generatedMusic)
 			{
@@ -672,8 +671,6 @@ class EditorPlayState extends MusicBeatState
 
 	private function keyShit():Void
 	{
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-		keyPressByController = (gamepad != null && (!gamepad.justReleased.ANY || gamepad.pressed.ANY));
 
 		// HOLDING
 		var up = controls.NOTE_UP;
@@ -683,7 +680,7 @@ class EditorPlayState extends MusicBeatState
 		var controlHoldArray:Array<Bool> = [left, down, up, right];
 		
 		// TO DO: Find a better way to handle controller inputs, this should work for now
-		if(keyPressByController)
+		if(ClientPrefs.controllerMode)
 		{
 			var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
 			if(controlArray.contains(true))
@@ -711,7 +708,7 @@ class EditorPlayState extends MusicBeatState
 		}
 
 		// TO DO: Find a better way to handle controller inputs, this should work for now
-		if(keyPressByController)
+		if(ClientPrefs.controllerMode)
 		{
 			var controlArray:Array<Bool> = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
 			if(controlArray.contains(true))
@@ -1045,8 +1042,11 @@ class EditorPlayState extends MusicBeatState
 		vocals.stop();
 		vocals.destroy();
 
-		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		if(!ClientPrefs.controllerMode)
+		{
+			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		}
 
 		super.destroy();
 	}
