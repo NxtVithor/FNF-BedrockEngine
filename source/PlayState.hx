@@ -1171,6 +1171,7 @@ class PlayState extends MusicBeatState
 
 		// left and right judgement counters
 		judgementCounter = new FlxText(20, 0, 0, "", 20);
+
 		// below Info Bar
 		judgementCounterInfo = new FlxText(0, healthBarBG.y + 56, FlxG.width, "", 20);
 
@@ -1196,6 +1197,9 @@ class PlayState extends MusicBeatState
 
 		//then we add them
 		add(judgementCounter);
+		//unless it's on Info
+		if (ClientPrefs.judgCounters == 'Info')
+			remove(judgementCounter);
 
 		// Set Border Size, quality, etc, for Info
 		judgementCounterInfo.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1203,16 +1207,16 @@ class PlayState extends MusicBeatState
 		judgementCounterInfo.borderSize = 1.25;
 		judgementCounterInfo.visible = !ClientPrefs.hideHud;
 
-		//Show it on Info Bar and Hide the Left/Right ones
+		//Show it on Info Bar
 		if (ClientPrefs.judgCounters == "Info")
-		remove(judgementCounter);
 		add(judgementCounterInfo);
 
 		//Completely Disabled
 		if (ClientPrefs.judgCounters == "Disabled")
-			remove(judgementCounter);
-			remove(judgementCounterInfo);
+		remove(judgementCounter);
+		remove(judgementCounterInfo);
 
+		//Botplay Text Stuff V
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		if(ClientPrefs.downScroll)
 			botplayTxt.y = timeBarBG.y - 78;
@@ -2704,10 +2708,18 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
+		//Info Bar
 		if (ratingFC == "")
 			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
 		else
 			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
+
+		// Judgement Counters (on Info)
+		if (ClientPrefs.judgCounters == 'Info' && ClientPrefs.marvelouses)
+			judgementCounterInfo.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
+
+		if (ClientPrefs.judgCounters == 'Info')
+			judgementCounterInfo.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
@@ -4011,8 +4023,6 @@ class PlayState extends MusicBeatState
 		{
 			case "shit": // shit
 				score = 50;
-				combo = 0;
-				songMisses++;
 				totalNotesHit += 0.25;
 				shits++;
 			case "bad": // bad
@@ -4031,7 +4041,7 @@ class PlayState extends MusicBeatState
 				marvelouses++;
 		}
 		
-		if (ClientPrefs.marvelouses==true){	
+		if (ClientPrefs.marvelouses == true) {	
 				
 		if (daRating == 'marvelous' && !note.noteSplashDisabled)
 		{
@@ -4039,12 +4049,20 @@ class PlayState extends MusicBeatState
 		}
 		}
 		
-		else{
+		else {
 		
 		if (daRating == 'sick' && !note.noteSplashDisabled)
 		{
 			spawnNoteSplashOnNote(note);
 		}	
+		}
+
+		if (ClientPrefs.keAccuracy == true) {
+			if (daRating == 'shit')
+			{
+				songMisses++;
+				combo = 0;
+			}
 		}
 
 		if (!practiceMode && !cpuControlled)
@@ -5294,12 +5312,6 @@ class PlayState extends MusicBeatState
 			judgementCounter.text = 'Marvs: ${marvelouses}\nSicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nMisses: ${songMisses}';
 		else
 			judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nMisses: ${songMisses}';
-
-		if (ClientPrefs.judgCounters == 'Info' && ClientPrefs.marvelouses)
-			judgementCounterInfo.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
-		else
-		if (ClientPrefs.judgCounters == 'Info')
-			judgementCounterInfo.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
 	}
 
 	public static var othersCodeName:String = 'otherAchievements';
