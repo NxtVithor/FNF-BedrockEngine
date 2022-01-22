@@ -23,7 +23,7 @@ import flixel.input.keyboard.FlxKey;
 
 using StringTools;
 
-class MainMenuState extends MusicBeatState
+class MainMenuStateNew extends MusicBeatState
 {
 	public static var bedrockEngineVersion:String = '0.3'; // This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.5.1'; // this one too
@@ -50,6 +50,22 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var bg:FlxSprite;
+
+	public var note1:FlxSprite;
+	public var note2:FlxSprite;
+	public var note3:FlxSprite;
+	public var note4:FlxSprite;
+	public var note1go:Bool = false;
+	public var note2go:Bool = false;
+	public var note3go:Bool = false;
+	public var note4go:Bool = false;
+	public var notes:FlxTypedGroup<Note>;
+
+	var randomY1:Array<Float> = [54, 46, 24, 67, 45, 34, 76];
+	var randomY2:Array<Float> = [65, 85, 43, 86, 87, 29, 95];
+
+	var downshadow:FlxSprite; // idk how to exsit --Luis
+
 	var logoBl:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
@@ -101,6 +117,17 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		magenta.visible = false;
 		add(magenta);
+
+		danote('create');
+
+		downshadow = new FlxSprite(0, 0).loadGraphic(Paths.image('idkhowtonameit'));
+		downshadow.scrollFactor.set();
+		downshadow.updateHitbox();
+		downshadow.screenCenter();
+		downshadow.antialiasing = ClientPrefs.globalAntialiasing;
+		downshadow.color = FlxColor.BLACK;
+		downshadow.alpha = 0.6;
+		add(downshadow);
 
 		// magenta.scrollFactor.set();
 
@@ -158,9 +185,6 @@ class MainMenuState extends MusicBeatState
 				alpha: 1
 			}, 1.4, {ease: FlxEase.expoInOut});
 		}
-
-		if (!ClientPrefs.lowQuality)
-			FlxG.camera.follow(camFollowPos, null, 1);
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
@@ -319,6 +343,14 @@ class MainMenuState extends MusicBeatState
 			#end
 		}
 
+		danote('update');
+		danote('move then');
+
+		FlxG.watch.addQuick("note1.y:", note1.y);
+		FlxG.watch.addQuick("note2.y:", note2.y);
+		FlxG.watch.addQuick("note3.y:", note3.y);
+		FlxG.watch.addQuick("note4.y:", note4.y);
+
 		super.update(elapsed);
 
 		menuItems.forEach(function(spr:FlxSprite)
@@ -360,5 +392,241 @@ class MainMenuState extends MusicBeatState
 		super.beatHit();
 		if (curBeat % 4 == 0 && ClientPrefs.camZooms)
 			FlxG.camera.zoom = 1.015;
+	}
+
+	function danote(whatvar:String)
+	{
+		switch (whatvar)
+		{
+			case 'create':
+				{
+					note1 = new FlxSprite();
+					note1.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note1.scrollFactor.set();
+					note1.antialiasing = ClientPrefs.globalAntialiasing;
+					note1.animation.addByPrefix('purpleScroll', 'purple0', 24, false);
+					note1.setGraphicSize(Std.int(note1.width * 0.7));
+					note1.animation.play('purpleScroll');
+					note1.updateHitbox();
+					note1.x = 700;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note1.y += 132;
+								case 2:
+									note1.y += 96;
+								default:
+									note1.y += 86;
+							}
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note1.y -= 304;
+								case 2:
+									note1.y -= 35;
+								case 3:
+									note1.y -= 72;
+							}
+					}
+
+					note2 = new FlxSprite();
+					note2.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note2.scrollFactor.set();
+					note2.antialiasing = ClientPrefs.globalAntialiasing;
+					note2.animation.addByPrefix('blueScroll', 'blue0');
+					note2.setGraphicSize(Std.int(note2.width * 0.7));
+					note2.animation.play('blueScroll');
+					note2.updateHitbox();
+					note2.x = note1.x + 120;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note2.y += 132;
+								case 2:
+									note2.y += 96;
+								default:
+									note2.y += 86;
+							}
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note2.y -= 304;
+								case 2:
+									note2.y -= 35;
+								case 3:
+									note2.y -= 6;
+							}
+					}
+
+					note3 = new FlxSprite();
+					note3.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note3.scrollFactor.set();
+					note3.antialiasing = ClientPrefs.globalAntialiasing;
+					note3.animation.addByPrefix('greenScroll', 'green0');
+					note3.setGraphicSize(Std.int(note3.width * 0.7));
+					note3.animation.play('greenScroll');
+					note3.updateHitbox();
+					note3.x = note2.x + 120;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note3.y += 132;
+								case 2:
+									note3.y += 96;
+								default:
+									note3.y += 86;
+							}
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note3.y -= 304;
+								case 2:
+									note3.y -= 104;
+								case 3:
+									note3.y -= 6;
+							}
+					}
+
+					note4 = new FlxSprite();
+					note4.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note4.scrollFactor.set();
+					note4.antialiasing = ClientPrefs.globalAntialiasing;
+					note4.animation.addByPrefix('redScroll', 'red0');
+					note4.setGraphicSize(Std.int(note4.width * 0.7));
+					note4.animation.play('redScroll');
+					note4.updateHitbox();
+					note4.x = note3.x + 120;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note4.y += 132;
+								case 2:
+									note4.y += 96;
+								default:
+									note4.y += 104;
+							}
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note4.y -= 250;
+								case 2:
+									note4.y -= 35;
+								case 3:
+									note4.y -= 141;
+							}
+					}
+
+					add(note1);
+					add(note2);
+					add(note3);
+					add(note4);
+				}
+			case 'update':
+				{
+					if (note1.y < 800)
+					{
+						note1.y += 0.70 / (ClientPrefs.framerate / 80);
+					}
+					if (note2.y < 800)
+					{
+						note2.y += 0.70 / (ClientPrefs.framerate / 80);
+					}
+					if (note3.y < 800)
+					{
+						note3.y += 0.70 / (ClientPrefs.framerate / 80);
+					}
+					if (note4.y < 800)
+					{
+						note4.y += 0.70 / (ClientPrefs.framerate / 80);
+					}
+					if (note1.y > 700)
+						note1go = true;
+					if (note2.y > 700)
+						note2go = true;
+					if (note3.y > 700)
+						note3go = true;
+					if (note4.y > 700)
+						note4go = true;
+				}
+			case 'move then':
+				{
+					if (note1go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note1.y -= 800 + 68;
+							case 2:
+								note1.y -= 800 + 76;
+							case 3:
+								note1.y -= 800 + 56;
+							case 4:
+								note1.y -= 800 + 16;
+						}
+						note1go = false;
+					}
+					if (note2go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note2.y -= 800 + 104;
+							case 2:
+								note2.y -= 800 + 76;
+							case 3:
+								note2.y -= 800 + 72;
+							case 4:
+								note2.y -= 800 + 12;
+						}
+						note2go = false;
+					}
+					if (note3go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note3.y -= 800 + 87;
+							case 2:
+								note3.y -= 800 + 76;
+							case 3:
+								note3.y -= 800 + 56;
+							case 4:
+								note3.y -= 800 + 16;
+						}
+						note3go = false;
+					}
+					if (note4go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note4.y -= 800 + 76;
+							case 2:
+								note4.y -= 800 + 68;
+							case 3:
+								note4.y -= 800 + 130;
+							case 4:
+								note4.y -= 800 + 10;
+						}
+						note4go = false;
+					}
+				}
+		}
 	}
 }
