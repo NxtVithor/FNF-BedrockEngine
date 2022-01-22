@@ -242,7 +242,7 @@ class PlayState extends MusicBeatState
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
 	public var scoreTxt:FlxText;
-	public var judgementCounterInfo:FlxText;
+	public var judgCountTxt:FlxText;
 	var judgementCounter:FlxText;
 
 	var timeTxt:FlxText;
@@ -1172,9 +1172,6 @@ class PlayState extends MusicBeatState
 		// left and right judgement counters
 		judgementCounter = new FlxText(20, 0, 0, "", 20);
 
-		// below Info Bar
-		judgementCounterInfo = new FlxText(0, healthBarBG.y + 56, FlxG.width, "", 20);
-
 		// Set Text Stuffs
 		if (ClientPrefs.judgCounters == "Left")
 			judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1197,24 +1194,24 @@ class PlayState extends MusicBeatState
 
 		//then we add them
 		add(judgementCounter);
+
+		// for Info
+		judgCountTxt = new FlxText(0, healthBarBG.y + 56, FlxG.width, "", 20);
+		judgCountTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		judgCountTxt.scrollFactor.set();
+		judgCountTxt.borderSize = 1.25;
+		judgCountTxt.visible = !ClientPrefs.hideHud;
+
+		//then add it
+		add(judgCountTxt);
+
 		//unless it's on Info
 		if (ClientPrefs.judgCounters == 'Info')
-			remove(judgementCounter);
-
-		// Set Border Size, quality, etc, for Info
-		judgementCounterInfo.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		judgementCounterInfo.scrollFactor.set();
-		judgementCounterInfo.borderSize = 1.25;
-		judgementCounterInfo.visible = !ClientPrefs.hideHud;
-
-		//Show it on Info Bar
-		if (ClientPrefs.judgCounters == "Info")
-		add(judgementCounterInfo);
+		remove(judgementCounter);
 
 		//Completely Disabled
 		if (ClientPrefs.judgCounters == "Disabled")
 		remove(judgementCounter);
-		remove(judgementCounterInfo);
 
 		//Botplay Text Stuff V
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
@@ -1241,7 +1238,7 @@ class PlayState extends MusicBeatState
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		judgementCounter.cameras = [camHUD];
-		judgementCounterInfo.cameras = [camHUD];
+		judgCountTxt.cameras = [camHUD];
 		beWatermark.cameras = [camHUD];
 		peWatermark.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
@@ -2715,11 +2712,16 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
 
 		// Judgement Counters (on Info)
-		if (ClientPrefs.judgCounters == 'Info' && ClientPrefs.marvelouses)
-			judgementCounterInfo.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
-
 		if (ClientPrefs.judgCounters == 'Info')
-			judgementCounterInfo.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
+			judgCountTxt.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
+		if (ClientPrefs.judgCounters == 'Info' && ClientPrefs.marvelouses)
+			judgCountTxt.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
+
+		if (ClientPrefs.judgCounters == 'Disabled' && ClientPrefs.marvelouses)
+			judgCountTxt.text = '';
+
+		if (ClientPrefs.judgCounters == 'Disabled')
+			judgCountTxt.text = '';
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))

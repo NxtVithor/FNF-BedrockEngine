@@ -178,7 +178,7 @@ class CreditsState extends MusicBeatState
 				'4494E6'
 			],
 			[
-				'XtraXD1',
+				'Verwex',
 				'placeholder',
 				'Made Mic´d Up Engine, Winning Icons',
 				'https://github.com/Verwex/Funkin-Mic-d-Up-SC',
