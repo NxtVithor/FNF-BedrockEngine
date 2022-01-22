@@ -1,7 +1,3 @@
-# Current Plans
-
-* Updating this entire file because it's outdated at the moment lol
-
 # Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
@@ -17,8 +13,11 @@ Credits:
 * XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
 * Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy
 
-# Compiling
+# Current Plans
 
+* Updating this entire file because it's outdated at the moment lol
+
+# Compiling
 
 > ### Dependencies
 
@@ -217,7 +216,7 @@ right now this feature is hardcoded, but I plan to make it softcoded soon
 
 ## Winning Icons
 
-![image](https://user-images.githubusercontent.com/45212377/150618389-fa708aee-5101-442f-bb1f-9bb8c68b26aa.png)
+![s](https://user-images.githubusercontent.com/45212377/150619108-936004be-898a-49d3-b6b3-da6efa5d115a.png)
 
 ## and more!
 I will keep updating this fork as much as possible for it to be in sync with the main repository, and adding more features to it in the future!
