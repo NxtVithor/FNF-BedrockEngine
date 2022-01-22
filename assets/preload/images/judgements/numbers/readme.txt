@@ -1,4 +1,4 @@
-those are the default numbers
+thse are the folders containing the default numbers
 it is recommended for your to create a new folder for your own numbers
 in case you change them on your Judgement Skin
 
