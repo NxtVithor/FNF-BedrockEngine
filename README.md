@@ -4,11 +4,11 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 
 # Current Plans
 
-* Noteskins on Options Menu
 * Updating this entire file because it's outdated at the moment lol
 
 # Future Plans
 * Softcoded Judgement Skins
+* Noteskins on Options Menu
 * Separated Noteskins for each Player (already possible with lua so...)
 * Fix all current issues with Opponent Mode
 
