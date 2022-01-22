@@ -4091,52 +4091,52 @@ class PlayState extends MusicBeatState
 				if (isPixelStage)
 				{
 					pixelShitPart1 = 'judgements/classic/pixelJuds/';
-					pixelNumbersShit = 'judgements/numbers/pixelNums/';
+					pixelNumbersShit = 'judgements/numbers/classic-pixelNums/';
 					pixelShitPart2 = '-pixel';
 				}
 				else
 				{
 					pixelShitPart1 = 'judgements/classic/';
-					pixelNumbersShit = 'judgements/numbers/';
+					pixelNumbersShit = 'judgements/numbers/classic-Nums/';
 					pixelShitPart2 = '';
 				}
 			case 'Bedrock':
 				if (isPixelStage)
 				{
 					pixelShitPart1 = 'judgements/bedrock/pixelJuds/';
-					pixelNumbersShit = 'judgements/numbers/pixelNums/';
+					pixelNumbersShit = 'judgements/numbers/classic-pixelNums/';
 					pixelShitPart2 = '-pixel';
 				}
 				else
 				{
 					pixelShitPart1 = 'judgements/bedrock/';
-					pixelNumbersShit = 'judgements/numbers/';
+					pixelNumbersShit = 'judgements/numbers/classic-Nums/';
 					pixelShitPart2 = '';
 				}
 			case 'BEAT!':
 				if (isPixelStage)
 				{
 					pixelShitPart1 = 'judgements/beat/pixelJuds/';
-					pixelNumbersShit = 'judgements/numbers/pixelNums/';
+					pixelNumbersShit = 'judgements/numbers/classic-pixelNums/';
 					pixelShitPart2 = '-pixel';
 				}
 				else
 				{
 					pixelShitPart1 = 'judgements/beat/';
-					pixelNumbersShit = 'judgements/numbers/';
+					pixelNumbersShit = 'judgements/numbers/classic-Nums/';
 					pixelShitPart2 = '';
 				}
 			case 'BEAT! Gradient':
 				if (isPixelStage)
 				{
 					pixelShitPart1 = 'judgements/beat-alt/pixelJuds/';
-					pixelNumbersShit = 'judgements/numbers/pixelNums/';
+					pixelNumbersShit = 'judgements/numbers/classic-pixelNums/';
 					pixelShitPart2 = '-pixel';
 				}
 				else
 				{
 					pixelShitPart1 = 'judgements/beat-alt/';
-					pixelNumbersShit = 'judgements/numbers/';
+					pixelNumbersShit = 'judgements/numbers/classic-Nums/';
 					pixelShitPart2 = '';
 				}
 		} // i made a switch for the skins -Luis
