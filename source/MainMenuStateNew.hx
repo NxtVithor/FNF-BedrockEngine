@@ -539,29 +539,29 @@ class MainMenuStateNew extends MusicBeatState
 				}
 			case 'update':
 				{
-					if (note1.y < 820)
+					if (note1.y < 800)
 					{
 						note1.y += 1 / (ClientPrefs.framerate / 100);
 					}
-					if (note2.y < 820)
+					if (note2.y < 800)
 					{
 						note2.y += 1 / (ClientPrefs.framerate / 100);
 					}
-					if (note3.y < 820)
+					if (note3.y < 800)
 					{
 						note3.y += 1 / (ClientPrefs.framerate / 100);
 					}
-					if (note4.y < 820)
+					if (note4.y < 800)
 					{
 						note4.y += 1 / (ClientPrefs.framerate / 100);
 					}
-					if (note1.y > 820)
+					if (note1.y > 800)
 						note1go = true;
-					if (note2.y > 820)
+					if (note2.y > 800)
 						note2go = true;
-					if (note3.y > 820)
+					if (note3.y > 800)
 						note3go = true;
-					if (note4.y > 820)
+					if (note4.y > 800)
 						note4go = true;
 				}
 			case 'move them':
@@ -571,13 +571,13 @@ class MainMenuStateNew extends MusicBeatState
 						switch (FlxG.random.int(1, 3))
 						{
 							case 1:
-								note1.y -= 820 + 30 + 68;
+								note1.y -= 800 + 30 + 68;
 							case 2:
-								note1.y -= 820 + 30 + 76;
+								note1.y -= 800 + 30 + 76;
 							case 3:
-								note1.y -= 820 + 30 + 56;
+								note1.y -= 800 + 30 + 56;
 							case 4:
-								note1.y -= 820 + 30 + 16;
+								note1.y -= 800 + 30 + 16;
 						}
 						note1go = false;
 					}
@@ -586,13 +586,13 @@ class MainMenuStateNew extends MusicBeatState
 						switch (FlxG.random.int(1, 3))
 						{
 							case 1:
-								note2.y -= 820 + 30 + 104;
+								note2.y -= 800 + 30 + 104;
 							case 2:
-								note2.y -= 820 + 30 + 76;
+								note2.y -= 800 + 30 + 76;
 							case 3:
-								note2.y -= 820 + 30 + 72;
+								note2.y -= 800 + 30 + 72;
 							case 4:
-								note2.y -= 820 + 30 + 12;
+								note2.y -= 800 + 30 + 12;
 						}
 						note2go = false;
 					}
@@ -601,13 +601,13 @@ class MainMenuStateNew extends MusicBeatState
 						switch (FlxG.random.int(1, 3))
 						{
 							case 1:
-								note3.y -= 820 + 30 + 87;
+								note3.y -= 800 + 30 + 87;
 							case 2:
-								note3.y -= 820 + 30 + 76;
+								note3.y -= 800 + 30 + 76;
 							case 3:
-								note3.y -= 820 + 30 + 56;
+								note3.y -= 800 + 30 + 56;
 							case 4:
-								note3.y -= 820 + 30 + 16;
+								note3.y -= 800 + 30 + 16;
 						}
 						note3go = false;
 					}
@@ -616,13 +616,13 @@ class MainMenuStateNew extends MusicBeatState
 						switch (FlxG.random.int(1, 3))
 						{
 							case 1:
-								note4.y -= 820 + 30 + 76;
+								note4.y -= 800 + 30 + 76;
 							case 2:
-								note4.y -= 820 + 30 + 68;
+								note4.y -= 800 + 30 + 68;
 							case 3:
-								note4.y -= 820 + 30 + 130;
+								note4.y -= 800 + 30 + 130;
 							case 4:
-								note4.y -= 820 + 30 + 10;
+								note4.y -= 800 + 30 + 10;
 						}
 						note4go = false;
 					}
