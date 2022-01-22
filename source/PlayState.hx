@@ -2706,9 +2706,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
+			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
@@ -4082,6 +4082,7 @@ class PlayState extends MusicBeatState
 	 */
 
 		var pixelShitPart1:String = "";
+		var pixelNumbersShit:String = '';
 		var pixelShitPart2:String = '';
 
 		// Judgement Skins (using preload for now)
@@ -4091,34 +4092,53 @@ class PlayState extends MusicBeatState
 			case 'Classic':
 				if (isPixelStage)
 				{
-					pixelShitPart1 = 'pixelUI/';
+					pixelShitPart1 = 'judgements/classic/pixelJuds/';
+					pixelNumbersShit = 'judgements/numbers/pixelNums/';
 					pixelShitPart2 = '-pixel';
 				}
 				else
 				{
 					pixelShitPart1 = 'judgements/classic/';
+					pixelNumbersShit = 'judgements/numbers/';
 					pixelShitPart2 = '';
 				}
 			case 'Bedrock':
 				if (isPixelStage)
 				{
-					pixelShitPart1 = 'judgements/bedrock/';
+					pixelShitPart1 = 'judgements/bedrock/pixelJuds/';
+					pixelNumbersShit = 'judgements/numbers/pixelNums/';
 					pixelShitPart2 = '-pixel';
 				}
 				else
 				{
 					pixelShitPart1 = 'judgements/bedrock/';
+					pixelNumbersShit = 'judgements/numbers/';
 					pixelShitPart2 = '';
 				}
 			case 'BEAT!':
 				if (isPixelStage)
 				{
-					pixelShitPart1 = 'judgements/beat/';
+					pixelShitPart1 = 'judgements/beat/pixelJuds/';
+					pixelNumbersShit = 'judgements/numbers/pixelNums/';
 					pixelShitPart2 = '-pixel';
 				}
 				else
 				{
 					pixelShitPart1 = 'judgements/beat/';
+					pixelNumbersShit = 'judgements/numbers/';
+					pixelShitPart2 = '';
+				}
+			case 'BEAT! Gradient':
+				if (isPixelStage)
+				{
+					pixelShitPart1 = 'judgements/beat-alt/pixelJuds/';
+					pixelNumbersShit = 'judgements/numbers/pixelNums/';
+					pixelShitPart2 = '-pixel';
+				}
+				else
+				{
+					pixelShitPart1 = 'judgements/beat-alt/';
+					pixelNumbersShit = 'judgements/numbers/';
 					pixelShitPart2 = '';
 				}
 		} // i made a switch for the skins -Luis
@@ -4177,7 +4197,7 @@ class PlayState extends MusicBeatState
 		var daLoop:Int = 0;
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelNumbersShit + 'num' + Std.int(i) + pixelShitPart2));
 			numScore.cameras = [camHUD];
 			numScore.screenCenter();
 			numScore.x = coolText.x + (43 * daLoop) - 90;

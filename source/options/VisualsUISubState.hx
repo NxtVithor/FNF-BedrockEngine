@@ -108,7 +108,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Judgement Skin:', "What should your Judgements look like?", 'uiSkin', 'string', 'Bedrock',
-		['Classic', 'Bedrock', 'BEAT!']);
+		['Classic', 'Bedrock', 'BEAT!', 'BEAT! Gradient']);
 		addOption(option);
 
 		super();
