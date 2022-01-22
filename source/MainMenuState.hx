@@ -82,7 +82,7 @@ class MainMenuState extends MusicBeatState
 		add(camFollow);
 		add(camFollowPos);
 
-		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBGdark'));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
 		bg.setGraphicSize(Std.int(bg.width * 1.175 * scaleRatio));
 		bg.updateHitbox();

@@ -81,7 +81,7 @@ class SimpleMenuState extends MusicBeatState
 
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
-		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBGdark'));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.setGraphicSize(Std.int(bg.width * 1.175*scaleRatio ));
 		bg.updateHitbox();
 		bg.screenCenter();

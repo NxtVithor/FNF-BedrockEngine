@@ -98,7 +98,7 @@ class CreditsState extends MusicBeatState
 			],
 			[
 				'Luisinh010',
-				'placeholder',
+				'luis',
 				'Engine Coder',
 				'https://github.com/Luisinhi010',
 				'31b0d1'
@@ -145,6 +145,13 @@ class CreditsState extends MusicBeatState
 				'placeholder',
 				'Menu Animations, Hit Sounds, Miss Sounds Toggle',
 				'https://github.com/l1ttleO/ProjectFNF',
+				'31b0d1'
+			],
+			[
+				'magnumsrtisswag',
+				'placeholder',
+				'Stage Editor, Credits Warning',
+				'https://github.com/magnumsrtisswag',
 				'31b0d1'
 			],
 			[

@@ -27,7 +27,6 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	public static var healthBarAlpha:Float = 1;
-	public static var controllerMode:Bool = false;
 	public static var screenRes:String = "1280 x 720";
 	public static var screenResTemp:String = "1280 x 720"; // dummy value that isn't saved, used so that if the player cancels instead of hitting space the resolution isn't applied
 	public static var screenScaleMode:String = "Letterbox";
@@ -78,7 +77,7 @@ class ClientPrefs {
 	#end
 	public static var lowEndMode:Bool = false;
 	public static var strumLineAlpha:Float = 1;
-	public static var judgementCounters:Bool = true;
+	public static var judgCounters:String = 'Left';
 	public static var timeBarUi:String = 'Psych Engine';
 	public static var underlay:Float = 0;
 	public static var keAccuracy:Bool = false;
@@ -154,7 +153,6 @@ class ClientPrefs {
 		FlxG.save.data.badWindow = badWindow;
 		FlxG.save.data.safeFrames = safeFrames;
 		FlxG.save.data.gameplaySettings = gameplaySettings;
-		FlxG.save.data.controllerMode = controllerMode;
 		FlxG.save.data.screenRes = screenRes;
 		FlxG.save.data.screenScaleMode = screenScaleMode;
 
@@ -169,14 +167,14 @@ class ClientPrefs {
 		FlxG.save.data.uiSkin = uiSkin;
 		FlxG.save.data.lowEndMode = lowEndMode;
 		FlxG.save.data.strumLineAlpha = strumLineAlpha;
-		FlxG.save.data.judgementCounters = judgementCounters;
 		FlxG.save.data.timeBarUi = timeBarUi;
+		FlxG.save.data.underlay = underlay;
+		FlxG.save.data.keAccuracy = keAccuracy;
+		FlxG.save.data.judgCounters = judgCounters;
 
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
-		FlxG.save.data.underlay = underlay;
-		FlxG.save.data.keAccuracy = keAccuracy;
 
 		FlxG.save.flush();
 
@@ -274,9 +272,6 @@ class ClientPrefs {
 		if(FlxG.save.data.safeFrames != null) {
 			safeFrames = FlxG.save.data.safeFrames;
 		}
-		if(FlxG.save.data.controllerMode != null) {
-			controllerMode = FlxG.save.data.controllerMode;
-		}
 		if(FlxG.save.data.screenRes != null) {
 			screenRes = FlxG.save.data.screenRes;
 		}
@@ -322,11 +317,11 @@ class ClientPrefs {
 		if (FlxG.save.data.strumLineAlpha != null) {
 			strumLineAlpha = FlxG.save.data.strumLineAlpha;
 		}
-		if (FlxG.save.data.judgementCounters != null) {
-			judgementCounters = FlxG.save.data.judgementCounters;
-		}
 		if (FlxG.save.data.timeBarUi != null) {
 			timeBarUi = FlxG.save.data.timeBarUi;
+		}
+		if (FlxG.save.data.judgCounters != null) {
+			judgCounters = FlxG.save.data.judgCounters;
 		}
 		
 		// Added by Bedrock Engine (via Pull Requests)
