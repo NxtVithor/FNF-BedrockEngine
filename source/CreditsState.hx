@@ -110,20 +110,27 @@ class CreditsState extends MusicBeatState
 				'https://twitter.com/aqua_strikr',
 				'2596be'
 			],
+			[
+				'Dex Dousky',
+				'dex',
+				'Main Menu Music',
+				'https://twitter.com/cachorro_sonico'.
+				'FFDD33'
+			],
 			[''],
 			['Original Pull Requests/Scripts'],
+			[
+				'BURGER76920',
+				'placeholder',
+				'Json-editable Menus',
+				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3891',
+				'31b0d1'
+			],
 			[
 				'CerBor',
 				'placeholder',
 				'Difficulty Drop Down on Chart Menu',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/2896',
-				'31b0d1'
-			],
-			[
-				'Dysfunk',
-				'placeholder',
-				'Json-editable Menus',
-				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3891',
 				'31b0d1'
 			],
 			[
