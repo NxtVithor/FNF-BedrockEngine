@@ -7,6 +7,7 @@ import flixel.graphics.FlxGraphic;
 import Controls;
 
 class ClientPrefs {
+	public static var watermarkCustom:String = 'Both';
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var showFPS:Bool = true;
@@ -124,7 +125,7 @@ class ClientPrefs {
 		}
 	}
 
-	public static function saveSettings() {//
+	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.showFPS = showFPS;
@@ -180,6 +181,7 @@ class ClientPrefs {
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
+		FlxG.save.data.watermarkCustom = watermarkCustom;
 
 		FlxG.save.flush();
 
@@ -353,6 +355,7 @@ class ClientPrefs {
 		{
 			keAccuracy = FlxG.save.data.keAccuracy;
 		}
+		if (FlxG.save.data.watermarkCustom != null) watermarkCustom = FlxG.save.data.watermarkCustom;
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)
