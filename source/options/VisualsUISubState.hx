@@ -67,6 +67,11 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		var option:Option = new Option('Show Watermarks', "If unchecked, hides Engine Watermarks from the bottom left corner.", 'showWatermarks', 'bool', true);
 	addOption(option);
+		
+		var option:Option = new Option('Watermark Style: ', "Example, if selected 'Only Song' watermark will be 'SongNAME DIFFICULTYname'.", 'watermarkCustom', 'string',
+					       ['Both', 'Only Bedrock', 'Only Psych', 'Both plus Song', 'Only Song']);
+	 addOption(option);
+					       
 
 		var option:Option = new Option('Health Bar Opacity',
 			'How much opaque should the health bar and icons be.',
