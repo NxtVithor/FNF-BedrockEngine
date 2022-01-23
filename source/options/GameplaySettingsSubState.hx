@@ -66,9 +66,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Play Miss Sounds', "If unchecked, sounds for when you miss a Note will be disabled entirely", 'playMissSounds', 'bool', true);
 	addOption(option);
 
-		var Option = new Option('Light CPU Strums', "If disabled, the CPU's Notes will no longer light once the CPU hits them", 'lightcpustrums', 'bool', true);
-	addOption(Option);
-
 		/*var option:Option = new Option('Note Delay',
 			'Changes how late a note is spawned.\nUseful for preventing audio lag from wireless earphones.',
 			'noteOffset',
@@ -79,10 +76,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.minValue = 0;
 		option.maxValue = 500;
 		addOption(option);*/
-
-		var option:Option = new Option('Judgement Counters:', "In which position should the Judgement Counters be?", 'judgCounters', 'string', 'Left',
-		['Left', /*'Right',*/ 'Info', 'Disabled']);
-	addOption(option);
 
 		var option:Option = new Option('Rating Offset',
 			'Changes how late/early you have to hit for a "Sick!"\nHigher values mean you have to hit later.',
