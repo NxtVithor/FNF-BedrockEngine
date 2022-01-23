@@ -3999,8 +3999,11 @@ class PlayState extends MusicBeatState
 
 	public static function getUiSkin(?uiSkin:String = 'classic', ?file:String = '', ?alt:String = '', ?numSkin:Bool = false, ?num:Int = 0) {
 		var path:String = 'judgements/' + (numSkin ? 'numbers/' : '') + uiSkin + '/' + (numSkin ? 'num' : file) + (numSkin ? Std.string(num) : '') + alt;
-		if (!Paths.fileExists('images/' + path, IMAGE))
+		trace('old: ' + path);
+		if (!Paths.fileExists('images/' + path + '.png', IMAGE)) {
 			path = 'judgements/' + (numSkin ? 'numbers/' : '') + 'classic/' + (numSkin ? 'num' : file) + (numSkin ? Std.string(num) : '') + alt;
+			trace('new: ' + path);
+		}
 		return path;
 	}
 
