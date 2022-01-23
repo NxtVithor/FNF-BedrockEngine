@@ -120,6 +120,13 @@ class CreditsState extends MusicBeatState
 				'31b0d1'
 			],
 			[
+				'Dysfunk',
+				'placeholder',
+				'Json-editable Menus',
+				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3891',
+				'31b0d1'
+			],
+			[
 				'HiroMizuki',
 				'placeholder',
 				'Pixel Note Splashes',
