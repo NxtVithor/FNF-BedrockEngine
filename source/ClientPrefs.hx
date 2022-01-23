@@ -7,7 +7,6 @@ import flixel.graphics.FlxGraphic;
 import Controls;
 
 class ClientPrefs {
-	public static var watermarkCustom:String = 'Both';
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var showFPS:Bool = true;
@@ -66,7 +65,6 @@ class ClientPrefs {
 
 	// Added by Bedrock Engine
 	public static var maxOptimization:Bool = false;
-	public static var showWatermarks:Bool = true;
 	public static var playMissSounds:Bool = true;
 	public static var playHitSounds:Bool = false;
 	public static var lightcpustrums:Bool = true;
@@ -87,6 +85,7 @@ class ClientPrefs {
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
+	public static var watermarkPreferences:String = 'Both';
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -162,7 +161,6 @@ class ClientPrefs {
 
 		// Added by Bedrock Engine 
 		FlxG.save.data.maxOptimization = maxOptimization;
-		FlxG.save.data.showWatermarks = showWatermarks;
 		FlxG.save.data.playMissSounds = playMissSounds;
 		FlxG.save.data.playHitSounds = playHitSounds;
 		FlxG.save.data.lightcpustrums = lightcpustrums;
@@ -181,7 +179,7 @@ class ClientPrefs {
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
-		FlxG.save.data.watermarkCustom = watermarkCustom;
+		FlxG.save.data.watermarkPreferences = watermarkPreferences;
 
 		FlxG.save.flush();
 
@@ -300,9 +298,6 @@ class ClientPrefs {
 		if(FlxG.save.data.maxOptimization != null) {
 			maxOptimization = FlxG.save.data.maxOptimization;
 		}
-		if (FlxG.save.data.showWatermarks != null) {
-			showWatermarks = FlxG.save.data.showWatermarks;
-		}
 		if (FlxG.save.data.playHitSounds != null) {
 			playHitSounds = FlxG.save.data.playHitSounds;
 		}
@@ -339,6 +334,12 @@ class ClientPrefs {
 		if (FlxG.save.data.noteGlow != null) {
 			noteGlow = FlxG.save.data.noteGlow;
 		}
+		if (FlxG.save.data.underlay != null) {
+			underlay = FlxG.save.data.underlay;
+		}
+		if (FlxG.save.data.keAccuracy != null) {
+			keAccuracy = FlxG.save.data.keAccuracy;
+		}
 		
 		// Added by Bedrock Engine (via Pull Requests)
 		if(FlxG.save.data.marvelousWindow != null) {
@@ -347,15 +348,9 @@ class ClientPrefs {
 		if(FlxG.save.data.marvelouses != null) {
 			marvelouses = FlxG.save.data.marvelouses;
 		}
-		if (FlxG.save.data.underlay != null)
-		{
-			underlay = FlxG.save.data.underlay;
+		if (FlxG.save.data.watermarkPreferences != null) {
+			watermarkPreferences = FlxG.save.data.watermarkPreferences;
 		}
-		if (FlxG.save.data.keAccuracy != null)
-		{
-			keAccuracy = FlxG.save.data.keAccuracy;
-		}
-		if (FlxG.save.data.watermarkCustom != null) watermarkCustom = FlxG.save.data.watermarkCustom;
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)

@@ -38,11 +38,7 @@ class VisualsUISubState extends BaseOptionsMenu
 	addOption(option);
 	
 		var option:Option = new Option('Score Text Zoom on Hit', "If unchecked, disables the Score text zooming\neverytime you hit a note.", 'scoreZoom', 'bool', true);
-	addOption(option);
-
-		var option:Option = new Option('Show Watermarks', "If unchecked, hides Engine Watermarks from the bottom left corner.", 'showWatermarks', 'bool', true);
-	addOption(option);
-					       
+	addOption(option);     
 
 		var option:Option = new Option('Health Bar Opacity',
 			'How much opaque should the health bar and icons be.',
@@ -101,9 +97,9 @@ class VisualsUISubState extends BaseOptionsMenu
 		['Default', 'Future', 'Chip']);
 		addOption(option);
 
-			var option:Option = new Option('Watermark Style: ', "Example, if selected 'Only Song' watermark will be 'SongNAME DIFFICULTYname'.", 'watermarkCustom', 'string',
-		['Both', 'Only Bedrock', 'Only Psych', 'Both plus Song', 'Only Song']);
-	 	addOption(option);
+			var option:Option = new Option('Watermark Style:', "What should the watermarks on the bottom left corner show?", 'watermarkPreferences', 'string', 'Both',
+		['Both', 'Only Bedrock', 'Only Psych', 'Only Song', 'All', 'Nothing']);
+		addOption(option);
 
 		super();
 	}
