@@ -2839,17 +2839,7 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
-		else
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
-
-		if (healthBar.percent > 80)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
-		else
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
-
-		/*if (healthBar.percent < 20) {
+		if (healthBar.percent < 20) {
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
 		} else if (healthBar.percent > 85) {
@@ -2858,7 +2848,7 @@ class PlayState extends MusicBeatState
 		} else {
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
-		}*/
+		}
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene)
 		{
