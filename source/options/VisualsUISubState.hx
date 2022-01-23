@@ -43,6 +43,16 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Flashing Lights', "Uncheck this if you're sensitive to flashing lights!", 'flashing', 'bool', true);
 	addOption(option);
 
+	#if !mobile
+	var option:Option = new Option('FPS Counter',
+		'If unchecked, hides FPS Counter.',
+		'showFPS',
+		'bool',
+		true);
+	addOption(option);
+	option.onChange = onChangeFPSCounter;
+	#end
+
 		var Option = new Option('Glow CPU Strums', "If disabled, the CPU's Notes will no longer glow once the CPU hits them", 'lightcpustrums', 'bool', true);
 	addOption(Option);
 
@@ -57,16 +67,6 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		var option:Option = new Option('Show Watermarks', "If unchecked, hides Engine Watermarks from the bottom left corner.", 'showWatermarks', 'bool', true);
 	addOption(option);
-		
-		#if !mobile
-		var option:Option = new Option('FPS Counter',
-			'If unchecked, hides FPS Counter.',
-			'showFPS',
-			'bool',
-			true);
-		addOption(option);
-		option.onChange = onChangeFPSCounter;
-		#end
 
 		var option:Option = new Option('Health Bar Opacity',
 			'How much opaque should the health bar and icons be.',
