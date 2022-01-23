@@ -249,8 +249,8 @@ class PlayState extends MusicBeatState
 	var scoreTxtTween:FlxTween;
 	var beWatermark:FlxText;
 	var peWatermark:FlxText;
-	var debugWatermark:FlxText;
-	var debugWatermark2:FlxText;
+	var customw:FlxText;
+	var emptytext:String = ' ';
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -1135,7 +1135,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		// Watermarks at the upper left corner, this is for Bedrock Engine
+	if (ClientPrefs.watermarkCustom == 'Both'){// Watermarks at the upper left corner, both will appear
 		beWatermark = new FlxText(0, FlxG.height - 44, 0, "Bedrock Engine: v" + MainMenuState.bedrockEngineVersion, 16);
 		beWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		beWatermark.scrollFactor.set();
@@ -1150,24 +1150,61 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.showWatermarks == false)
 			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
 		add(peWatermark);
-
-		#if debug
-		remove(beWatermark);
-		remove(peWatermark);
-		debugWatermark = new FlxText(0, FlxG.height - 44, 0, "Debug Build - BE v" + MainMenuState.bedrockEngineVersion, 16);
-		debugWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark.scrollFactor.set();
+	}
+	
+	if (ClientPrefs.watermarkCustom == 'Only Bedrock'){ //this is only bedrock, psych will not appear
+		beWatermark = new FlxText(0, FlxG.height - 44, 0, "Bedrock Engine: v" + MainMenuState.bedrockEngineVersion, 16);
+		beWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		beWatermark.scrollFactor.set();
 		if (ClientPrefs.showWatermarks == false)
-			debugWatermark = new FlxText(0, FlxG.height - 44, 0, "");
-		add(debugWatermark);
-
-		debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "Press F2 to Open Logs - PE v" + MainMenuState.psychEngineVersion, 16);
-		debugWatermark2.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark2.scrollFactor.set();
+			beWatermark = new FlxText(0, FlxG.height - 44, 0, "");
+		add(beWatermark);
+	}
+	
+	if (ClientPrefs.watermarkCustom == 'Only Psych'){ //this is only. psych, bedrock will not appear
+		peWatermark = new FlxText(0, FlxG.height - 44, 0, "Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
+		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		peWatermark.scrollFactor.set();
 		if (ClientPrefs.showWatermarks == false)
-			debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "");
-		add(debugWatermark2);
-		#end
+		peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
+		add(peWatermark);
+	}
+	
+	if (ClientPrefs.watermarkCustom == 'Both plus Song'){//both will appear and song will be in left corner
+		beWatermark = new FlxText(0, FlxG.height - 24, 0, "Bedrock Engine: v" + MainMenuState.bedrockEngineVersion, 16);
+		beWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		beWatermark.scrollFactor.set();
+		if (ClientPrefs.showWatermarks == false)
+			beWatermark = new FlxText(0, FlxG.height - 44, 0, "");
+		add(beWatermark);
+
+		// And this is for Psych Engine
+		peWatermark = new FlxText(0, FlxG.height - 4, 0, "Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
+		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		peWatermark.scrollFactor.set();
+		if (ClientPrefs.showWatermarks == false)
+			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
+		add(peWatermark);
+		
+		customw = new FlxText(0, FlxG.height - 44, 0, SONG.song + emptytext + storyDifficultyText, 16);
+		customw.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		customw.scrollFactor.set();
+		if (ClientPrefs.showWatermarks == false)
+			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
+		add(customw);
+	}
+		
+	if (ClientPrefs.watermarkCustom == 'Only Song'){
+		
+		customw = new FlxText(0, FlxG.height - 44, 0, SONG.song + emptytext + storyDifficultyText, 16);
+		customw.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		customw.scrollFactor.set();
+		if (ClientPrefs.showWatermarks == false)
+			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
+		add(customw);
+	}
+		
+		
 
 		// left and right judgement counters
 		judgementCounter = new FlxText(20, 0, 0, "", 20);
