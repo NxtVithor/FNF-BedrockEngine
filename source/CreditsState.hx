@@ -114,8 +114,8 @@ class CreditsState extends MusicBeatState
 				'Dex Dousky',
 				'dex',
 				'Main Menu Music',
-				'https://twitter.com/cachorro_sonico'.
-				'FFDD33'
+				'https://twitter.com/cachorro_sonico',
+				'ffdd33'
 			],
 			[''],
 			['Original Pull Requests/Scripts'],
