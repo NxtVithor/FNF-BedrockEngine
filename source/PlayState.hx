@@ -249,8 +249,6 @@ class PlayState extends MusicBeatState
 	var scoreTxtTween:FlxTween;
 	var beWatermark:FlxText;
 	var peWatermark:FlxText;
-	var debugWatermark:FlxText;
-	var debugWatermark2:FlxText;
 	var customw:FlxText;
 	var emptytext:String = ' ';
 
@@ -1152,24 +1150,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.showWatermarks == false)
 			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
 		add(peWatermark);
-
-		#if debug
-		remove(beWatermark);
-		remove(peWatermark);
-		debugWatermark = new FlxText(0, FlxG.height - 44, 0, "Debug Build - BE v" + MainMenuState.bedrockEngineVersion, 16);
-		debugWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-			debugWatermark = new FlxText(0, FlxG.height - 44, 0, "");
-		add(debugWatermark);
-
-		debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "Press F2 to Open Logs - PE v" + MainMenuState.psychEngineVersion, 16);
-		debugWatermark2.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark2.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-			debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "");
-		add(debugWatermark2);
-		#end
 	}
 	
 	if (ClientPrefs.watermarkCustom == 'Only Bedrock'){ //this is only bedrock, psych will not appear
@@ -1179,16 +1159,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.showWatermarks == false)
 			beWatermark = new FlxText(0, FlxG.height - 44, 0, "");
 		add(beWatermark);
-		
-		#if debug
-		remove(beWatermark);
-		debugWatermark = new FlxText(0, FlxG.height - 44, 0, "Debug Build - BE v" + MainMenuState.bedrockEngineVersion, 16);
-		debugWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-			debugWatermark = new FlxText(0, FlxG.height - 44, 0, "");
-		add(debugWatermark);
-		#end
 	}
 	
 	if (ClientPrefs.watermarkCustom == 'Only Psych'){ //this is only. psych, bedrock will not appear
@@ -1198,16 +1168,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.showWatermarks == false)
 		peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
 		add(peWatermark);
-		
-		#if debug
-		remove(peWatermark);
-		debugWatermark = new FlxText(0, FlxG.height - 44, 0, "Debug Build - PE v" + MainMenuState.bedrockEngineVersion, 16);
-		debugWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-		debugWatermark = new FlxText(0, FlxG.height - 44, 0, "");
-		add(debugWatermark);
-		#end
 	}
 	
 	if (ClientPrefs.watermarkCustom == 'Both plus Song'){//both will appear and song will be in left corner
@@ -1232,24 +1192,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.showWatermarks == false)
 			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
 		add(customw);
-
-		#if debug
-		remove(beWatermark);
-		remove(peWatermark);
-		debugWatermark = new FlxText(0, FlxG.height - 24, 0, "Debug Build - BE v" + MainMenuState.bedrockEngineVersion, 16);
-		debugWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-			debugWatermark = new FlxText(0, FlxG.height - 44, 0, "");
-		add(debugWatermark);
-
-		debugWatermark2 = new FlxText(0, FlxG.height - 4, 0, "Press F2 to Open Logs - PE v" + MainMenuState.psychEngineVersion, 16);
-		debugWatermark2.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark2.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-			debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "");
-		add(debugWatermark2);
-		#end
 	}
 		
 	if (ClientPrefs.watermarkCustom == 'Only Song'){
@@ -1260,24 +1202,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.showWatermarks == false)
 			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
 		add(customw);
-
-		#if debug
-		remove(beWatermark);
-		remove(peWatermark);
-		debugWatermark = new FlxText(0, FlxG.height - 24, 0, "Debug Build - BE v" + MainMenuState.bedrockEngineVersion, 16);
-		debugWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-			debugWatermark = new FlxText(0, FlxG.height - 44, 0, "");
-		add(debugWatermark);
-
-		debugWatermark2 = new FlxText(0, FlxG.height - 4, 0, "Press F2 to Open Logs - PE v" + MainMenuState.psychEngineVersion, 16);
-		debugWatermark2.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		debugWatermark2.scrollFactor.set();
-		if (ClientPrefs.showWatermarks == false)
-			debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "");
-		add(debugWatermark2);
-		#end
 	}
 		
 		
