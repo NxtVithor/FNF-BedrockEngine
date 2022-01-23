@@ -138,7 +138,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 			grpOptions.add(optionText);
 
 			if(optionsArray[i].type == 'bool') {
-				var checkbox:CheckboxThingie = new CheckboxThingie(optionText.x - 105, optionText.y, optionsArray[i].getValue() == true);
+				var checkbox:CheckboxThingie = new CheckboxThingie(optionText.x - 105, optionText.y, optionsArray[i].getValue());
 				checkbox.sprTracker = optionText;
 				checkbox.offsetY = -60;
 				checkbox.ID = i;
@@ -192,7 +192,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 				if(controls.ACCEPT)
 				{
 					FlxG.sound.play(Paths.sound('scrollMenu'));
-					curOption.setValue((curOption.getValue() == true) ? false : true);
+					curOption.setValue((curOption.getValue()) ? false : true);
 					curOption.change();
 					reloadCheckboxes();
 				}
@@ -373,7 +373,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 
 	function reloadCheckboxes() {
 		for (checkbox in checkboxGroup) {
-			checkbox.daValue = (optionsArray[checkbox.ID].getValue() == true);
+			checkbox.daValue = (optionsArray[checkbox.ID].getValue());
 		}
 	}
 }
