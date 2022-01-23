@@ -2373,10 +2373,8 @@ class PlayState extends MusicBeatState
 
 			if (player == 1)
 			{
-				if (!opponentChart || opponentChart && ClientPrefs.middleScroll)
-					playerStrums.add(babyArrow);
-				else
-					opponentStrums.add(babyArrow);
+				if (!opponentChart || opponentChart && ClientPrefs.middleScroll) playerStrums.add(babyArrow);
+				else opponentStrums.add(babyArrow);
 			}
 			else
 			{
@@ -2388,10 +2386,8 @@ class PlayState extends MusicBeatState
 						babyArrow.x += FlxG.width / 2 + 25;
 					}
 				}
-				if (!opponentChart || opponentChart && ClientPrefs.middleScroll)
-					opponentStrums.add(babyArrow);
-				else
-					playerStrums.add(babyArrow);
+				if (!opponentChart || opponentChart && ClientPrefs.middleScroll) opponentStrums.add(babyArrow);
+				else playerStrums.add(babyArrow);
 			}
 
 			strumLineNotes.add(babyArrow);
@@ -2843,7 +2839,17 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20) {
+		if (healthBar.percent < 20)
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
+		else
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
+
+		if (healthBar.percent > 80)
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
+		else
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
+
+		/*if (healthBar.percent < 20) {
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
 		} else if (healthBar.percent > 85) {
@@ -2852,7 +2858,7 @@ class PlayState extends MusicBeatState
 		} else {
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
-		}
+		}*/
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene)
 		{
@@ -4647,7 +4653,8 @@ class PlayState extends MusicBeatState
 			if(!note.noAnimation) {
 				var daAlt = '';
 				var curSection:Int = Math.floor(curStep / 16);
-				if(SONG.notes[curSection].altAnim  && opponentChart || note.noteType == 'Alt Animation') daAlt = '-alt';
+				if(SONG.notes[curSection].altAnim && opponentChart || note.noteType == 'Alt Animation') daAlt = '-alt';
+	
 				var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
 
 				//if (note.isSustainNote){ wouldn't this be fun : P. i think it would be swell
@@ -5183,24 +5190,18 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	function StrumPlayAnim(isDad:Bool, id:Int, time:Float)
-	{
+	function StrumPlayAnim(isDad:Bool, id:Int, time:Float) {
 		var spr:StrumNote = null;
-		if (isDad && opponentChart)
-		{
+		if (isDad && opponentChart) {
 			spr = opponentStrums.members[id];
 		}
-		else if (isDad)
-		{
+		else if(isDad) {
 			spr = strumLineNotes.members[id];
-		}
-		else
-		{
+		} else {
 			spr = playerStrums.members[id];
 		}
 
-		if (spr != null)
-		{
+		if(spr != null) {
 			spr.playAnim('confirm', true);
 			spr.resetAnim = time;
 		}
