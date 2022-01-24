@@ -33,7 +33,7 @@ typedef MenuData =
 	menuangle:Int
 }
 
-class MainMenuStateNew extends MusicBeatState
+class NewMenuState extends MusicBeatState
 {
 	public static var bedrockEngineVersion:String = '0.3'; // This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.5.1'; // this one too

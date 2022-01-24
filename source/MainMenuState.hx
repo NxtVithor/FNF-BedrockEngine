@@ -343,10 +343,10 @@ class MainMenuState extends MusicBeatState
 			}
 			#end
 
-			#if debug
+			/*#if debug
 			if (FlxG.keys.justPressed.ONE)
-				MusicBeatState.switchState(new MainMenuStateNew());
-			#end
+				MusicBeatState.switchState(new NewMenuState());
+			#end*/
 		}
 
 		super.update(elapsed);
