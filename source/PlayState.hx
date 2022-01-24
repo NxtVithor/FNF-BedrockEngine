@@ -1223,10 +1223,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.judgCounters == "Left")
 			judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 
-		if (ClientPrefs.judgCounters == "Right")
-			judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		//note to self: make this work later. - Gui iago
-
 		// Set Border Size, quality, etc
 		judgementCounter.borderSize = 2;
 		judgementCounter.borderQuality = 2;

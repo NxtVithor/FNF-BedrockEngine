@@ -86,7 +86,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 			var option:Option = new Option('Judgement Counters:', "In which position should the Judgement Counters be?", 'judgCounters', 'string', 'Left',
-		['Left', /*'Right',*/ 'Info', 'Disabled']);
+		['Left', 'Info', 'Disabled']);
 		addOption(option);
 
 			var option:Option = new Option('Judgement Skin:', "What should your Judgements look like?", 'uiSkin', 'string', 'Bedrock',
@@ -95,6 +95,8 @@ class VisualsUISubState extends BaseOptionsMenu
 
 			var option:Option = new Option('Note Skin:', "Funny Notes, going up and down, How should they look like?", 'noteSkin', 'string', 'Default',
 		['Default', 'Future', 'Chip']);
+		option.showNotes = true;
+		option.onChange = onChangeNoteSkin;
 		addOption(option);
 
 			var option:Option = new Option('Watermark Style:', "What should the watermarks on the bottom left corner show?", 'watermarkPreferences', 'string', 'Both',
@@ -102,6 +104,11 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 		super();
+	}
+
+	function onChangeNoteSkin()
+	{
+		updateNotes();
 	}
 
 	#if !mobile

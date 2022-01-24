@@ -76,7 +76,7 @@ class ClientPrefs {
 	#end
 	public static var judgCounters:String = 'Left';
 	public static var timeBarUi:String = 'Psych Engine';
-	public static var noteSkin:String = 'Classic';
+	public static var noteSkin:String = 'Default';
 	public static var lowEndMode:Bool = false;
 	public static var strumLineAlpha:Float = 1;
 	public static var underlay:Float = 0;
