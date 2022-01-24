@@ -118,7 +118,7 @@ class CreditsState extends MusicBeatState
 				'ffdd33'
 			],
 			[''],
-			['Original Pull Requests/Scripts'],
+			['Original PRs'],
 			[
 				'BURGER76920',
 				'placeholder',
