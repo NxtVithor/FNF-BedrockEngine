@@ -166,6 +166,7 @@ class StageEditorState extends MusicBeatState
     tipText.y -= tipText.height - 10;
     add(tipText);
 
+    FlxG.mouse.useSystemCursor = true;
     FlxG.mouse.visible = true;
 
     add(createdLayer);
