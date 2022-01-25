@@ -202,8 +202,8 @@ Extra Grades
 * SFC - Full Combo with at least 1 Sick/Only Sicks (works if Marvelouses are Enabled)
 * GFC - Full Combo with at least 1 Good/Only Goods
 * FC - Full Combo with at least 1 Bad/Only Bads (only works on Simple Accuracy)
-* SDS - Single Digit Shit (at least 1 Shit/Only Shits)
 * SDB - Single Digit Bad (at least 1 Bad/Only Bads, only works on Complex Accuracy)
+* SDS - Single Digit Shit (at least 1 Shit/Only Shits)
 * SDCB - Single Digit Combo Break (you missed at least once)
 * Clear - You missed at least 10 times
 
