@@ -5242,7 +5242,7 @@ class PlayState extends MusicBeatState
 				ratingFC = "// PFC "; // Perfect Full Combo
 			if (sicks > 0)
 				ratingFC = "// SFC "; // Sick Full Combo
-			else if (sicks > 0 && ClientPrefs.!marvelouses) // if Marv is off, then PFC is used for Sicks
+			else if (sicks > 0 && ClientPrefs.marvelouses == false) // if Marv is off, then PFC is used for Sicks
 				ratingFC = "// PFC ";
 			if (goods > 0)
 				ratingFC = "// GFC "; // Good Full Combo
