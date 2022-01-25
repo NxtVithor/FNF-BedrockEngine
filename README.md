@@ -14,10 +14,6 @@ Credits:
 * [XtraXD1](https://github.com/ShadowMario/FNF-PsychEngine/pull/3192) - Show/Hide Weeks temporally + Getting/Setting on Source Code
 * [Yoshubs](https://github.com/Yoshubs/Forever-Engine-Legacy) - made Forever Engine, Main Inspiration
 
-# Current Plans
-
-* Updating this entire file because it's outdated at the moment lol
-
 # Compiling
 
 > ### Dependencies
@@ -148,11 +144,11 @@ Being a [Psych Engine](https://github.com/ShadowMario/FNF-PsychEngine) fork has 
 
 ## Menu Animations and Freeplay Bump
 
-https://user-images.githubusercontent.com/45212377/147199518-663ddd81-288a-4228-8d75-6fa6bccbc378.mp4
+https://user-images.githubusercontent.com/45212377/151045598-7311d0de-2dff-4217-96fa-11cc49cf6c1b.mp4
 
 ## Hit Sounds
 
-https://user-images.githubusercontent.com/45212377/147199769-1146c459-1448-4b33-b0c4-63319513c49e.mp4
+https://user-images.githubusercontent.com/45212377/151046285-f91d5be4-4041-43ed-be69-9df23acaf2ce.mp4
 
 ## More Perfomance Options
 some more Performance Options for the game to run smoothly on older hardware
@@ -209,13 +205,13 @@ Extra Grades
 
 ## Opponent Mode
 
-https://user-images.githubusercontent.com/45212377/147809658-3ef98953-4329-4c10-ac76-eec3d52ccbd7.mp4
+https://user-images.githubusercontent.com/45212377/151046606-4d1465b8-93da-4b49-95be-c2ea1767513a.mp4
 
 can be enabled on the Gameplay Changers menu
 
 ## Pixel Note Splashes
 
-https://user-images.githubusercontent.com/45212377/147283320-2cad2193-d1e9-42ee-b8d9-3ab4a267112b.mp4
+https://user-images.githubusercontent.com/45212377/151046841-dbbdb3e9-9491-4a51-81b6-f97976dabce7.mp4
 
 ## Judgement Skins
 You can now Change your Judgements' Appearance with the new UI Skins
@@ -225,9 +221,13 @@ You can now Change your Judgements' Appearance with the new UI Skins
 
 right now this feature is hardcoded, but I plan to make it softcoded soon
 
+in case you wanna add your own, on source, go to PlayState.hx, search for switch ``(ClientPrefs.uiSkin)``, then add a new case with a new name ad folder attached to it
+
 ## Winning Icons
 
-![s](https://user-images.githubusercontent.com/45212377/150619108-936004be-898a-49d3-b6b3-da6efa5d115a.png)
+![image](https://user-images.githubusercontent.com/45212377/151046960-011d0af2-d638-4f30-9169-3e8dee41ba91.png)
+
+Template is on the assets/images/icons folder!
 
 ## and more!
 I will keep updating this fork as much as possible for it to be in sync with the main repository, and adding more features to it in the future!
