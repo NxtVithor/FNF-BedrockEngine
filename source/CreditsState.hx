@@ -127,66 +127,73 @@ class CreditsState extends MusicBeatState
 			['Original PRs'],
 			[
 				'BURGER76920',
-				'placeholder',
+				'burger',
 				'Json-editable Menus',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3891',
-				'31b0d1'
+				'e7e224'
 			],
 			[
 				'CerBor',
-				'placeholder',
+				'cerbor',
 				'Difficulty Drop Down on Chart Menu',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/2896',
-				'31b0d1'
+				'c764db'
 			],
 			[
 				'HiroMizuki',
-				'placeholder',
+				'hiroM',
 				'Pixel Note Splashes',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1792',
-				'31b0d1'
+				'722905'
 			],
 			[
 				'i-winxd',
-				'placeholder',
+				'i-winxd',
 				'Complex Accuracy',
 				'https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917',
-				'31b0d1'
+				'ffaee9'
 			],
 			[
 				'lemz1',
-				'placeholder',
+				'lemz1',
 				'Play as Opponent',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/2770',
-				'31b0d1'
+				'74c3fb'
 			],
 			[
 				'l1ttleO',
-				'placeholder',
-				'Menu Animations, Hit Sounds, Miss Sounds Toggle',
+				'l1ttleO',
+				'Hit Sounds, Miss Sounds Toggle',
 				'https://github.com/l1ttleO/ProjectFNF',
-				'31b0d1'
+				'a3fbfb'
 			],
 			[
 				'magnumsrtisswag',
-				'placeholder',
+				'magnums',
 				'Stage Editor, Credits Warning',
 				'https://github.com/magnumsrtisswag',
-				'31b0d1'
+				'7e7b6d'
 			],
 			[
+				'Starmapo',
+				'starmapo',
+				'Time Signatures on Chart Editor',
+				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3428',
+				'8bfa8b'
+			]
+			[
 				'Stilic',
-				'placeholder',
-				'Freeplay Bump, Max Optimization',
+				'stilic',
+				'Menu Animations, Freeplay Bump, Max Optimization',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809',
-				'31b0d1'
+				'fb9b4b'
 			],
 			[
 				'XtraXD1',
-				'placeholder',
+				'xtraxd1',
 				'Show/Hide Weeks temporally + Getting/Setting on Source Code',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3192',
-				'31b0d1'
+				'76aac5'
 			],
 			[''],
 			['Engine Shoutouts'],
@@ -199,7 +206,7 @@ class CreditsState extends MusicBeatState
 			],
 			[
 				'Verwex',
-				'placeholder',
+				'verwex',
 				'Made Mic´d Up Engine, Winning Icons',
 				'https://github.com/Verwex/Funkin-Mic-d-Up-SC',
 				'31b0d1'
