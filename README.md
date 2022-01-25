@@ -190,11 +190,21 @@ this disables everything related to backgrounds and characters, leaving only the
 
 * S+  100% Accuracy.
 * S   99.9% Accuracy.
-* AAA 99.1% Accuracy.
+* AAAA 99.1% Accuracy
+* AAA 99% Accuracy.
 * AA 	98.6% Accuracy.
 * B   80% Accuracy.
 * C   70% Accuracy.
 * D   40% Accuracy or below.
+
+Extra Grades
+* PFC - Full Cobmo with Only Marvelouses (Sicks if Marvelouses are disabled)
+* GFC - Full Combo with at least 1 Good
+* FC - Full COmbo with at least 1 Bad (only works on Simple Accuracy)
+* SDS - Single Digit Shit (at least 1 Shit)
+* SDB - Single DIgit Bad (at least 1 Bad, only works on Complex Accuracy)
+* SDCB - Single Digit Combo Break (you missed at least once)
+* Clear - You missed at least 10 times
 
 ## Opponent Mode
 
