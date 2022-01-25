@@ -144,8 +144,7 @@ In case you don't want your mod to be able to run .lua scripts, delete the "LUA_
 # Current Features
 
 ## All Psych Engine Features!
-Being a Psych Engine fork has it's Perks
-* https://github.com/ShadowMario/FNF-PsychEngine
+Being a [Psych Engine](https://github.com/ShadowMario/FNF-PsychEngine) fork has it's Perks
 
 ## Menu Animations and Freeplay Bump
 
