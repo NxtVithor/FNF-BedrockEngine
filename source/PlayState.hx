@@ -4229,7 +4229,7 @@ class PlayState extends MusicBeatState
 			if (combo >= 1 || combo == 0)
 				insert(members.indexOf(strumLineNotes), numScore);
 
-			//note to self: try to make ms sprites stuff -Gui iago
+			//note to self: try to code in late/early judgements -Gui iago
 
 			FlxTween.tween(numScore, {alpha: 0}, 0.2, {
 				onComplete: function(tween:FlxTween)
@@ -5065,8 +5065,6 @@ class PlayState extends MusicBeatState
 			iconP1.updateHitbox();
 			iconP2.updateHitbox();
 		}
-
-		// note to self: make it less "dave and bamb"ey - Gui iago
 
 		if (curBeat % 2 == 0)
 		{
