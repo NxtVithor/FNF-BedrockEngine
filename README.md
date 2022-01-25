@@ -198,11 +198,11 @@ this disables everything related to backgrounds and characters, leaving only the
 * D   40% Accuracy or below.
 
 Extra Grades
-* PFC - Full Cobmo with Only Marvelouses (Sicks if Marvelouses are disabled)
+* PFC - Full Combo with Only Marvelouses (Sicks if Marvelouses are disabled)
 * GFC - Full Combo with at least 1 Good
-* FC - Full COmbo with at least 1 Bad (only works on Simple Accuracy)
+* FC - Full Combo with at least 1 Bad (only works on Simple Accuracy)
 * SDS - Single Digit Shit (at least 1 Shit)
-* SDB - Single DIgit Bad (at least 1 Bad, only works on Complex Accuracy)
+* SDB - Single Digit Bad (at least 1 Bad, only works on Complex Accuracy)
 * SDCB - Single Digit Combo Break (you missed at least once)
 * Clear - You missed at least 10 times
 
