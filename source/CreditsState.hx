@@ -121,6 +121,7 @@ class CreditsState extends MusicBeatState
 				'ShadowBowser',
 				'shadowbowser',
 				'Artist - Credits Screen Icons',
+				'https://www.reddit.com/u/JulioHaHaHa'.
 				'444444'
 			],
 			[''],
@@ -141,7 +142,7 @@ class CreditsState extends MusicBeatState
 			],
 			[
 				'HiroMizuki',
-				'hiroM',
+				'hirom',
 				'Pixel Note Splashes',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1792',
 				'722905'
