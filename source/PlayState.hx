@@ -5248,7 +5248,7 @@ class PlayState extends MusicBeatState
 				ratingFC = "// FC "; // Full Combo
 			if (shits > 0)
 				ratingFC ="// SDS"; // Single Digit Shit - this should count as losing FC despite not getting any misses
-			else if (if bads > 0 && ClientPrefs.keAccuracy)
+			else if (bads > 0 && ClientPrefs.keAccuracy)
 				ratingFC = "// SDB"; // Single Digit Bad - same as SDS, but when Complex Accuracy is on
 			if (songMisses > 0 && songMisses < 10)
 				ratingFC = "// SDCB "; //Single Digit Combo Break
