@@ -227,7 +227,7 @@ in case you wanna add your own, on source, go to PlayState.hx, search for switch
 
 ![image](https://user-images.githubusercontent.com/45212377/151046960-011d0af2-d638-4f30-9169-3e8dee41ba91.png)
 
-Template is on the assets/images/icons folder!
+Template: ![icon-template](https://user-images.githubusercontent.com/45212377/151059381-3d366efc-65f8-42de-8cb1-dc90f65b1e9f.png)
 
 ## and more!
 I will keep updating this fork as much as possible for it to be in sync with the main repository, and adding more features to it in the future!
