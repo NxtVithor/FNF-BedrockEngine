@@ -1,18 +1,18 @@
 # Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
-* BURGER76920 - Json-editable Menus - https://github.com/ShadowMario/FNF-PsychEngine/pull/3891
-* CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
-* HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
-* i-winxd - Kade Engine (Complex) Accuracy - https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917
-* lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
-* l1ttleO - Made ProjectFNF 2.X, Original Hit Sound Code, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
-* magnumsrtisswag - Stage Editor, Credits Warning - https://github.com/ShadowMario/FNF-PsychEngine/pull/3502
-* Starmapo - Time Signatures - https://github.com/ShadowMario/FNF-PsychEngine/pull/3428
-* Stilic - Freeplay Bump, Max Optimization, Menu Animations, Automatic Controller Detection - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
-* Verwex - made Mic'd Up Engine, Winning Icons - https://github.com/Verwex/Funkin-Mic-d-Up-SC
-* XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
-* Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy
+* [BURGER76920](https://github.com/ShadowMario/FNF-PsychEngine/pull/3891) - Json-editable Menus
+* [CerBor](https://github.com/ShadowMario/FNF-PsychEngine/pull/2896) - Difficulty Drop Down on Chart Menu
+* [HiroMizuki](https://github.com/ShadowMario/FNF-PsychEngine/pull/1792) - Pixel Note Splashes
+* [i-winxd](https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917) - Kade Engine (Complex) Accuracy
+* [lemz1](https://github.com/ShadowMario/FNF-PsychEngine/pull/2770) - Play as Opponent
+* [l1ttleO](https://github.com/l1ttleO/ProjectFNF) - Made ProjectFNF 2.X, Original Hit Sound Code, Miss Sounds Toggle
+* [magnumsrtisswag](https://github.com/ShadowMario/FNF-PsychEngine/pull/3502) - Stage Editor, Credits Warning
+* [Starmapo](https://github.com/ShadowMario/FNF-PsychEngine/pull/3428) - Time Signatures
+* [Stilic](https://github.com/ShadowMario/FNF-PsychEngine/pull/1809) - Freeplay Bump, Max Optimization, Menu Animations, Automatic Controller Detection
+* [Verwex](https://github.com/Verwex/Funkin-Mic-d-Up-SC) - made Mic'd Up Engine, Winning Icons
+* [XtraXD1](https://github.com/ShadowMario/FNF-PsychEngine/pull/3192) - Show/Hide Weeks temporally + Getting/Setting on Source Code
+* [Yoshubs](https://github.com/Yoshubs/Forever-Engine-Legacy) - made Forever Engine, Main Inspiration
 
 # Current Plans
 
