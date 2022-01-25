@@ -5240,10 +5240,10 @@ class PlayState extends MusicBeatState
 			ratingFC = "";
 			if (marvelouses > 0) 
 				ratingFC = "// PFC "; // Perfect Full Combo
-			if (sicks > 0)
-				ratingFC = "// SFC "; // Sick Full Combo
-			else if (sicks > 0 && ClientPrefs.marvelouses == false) // if Marv is off, then PFC is used for Sicks
+			if (sicks > 0 && ClientPrefs.marvelouses == false) // if Marv is off, then PFC is used for Sicks
 				ratingFC = "// PFC ";
+			else if (sicks > 0 && ClientPrefs.marvelouses)
+				ratingFC = "// SFC "; // Sick Full Combo
 			if (goods > 0)
 				ratingFC = "// GFC "; // Good Full Combo
 			if (bads > 0)
@@ -5251,7 +5251,7 @@ class PlayState extends MusicBeatState
 			if (shits > 0)
 				ratingFC ="// SDS "; // Single Digit Shit - this should count as losing FC despite not getting any misses
 			else if (bads > 0 && ClientPrefs.keAccuracy)
-				ratingFC = "// SDB "; // Single Digit Bad - same as SDS, but when Complex Accuracy is on
+				ratingFC = "// SDB "; // Single Digit Bad - same as SDS, but for when Complex Accuracy is on
 			if (songMisses > 0 && songMisses < 10)
 				ratingFC = "// SDCB "; //Single Digit Combo Break
 			else if (songMisses >= 10)
