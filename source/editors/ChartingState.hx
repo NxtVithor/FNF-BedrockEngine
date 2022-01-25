@@ -602,14 +602,10 @@ class ChartingState extends MusicBeatState
 		denominatorDropDown.selectedLabel = '' + _song.denominator;
 		blockPressWhileScrolling.push(denominatorDropDown);
 
-		var difficultyDropDown = new FlxUIDropDownMenuCustom(stageDropDown.x, player3DropDown.y, FlxUIDropDownMenuCustom.makeStrIdLabelArray(CoolUtil.defaultDifficulties, true), function(difficulty:String)		{
+		var difficultyDropDown = new FlxUIDropDownMenuCustom(stageDropDown.x, player3DropDown.y, FlxUIDropDownMenuCustom.makeStrIdLabelArray(CoolUtil.defaultDifficulties, true), function(difficulty:String)
+		{
 			PlayState.storyDifficulty = Std.parseInt(difficulty);
-			try {
-				PlayState.SONG = Song.loadFromJson(_song.song.toLowerCase() + (CoolUtil.getDifficultyFilePath() == null ? CoolUtil.getDifficultyFilePath() : ''), _song.song.toLowerCase());
-				MusicBeatState.resetState();
-			} catch (e:Any) {
-				trace("File " + _song.song.toLowerCase() + (CoolUtil.getDifficultyFilePath() == null ? CoolUtil.getDifficultyFilePath() : '') + " is not found.");
-			}
+			loadJson(_song.song.toLowerCase());
 		});
 		difficultyDropDown.selectedLabel = CoolUtil.defaultDifficulties[PlayState.storyDifficulty];
 		blockPressWhileScrolling.push(difficultyDropDown);
@@ -2731,8 +2727,8 @@ class ChartingState extends MusicBeatState
 	function loadJson(song:String):Void
 	{
 		//make it look sexier if possible
-		if (CoolUtil.difficulties[PlayState.storyDifficulty] != "Normal"){
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase()+"-"+CoolUtil.difficulties[PlayState.storyDifficulty], song.toLowerCase());
+		if (CoolUtil.defaultDifficulties[PlayState.storyDifficulty] != "Normal"){
+		PlayState.SONG = Song.loadFromJson(song.toLowerCase()+"-"+CoolUtil.defaultDifficulties[PlayState.storyDifficulty], song.toLowerCase());
 			
 		}else{
 		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());

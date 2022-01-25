@@ -82,6 +82,7 @@ class ClientPrefs {
 	public static var underlay:Float = 0;
 	public static var keAccuracy:Bool = false;
 	public static var noteGlow:Bool = false;
+	public static var instantRespawn:Bool = false;
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
@@ -175,6 +176,7 @@ class ClientPrefs {
 		FlxG.save.data.underlay = underlay;
 		FlxG.save.data.keAccuracy = keAccuracy;
 		FlxG.save.data.noteGlow = noteGlow;
+		FlxG.save.data.instantRespawn = instantRespawn;
 
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
@@ -307,9 +309,6 @@ class ClientPrefs {
 		if (FlxG.save.data.lightcpustrums != null) {
 			lightcpustrums = FlxG.save.data.lightcpustrums;
 		}
-		/*if (FlxG.save.data.infoSize != null) {
-			infoSize = FlxG.save.data.infoSize;
-		}*/
 		if (FlxG.save.data.hideGf != null) {
 			hideGf = FlxG.save.data.hideGf;
 		}
@@ -339,6 +338,9 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.keAccuracy != null) {
 			keAccuracy = FlxG.save.data.keAccuracy;
+		}
+		if(FlxG.save.data.instantRespawn != null) {
+			instantRespawn = FlxG.save.data.instantRespawn;
 		}
 		
 		// Added by Bedrock Engine (via Pull Requests)
