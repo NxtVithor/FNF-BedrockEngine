@@ -199,10 +199,11 @@ this disables everything related to backgrounds and characters, leaving only the
 
 Extra Grades
 * PFC - Full Combo with Only Marvelouses (Sicks if Marvelouses are disabled)
-* GFC - Full Combo with at least 1 Good
-* FC - Full Combo with at least 1 Bad (only works on Simple Accuracy)
-* SDS - Single Digit Shit (at least 1 Shit)
-* SDB - Single Digit Bad (at least 1 Bad, only works on Complex Accuracy)
+* SFC - FUll Combo with at least 1 Sick/Only Sicks (works if Marvelouses are Enabled)
+* GFC - Full Combo with at least 1 Good/Only Goods
+* FC - Full Combo with at least 1 Bad/Only Bads (only works on Simple Accuracy)
+* SDS - Single Digit Shit (at least 1 Shit/Only Shits)
+* SDB - Single Digit Bad (at least 1 Bad/Only Bads, only works on Complex Accuracy)
 * SDCB - Single Digit Combo Break (you missed at least once)
 * Clear - You missed at least 10 times
 
