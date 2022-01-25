@@ -180,7 +180,7 @@ class CreditsState extends MusicBeatState
 				'Time Signatures on Chart Editor',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3428',
 				'8bfa8b'
-			]
+			],
 			[
 				'Stilic',
 				'stilic',
