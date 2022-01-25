@@ -182,7 +182,7 @@ this disables everything related to backgrounds and characters, leaving only the
 
 ## Letter Grading System!
 
-![image](https://user-images.githubusercontent.com/45212377/147283059-d8555266-2e55-4e5d-9979-dd316c7004e7.png)
+![image](https://user-images.githubusercontent.com/45212377/151047810-9bb0c459-8714-41bd-b861-3d90e001ef9e.png)
 
 * S+  100% Accuracy.
 * S   99.9% Accuracy.
