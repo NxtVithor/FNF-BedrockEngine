@@ -5247,13 +5247,13 @@ class PlayState extends MusicBeatState
 			if (bads > 0)
 				ratingFC = "// FC "; // Full Combo
 			if (shits > 0)
-				ratingFC ="// SDS"; // Single Digit Shit - this should count as losing FC despite not getting any misses
+				ratingFC ="// SDS "; // Single Digit Shit - this should count as losing FC despite not getting any misses
 			else if (bads > 0 && ClientPrefs.keAccuracy)
-				ratingFC = "// SDB"; // Single Digit Bad - same as SDS, but when Complex Accuracy is on
+				ratingFC = "// SDB "; // Single Digit Bad - same as SDS, but when Complex Accuracy is on
 			if (songMisses > 0 && songMisses < 10)
 				ratingFC = "// SDCB "; //Single Digit Combo Break
 			else if (songMisses >= 10)
-				ratingFC = "// Clear";
+				ratingFC = "// Clear ";
 		}
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
