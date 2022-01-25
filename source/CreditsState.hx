@@ -210,7 +210,7 @@ class CreditsState extends MusicBeatState
 				'verwex',
 				'Made Mic´d Up Engine, Winning Icons',
 				'https://github.com/Verwex/Funkin-Mic-d-Up-SC',
-				'31b0d1'
+				'2e3d62'
 			],
 			[''],
 			['Psych Engine Team'],
