@@ -91,10 +91,10 @@ class CreditsState extends MusicBeatState
 			['Bedrock Engine Team'],
 			[
 				'Gui iago',
-				'gui-iago',
+				'gui',
 				'Engine Coder and Publisher',
 				'https://github.com/Gui-iago',
-				'FFFF00'
+				'8344CC'
 			],
 			[
 				'Luisinh010',
@@ -106,9 +106,9 @@ class CreditsState extends MusicBeatState
 			[
 				'AquaStrikr',
 				'aqua',
-				'Artist, Judgements Design',
+				'Artist - Judgements Design',
 				'https://twitter.com/aqua_strikr',
-				'2596be'
+				'737BCB'
 			],
 			[
 				'Dex Dousky',
@@ -116,6 +116,12 @@ class CreditsState extends MusicBeatState
 				'Main Menu Music',
 				'https://twitter.com/cachorro_sonico',
 				'ffdd33'
+			],
+			[
+				'ShadowBowser',
+				'shadowbowser',
+				'Artist - Credits Screen Icons',
+				'444444'
 			],
 			[''],
 			['Original PRs'],

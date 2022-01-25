@@ -75,6 +75,7 @@ class PlayState extends MusicBeatState
 		['(A)', 0.951],
 		['(AA)', 0.986],
 		['(AAA)', 0.991],
+		['(AAAA)', 0.999],
 		['(S)', 1],
 		['(S+)', 1]
 	];
