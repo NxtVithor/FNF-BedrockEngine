@@ -199,7 +199,7 @@ this disables everything related to backgrounds and characters, leaving only the
 
 Extra Grades
 * PFC - Full Combo with Only Marvelouses (Sicks if Marvelouses are disabled)
-* SFC - FUll Combo with at least 1 Sick/Only Sicks (works if Marvelouses are Enabled)
+* SFC - Full Combo with at least 1 Sick/Only Sicks (works if Marvelouses are Enabled)
 * GFC - Full Combo with at least 1 Good/Only Goods
 * FC - Full Combo with at least 1 Bad/Only Bads (only works on Simple Accuracy)
 * SDS - Single Digit Shit (at least 1 Shit/Only Shits)
