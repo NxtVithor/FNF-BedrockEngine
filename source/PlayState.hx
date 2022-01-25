@@ -4648,7 +4648,7 @@ class PlayState extends MusicBeatState
 			if(!note.noAnimation) {
 				var daAlt = '';
 				var curSection:Int = Math.floor(curStep / 16);
-				if(SONG.notes[curSection].altAnim && opponentChart || note.noteType == 'Alt Animation') daAlt = '-alt';
+				if (curStep >= 0) if(SONG.notes[curSection].altAnim  && opponentChart || note.noteType == 'Alt Animation') daAlt = '-alt';
 	
 				var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
 
