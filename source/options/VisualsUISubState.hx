@@ -13,7 +13,7 @@ class VisualsUISubState extends BaseOptionsMenu
 	addOption(option);
 
 		var option:Option = new Option('Disable Note Glow', "If checked, will disable Note Glow, simple enough.", 'noteGlow', 'bool', false);
-	addOption(option);
+	//addOption(option);
 
 		var option:Option = new Option('Flashing Lights', "Uncheck this if you're sensitive to flashing lights!", 'flashing', 'bool', true);
 	addOption(option);
@@ -97,7 +97,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		['Default', 'Future', 'Chip']);
 		option.showNotes = true;
 		option.onChange = onChangeNoteSkin;
-		addOption(option);
+		//addOption(option);
 
 			var option:Option = new Option('Watermark Style:', "What should the watermarks on the bottom left corner show?", 'watermarkPreferences', 'string', 'Both',
 		['Both', 'Only Bedrock', 'Only Psych', 'Only Song', 'All', 'Nothing']);
