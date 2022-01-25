@@ -121,7 +121,7 @@ class CreditsState extends MusicBeatState
 				'ShadowBowser',
 				'shadowbowser',
 				'Artist - Credits Screen Icons',
-				'https://www.reddit.com/u/JulioHaHaHa'.
+				'https://www.reddit.com/u/JulioHaHaHa',
 				'444444'
 			],
 			[''],
