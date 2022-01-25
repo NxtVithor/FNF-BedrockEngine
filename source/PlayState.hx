@@ -69,15 +69,15 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['(D)', 0.4],
-		['(C)', 0.7],
-		['(B)', 0.8],
-		['(A)', 0.951],
-		['(AA)', 0.986],
-		['(AAA)', 0.991],
-		['(AAAA)', 0.999],
-		['(S)', 1],
-		['(S+)', 1]
+		['(D)', 0.4], // 50%
+		['(C)', 0.7], // 80%
+		['(B)', 0.8], // 90%
+		['(A)', 0.951], // 95%
+		['(AA)', 0.986], // 98%
+		['(AAA)', 0.991], // 99%
+		['(AAAA)', 0.999], // 99.1%
+		['(S)', 1], // 99.99%
+		['(S+)', 1] // 100%
 	];
 
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
@@ -5241,15 +5241,19 @@ class PlayState extends MusicBeatState
 			if (marvelouses > 0) 
 				ratingFC = "// MFC "; // Marvelous Full Combo
 			if (sicks > 0)
-				ratingFC = "// SFC "; //Sick Full Combo
+				ratingFC = "// SFC "; // Sick Full Combo
 			if (goods > 0)
 				ratingFC = "// GFC "; // Good Full Combo
-			if (bads > 0 || shits > 0)
+			if (bads > 0)
 				ratingFC = "// FC "; // Full Combo
+			if (shits > 0)
+				ratingFC ="// SDS"; // Single Digit Shit - this should count as losing FC despite not getting any misses
+			else if (if bads > 0 && ClientPrefs.keAccuracy)
+				ratingFC = "// SDB"; // Single Digit Bad - same as SDS, but when Complex Accuracy is on
 			if (songMisses > 0 && songMisses < 10)
 				ratingFC = "// SDCB "; //Single Digit Combo Break
 			else if (songMisses >= 10)
-				ratingFC = "// Clear ";
+				ratingFC = "// Clear";
 		}
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
