@@ -127,6 +127,9 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
+	//da spee mod
+	public static var songMultiplier:Float = 1;
+
 	public var vocals:FlxSound;
 
 	public var dad:Character;
@@ -355,10 +358,29 @@ class PlayState extends MusicBeatState
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
 
+		/*#if !sys
+		songMultiplier = 1;
+		#end
+
+		if(songMultiplier < 0.25)
+			songMultiplier = 0.25;*/
+
+		// we need this so songMultiplier recalculates BPM stuff and sets it on the new speed
+		//Conductor.mapBPMChanges(SONG, songMultiplier);
+		//Conductor.changeBPM(SONG.bpm, songMultiplier);
+		//Conductor.recalculateStuff(songMultiplier);
+
 		Conductor.numerator = SONG.numerator;
 		Conductor.denominator = SONG.denominator;
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
+
+		/*SONG.speed /= songMultiplier;
+
+		if(SONG.speed < 0.1 && songMultiplier > 1)
+			SONG.speed = 0.1;
+
+		speed = SONG.speed;*/
 
 		#if desktop
 		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
@@ -2103,6 +2125,8 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(timeTxt, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
 
 		#if desktop
+		//Conductor.recalculateStuff(songMultiplier);
+
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
 		if (opponentChart)
@@ -2132,6 +2156,7 @@ class PlayState extends MusicBeatState
 
 		var songData = SONG;
 		Conductor.changeBPM(songData.bpm);
+		//Conductor.changeBPM(songData.bpm, songMultiplier);
 
 		curSong = songData.song;
 
@@ -2582,6 +2607,8 @@ class PlayState extends MusicBeatState
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
+
+	var speed:Float = 1.0;
 
 	override public function update(elapsed:Float)
 	{

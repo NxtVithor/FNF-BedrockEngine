@@ -1,5 +1,6 @@
 package;
 
+// da imports
 import openfl.display.Tile;
 #if desktop
 import Discord.DiscordClient;
@@ -27,30 +28,37 @@ using StringTools;
 
 class FreeplayState extends MusicBeatState
 {
+	//variables
+	var bg:FlxSprite;
+	var colorTween:FlxTween;
+	var scoreBG:FlxSprite;
 	var songs:Array<SongMetadata> = [];
 
-	var selector:FlxText;
-	private static var curSelected:Int = 0;
-	var curDifficulty:Int = -1;
-	private static var lastDifficultyName:String = '';
-
-	var scoreBG:FlxSprite;
-	var scoreText:FlxText;
-	var diffText:FlxText;
-	var lerpScore:Int = 0;
+	// variable floats
+	var curSpeed:Float = 1;
 	var lerpRating:Float = 0;
-	var intendedScore:Int = 0;
 	var intendedRating:Float = 0;
 
-	private var grpSongs:FlxTypedGroup<Alphabet>;
-	
+	// variable Int
+	var curDifficulty:Int = -1;
+	var intendedColor:Int;
+	var intendedScore:Int = 0;
+	var lerpScore:Int = 0;
+
+	// variable texts
+	var scoreText:FlxText;
+	var speedText:FlxText;
+	var diffText:FlxText;
+	var selector:FlxText;
+
+	// private static variables
+	private static var curSelected:Int = 0;
+	private static var lastDifficultyName:String = '';
 	public static var curPlaying:Bool = false;
 
+	// private variables
+	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var iconArray:Array<HealthIcon> = [];
-
-	var bg:FlxSprite;
-	var intendedColor:Int;
-	var colorTween:FlxTween;
 
 	override function create()
 	{
@@ -129,6 +137,7 @@ class FreeplayState extends MusicBeatState
 		}
 		WeekData.setDirectoryFromWeek();
 
+		// Text Stuff
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 
@@ -139,6 +148,11 @@ class FreeplayState extends MusicBeatState
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
 		diffText.font = scoreText.font;
 		add(diffText);
+
+		speedText = new FlxText(FlxG.width, diffText.y + 36, 0, "", 24);
+		speedText.font = scoreText.font;
+		speedText.alignment = RIGHT;
+		//add(speedText);
 
 		add(scoreText);
 
@@ -243,6 +257,16 @@ class FreeplayState extends MusicBeatState
 		if (Math.abs(lerpRating - intendedRating) <= 0.01)
 			lerpRating = intendedRating;
 
+		var funnyObject:FlxText = scoreText;
+
+		if(speedText.width >= scoreText.width && speedText.width >= diffText.width)
+			funnyObject = speedText;
+
+		if(diffText.width >= scoreText.width && diffText.width >= speedText.width)
+			funnyObject = diffText;
+
+		scoreBG.x = funnyObject.x - 6;
+
 		var ratingSplit:Array<String> = Std.string(Highscore.floorDecimal(lerpRating * 100, 2)).split('.');
 		if(ratingSplit.length < 2) { //No decimals, add an empty space
 			ratingSplit.push('');
@@ -257,11 +281,32 @@ class FreeplayState extends MusicBeatState
 
 		FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
 
+		curSpeed = FlxMath.roundDecimal(curSpeed, 2);
+
+		#if !sys
+		curSpeed = 1;
+		#end
+
+		if(curSpeed < 0.25)
+			curSpeed = 0.25;
+
+		#if sys
+		speedText.text = "Speed: " + curSpeed + " (Shift+L/R)";
+		#else
+		speedText.text = "";
+		#end
+
+		speedText.x = FlxG.width - speedText.width;
+
+		// Keybind Vars
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
+		var leftP = controls.UI_LEFT_P;
+		var rightP = controls.UI_RIGHT_P;
 		var accepted = controls.ACCEPT;
 		var space = FlxG.keys.justPressed.SPACE;
 		var ctrl = FlxG.keys.justPressed.CONTROL;
+		var shift = FlxG.keys.pressed.SHIFT;
 
 		var shiftMult:Int = 1;
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
@@ -271,11 +316,58 @@ class FreeplayState extends MusicBeatState
 		if (downP)
 			changeSelection(shiftMult);
 
-		if (controls.UI_LEFT_P)
-			changeDiff(-1);
-		else if (controls.UI_RIGHT_P)
-			changeDiff(1);
-		else if (upP || downP) changeDiff();
+					
+		if (leftP && !shift)
+				changeDiff(-1);
+			else if (leftP && shift)
+			{
+				curSpeed -= 0.05;
+
+				#if cpp
+				@:privateAccess
+				{
+					if (FlxG.sound.music)
+						lime.media.openal.AL.sourcef(FlxG.sound.music.volume._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+		
+					//if ()
+					//	lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+				}
+				#end
+			}
+
+			if (rightP && !shift)
+				changeDiff(1);
+			else if (rightP && shift)
+			{
+				curSpeed += 0.05;
+
+				#if cpp
+				@:privateAccess
+				{
+					if (FlxG.sound.music)
+						lime.media.openal.AL.sourcef(FlxG.sound.music.volume._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+		
+					//if ()
+					//	lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+				}
+				#end
+			}
+
+			if(FlxG.keys.justPressed.R  && shift)
+			{
+				curSpeed = 1;
+
+				#if cpp
+				@:privateAccess
+				{
+					if (FlxG.sound.music)
+						lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+		
+					//if ()
+					//	lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+				}
+				#end
+			}
 
 		if (controls.BACK)
 		{

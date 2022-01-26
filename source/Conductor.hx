@@ -1,5 +1,7 @@
 package;
 
+import flixel.FlxG;
+import flixel.math.FlxMath;
 import Song.SwagSong;
 
 /**
@@ -30,8 +32,30 @@ class Conductor
 
 	public static var bpmChangeMap:Array<BPMChangeEvent> = [];
 
+	public static var timeScale:Array<Int> = [4, 4];
+
+	public static var nonmultilmao_crochet:Float = ((60 / bpm) * 1000); // beats in milliseconds
+	public static var nonmultilmao_stepCrochet:Float = nonmultilmao_crochet / 4; // steps in milliseconds
+
 	public function new()
 	{
+	}
+
+	public static function recalculateStuff(?multi:Float = 1)
+	{
+		crochet = ((60 / bpm) * 1000);
+		stepCrochet = crochet / (16 / timeScale[1]);
+
+		if(multi != 1)
+		{
+			nonmultilmao_crochet = ((60 / bpm) * 1000);
+			nonmultilmao_stepCrochet = nonmultilmao_crochet / (16 / timeScale[1]);
+		}
+		else
+		{
+			nonmultilmao_crochet = crochet;
+			nonmultilmao_stepCrochet = stepCrochet;
+		}
 	}
 
 	public static function judgeNote(note:Note, diff:Float=0) //STOLEN FROM KADE ENGINE (bbpanzu) - I had to rewrite it later anyway after i added the custom hit windows lmao (Shadow Mario)
@@ -52,23 +76,28 @@ class Conductor
 		}
 		return 'shit';
 	}
-	public static function mapBPMChanges(song:SwagSong)
+	public static function mapBPMChanges(song:SwagSong, ?songMultiplier:Float = 1.0)
 	{
 		bpmChangeMap = [];
 
 		var curBPM:Float = song.bpm;
 		var totalSteps:Int = 0;
 		var totalPos:Float = 0;
+
 		for (i in 0...song.notes.length)
 		{
 			if(song.notes[i].changeBPM && song.notes[i].bpm != curBPM)
 			{
 				curBPM = song.notes[i].bpm;
+
 				var event:BPMChangeEvent = {
 					stepTime: totalSteps,
 					songTime: totalPos,
 					bpm: curBPM
 				};
+
+				trace(totalPos);
+				
 				bpmChangeMap.push(event);
 			}
 
@@ -77,6 +106,8 @@ class Conductor
 			totalPos += ((((60 /  curBPM) * 1000) / (denominator / 4)) / 4) * deltaSteps;
 		}
 		trace("new BPM map BUDDY " + bpmChangeMap);
+
+		recalculateStuff(songMultiplier); //haha funny speed mods
 	}
 
 	public static function changeBPM(newBpm:Float)
@@ -85,5 +116,7 @@ class Conductor
 
 		crochet = ((60 / bpm) * 1000) / (denominator / 4);
 		stepCrochet = crochet / 4;
+		
+		//recalculateStuff(multi);
 	}
 }
