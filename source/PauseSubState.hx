@@ -28,9 +28,6 @@ class PauseSubState extends MusicBeatSubstate
 	var practiceText:FlxText;
 	var opponentText:FlxText;
 
-	// var botplayText:FlxText;
-	public static var transCamera:FlxCamera;
-
 	public function new(x:Float, y:Float)
 	{
 		super();
@@ -169,7 +166,6 @@ class PauseSubState extends MusicBeatSubstate
 				var poop = Highscore.formatSong(name, curSelected);
 				PlayState.SONG = Song.loadFromJson(poop, name);
 				PlayState.storyDifficulty = curSelected;
-				CustomFadeTransition.nextCamera = transCamera;
 				MusicBeatState.resetState();
 				FlxG.sound.music.volume = 0;
 				PlayState.changedDifficulty = true;
