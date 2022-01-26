@@ -235,5 +235,5 @@ I will keep updating this fork as much as possible for it to be in sync with the
 # Future Plans
 * Softcoded Judgement Skins
 * Noteskins on Options Menu
-* Separated Noteskins for each Player (already possible with lua so...)
+* Speed Modifiers on Freeplay Menu
 * Fix all current issues with Opponent Mode
