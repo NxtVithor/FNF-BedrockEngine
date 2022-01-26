@@ -281,7 +281,7 @@ class FreeplayState extends MusicBeatState
 
 		FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
 
-		curSpeed = FlxMath.roundDecimal(curSpeed, 2);
+		/*curSpeed = FlxMath.roundDecimal(curSpeed, 2);
 
 		#if !sys
 		curSpeed = 1;
@@ -296,7 +296,7 @@ class FreeplayState extends MusicBeatState
 		speedText.text = "";
 		#end
 
-		speedText.x = FlxG.width - speedText.width;
+		speedText.x = FlxG.width - speedText.width;*/
 
 		// Keybind Vars
 		var upP = controls.UI_UP_P;
@@ -317,7 +317,7 @@ class FreeplayState extends MusicBeatState
 			changeSelection(shiftMult);
 
 					
-		if (leftP && !shift)
+		/*if (leftP && !shift)
 				changeDiff(-1);
 			else if (leftP && shift)
 			{
@@ -326,11 +326,11 @@ class FreeplayState extends MusicBeatState
 				#if cpp
 				@:privateAccess
 				{
-					//if (FlxG.sound.music)
-					//	lime.media.openal.AL.sourcef(FlxG.sound.music.volume._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+					if (FlxG.sound.music)
+						lime.media.openal.AL.sourcef(FlxG.sound.music.volume._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
 		
-					//if ()
-					//	lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+					if ()
+						lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
 				}
 				#end
 			}
@@ -344,11 +344,11 @@ class FreeplayState extends MusicBeatState
 				#if cpp
 				@:privateAccess
 				{
-					//if (FlxG.sound.music)
-					//	lime.media.openal.AL.sourcef(FlxG.sound.music.volume._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+					if (FlxG.sound.music)
+						lime.media.openal.AL.sourcef(FlxG.sound.music.volume._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
 		
-					//if ()
-					//	lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+					if ()
+						lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
 				}
 				#end
 			}
@@ -360,14 +360,14 @@ class FreeplayState extends MusicBeatState
 				#if cpp
 				@:privateAccess
 				{
-					//if (FlxG.sound.music)
-					//	lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+					if (FlxG.sound.music)
+						lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
 		
-					//if ()
-					//	lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
+					if ()
+						lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, curSpeed);
 				}
 				#end
-			}
+			}*/
 
 		if (controls.BACK)
 		{
