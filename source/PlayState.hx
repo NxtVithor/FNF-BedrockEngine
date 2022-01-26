@@ -759,7 +759,7 @@ class PlayState extends MusicBeatState
 
 		if (ClientPrefs.hideGf)
 		{
-			remove(gfGroup); // won't do anything if she's the opponent
+			remove(gfGroup);
 		}
 		else
 			add(gfGroup);
@@ -774,7 +774,7 @@ class PlayState extends MusicBeatState
 		if (curStage == 'spooky')
 		{
 			add(halloweenWhite);
-		}
+		}}
 
 		#if LUA_ALLOWED
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();

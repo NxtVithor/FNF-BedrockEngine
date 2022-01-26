@@ -128,9 +128,10 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
-			menuItem.setGraphicSize(Std.int(menuItem.width * 0.8));
+			menuItem.setGraphicSize(Std.int(menuItem.width * 0.7));
 			menuItem.ID = i;
 			menuItem.angle = 7;
+			menuItem.x = 100;
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if (optionShit.length < 6)
