@@ -4179,8 +4179,6 @@ class PlayState extends MusicBeatState
 
 		var uiSkin:String = '';
 		var altPart:String = isPixelStage ? '-pixel' : '';
-		var daEarly:String = ''; // used for early judgements
-		var daLate:String = ''; // used for late judgements
 
 		switch (ClientPrefs.uiSkin)
 		{
