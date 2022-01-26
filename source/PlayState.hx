@@ -68,6 +68,17 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
+	/*public static var ratingStuff:Array<Dynamic> = [
+		['Awful', 0.4], // 50%
+		['Shit', 0.7], // 80%
+		['Bad', 0.8], // 90%
+		['Okay', 0.951], // 95%
+		['Sick!', 0.986], // 98%
+		['Marvelous!', 0.991], // 99%
+		['Amazing!!', 0.999], // 99.1%
+		['Perfect!!', 1] // 100%
+	];*/
+
 	public static var ratingStuff:Array<Dynamic> = [
 		['(D)', 0.4], // 50%
 		['(C)', 0.7], // 80%
@@ -76,7 +87,6 @@ class PlayState extends MusicBeatState
 		['(AA)', 0.986], // 98%
 		['(AAA)', 0.991], // 99%
 		['(AAAA)', 0.999], // 99.1%
-		['(S)', 1], // 99.99%
 		['(S+)', 1] // 100%
 	];
 
@@ -2773,11 +2783,19 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		//Info Bar
+		// Info Bar (Needs to be changed later)
+
 		if (ratingFC == "")
 			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
 		else
 			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
+
+		// Letter Grades Info Bar (the old one except for when you have Letter Grades on)
+
+		/*if (ratingFC == "")
+			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + '(?)';
+		else
+			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + ratingFC + ' ' + ratingName;*/
 
 		// Judgement Counters (on Info)
 		if (ClientPrefs.judgCounters == 'Info')
@@ -2794,7 +2812,6 @@ class PlayState extends MusicBeatState
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
 			scoreTxt.text = '';
-			
 
 		if (botplayTxt.visible)
 		{
@@ -4162,6 +4179,8 @@ class PlayState extends MusicBeatState
 
 		var uiSkin:String = '';
 		var altPart:String = isPixelStage ? '-pixel' : '';
+		var daEarly:String = ''; // used for early judgements
+		var daLate:String = ''; // used for late judgements
 
 		switch (ClientPrefs.uiSkin)
 		{
@@ -4175,7 +4194,7 @@ class PlayState extends MusicBeatState
 				uiSkin = 'beat-alt';
 		}
 	
-		rating.loadGraphic(Paths.image(getUiSkin(uiSkin, daRating, altPart)));
+		rating.loadGraphic(Paths.image(getUiSkin(uiSkin, daRating, altPart/*, daEarly, daLate*/)));
 		rating.cameras = [camHUD];
 		rating.screenCenter();
 		rating.x = coolText.x - 40;

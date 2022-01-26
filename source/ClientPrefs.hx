@@ -83,6 +83,7 @@ class ClientPrefs {
 	public static var keAccuracy:Bool = false;
 	public static var noteGlow:Bool = false;
 	public static var instantRespawn:Bool = false;
+	public static var stepmaniaGrades:Bool = false;
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
@@ -177,6 +178,7 @@ class ClientPrefs {
 		FlxG.save.data.keAccuracy = keAccuracy;
 		FlxG.save.data.noteGlow = noteGlow;
 		FlxG.save.data.instantRespawn = instantRespawn;
+		FlxG.save.data.stepmaniaGrades = stepmaniaGrades;
 
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
@@ -341,6 +343,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.instantRespawn != null) {
 			instantRespawn = FlxG.save.data.instantRespawn;
+		}
+		if(FlxG.save.data.stepmaniaGrades != null) {
+			stepmaniaGrades = FlxG.save.data.stepmaniaGrades;
 		}
 		
 		// Added by Bedrock Engine (via Pull Requests)

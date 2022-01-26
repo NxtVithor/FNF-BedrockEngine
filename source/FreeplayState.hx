@@ -316,7 +316,12 @@ class FreeplayState extends MusicBeatState
 		if (downP)
 			changeSelection(shiftMult);
 
-					
+		if (controls.UI_LEFT_P)
+			changeDiff(-1);
+		else if (controls.UI_RIGHT_P)
+			changeDiff(1);
+		else if (upP || downP) changeDiff();
+
 		/*if (leftP && !shift)
 				changeDiff(-1);
 			else if (leftP && shift)
