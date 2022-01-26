@@ -172,7 +172,7 @@ class CreditsState extends MusicBeatState
 			[
 				'magnumsrtisswag',
 				'magnums',
-				'Stage Editor, Credits Warning',
+				'Credits Warning',
 				'https://github.com/magnumsrtisswag',
 				'7e7b6d'
 			],

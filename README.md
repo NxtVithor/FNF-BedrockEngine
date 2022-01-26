@@ -7,7 +7,7 @@ Credits:
 * [i-winxd](https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917) - Kade Engine (Complex) Accuracy
 * [lemz1](https://github.com/ShadowMario/FNF-PsychEngine/pull/2770) - Play as Opponent
 * [l1ttleO](https://github.com/l1ttleO/ProjectFNF) - Made ProjectFNF 2.X, Original Hit Sound Code, Miss Sounds Toggle
-* [magnumsrtisswag](https://github.com/ShadowMario/FNF-PsychEngine/pull/3502) - Stage Editor, Credits Warning
+* [magnumsrtisswag](https://github.com/ShadowMario/FNF-PsychEngine/pull/3502) - Credits Warning
 * [Starmapo](https://github.com/ShadowMario/FNF-PsychEngine/pull/3428) - Time Signatures
 * [Stilic](https://github.com/ShadowMario/FNF-PsychEngine/pull/1809) - Freeplay Bump, Max Optimization, Menu Animations, Automatic Controller Detection
 * [Verwex](https://github.com/Verwex/Funkin-Mic-d-Up-SC) - made Mic'd Up Engine, Winning Icons
