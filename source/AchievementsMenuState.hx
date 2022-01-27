@@ -28,7 +28,7 @@ class AchievementsMenuState extends MusicBeatState
 
 	override function create() {
 		#if desktop
-		DiscordClient.changePresence("in the Achievements Menu", null);
+		DiscordClient.changePresence("Achievements Menu", null);
 		#end
 
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
@@ -86,14 +86,10 @@ class AchievementsMenuState extends MusicBeatState
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new MainMenuState());
-			if (ClientPrefs.lowEndMode) {
-				MusicBeatState.switchState(new SimpleMenuState());
-			}
 		}
 	}
 
 	function changeSelection(change:Int = 0) {
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		curSelected += change;
 		if (curSelected < 0)
 			curSelected = options.length - 1;
