@@ -221,7 +221,7 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
-				// Main Menu Back Animations
+				// Main Menu Back Animations -- Originally made by Mic'd Up Devs
 				FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
 				FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
 				FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
@@ -246,7 +246,7 @@ class MainMenuState extends MusicBeatState
 					{
 						if (curSelected != spr.ID)
 						{
-							// Main Menu Select Animations
+							// Main Menu Select Animations -- Originally made by Mic'd Up Devs
 							FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
 							FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
 							FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});

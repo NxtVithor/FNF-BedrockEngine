@@ -209,7 +209,7 @@ class CreditsState extends MusicBeatState
 			[
 				'Verwex',
 				'verwex',
-				'Made Mic´d Up Engine, Winning Icons',
+				'Made Mic´d Up Engine, Winning Icons, Original Code for Menu Animations',
 				'https://github.com/Verwex/Funkin-Mic-d-Up-SC',
 				'2e3d62'
 			],
