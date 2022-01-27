@@ -3845,18 +3845,12 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 
 		#if ACHIEVEMENTS_ALLOWED
-		if (achievementObj != null)
-		{
+		if(achievementObj != null) {
 			return;
-		}
-		else
-		{
-			var achieve:String = checkForAchievement(['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
-				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'ur_bad',
-				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
+		} else {
+			var achieve:String = checkForAchievement();
 
-			if (achieve != null)
-			{
+			if(achieve != null) {
 				startAchievement(achieve);
 				return;
 			}
@@ -3979,20 +3973,16 @@ class PlayState extends MusicBeatState
 
 	#if ACHIEVEMENTS_ALLOWED
 	var achievementObj:AchievementObject = null;
-
-	function startAchievement(achieve:String)
-	{
+	function startAchievement(achieve:String) {
 		achievementObj = new AchievementObject(achieve, camOther);
 		achievementObj.onFinish = achievementEnd;
 		add(achievementObj);
 		trace('Giving achievement ' + achieve);
 	}
-
 	function achievementEnd():Void
 	{
 		achievementObj = null;
-		if (endingSong && !inCutscene)
-		{
+		if(endingSong && !inCutscene) {
 			endSong();
 		}
 	}
@@ -4865,12 +4855,9 @@ class PlayState extends MusicBeatState
 				Achievements.henchmenDeath++;
 				FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
 				var achieve:String = checkForAchievement(['roadkill_enthusiast']);
-				if (achieve != null)
-				{
+				if (achieve != null) {
 					startAchievement(achieve);
-				}
-				else
-				{
+				} else {
 					FlxG.save.flush();
 				}
 				FlxG.log.add('Deaths: ' + Achievements.henchmenDeath);

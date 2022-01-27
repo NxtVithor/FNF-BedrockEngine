@@ -35,13 +35,7 @@ using StringTools;
 
 class SimpleMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Story Mode', 
-	'Freeplay', 
-	#if MODS_ALLOWED 'Mods', #end
-	#if ACHIEVEMENTS_ALLOWED 'Awards', #end
-	'Credits',
-	#if !switch 'Donate', #end
-	'Options'];
+	var options:Array<String> = ['Story Mode',  'Freeplay',  #if MODS_ALLOWED 'Mods', #end #if ACHIEVEMENTS_ALLOWED 'Awards', #end 'Credits', #if !switch 'Donate', #end 'Options'];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
@@ -158,7 +152,6 @@ class SimpleMenuState extends MusicBeatState
 				openSelectedSubstate(options[curSelected]);
 			});
 		}
-
 
 		#if desktop
 		else if (FlxG.keys.anyJustPressed(debugKeys))
