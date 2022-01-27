@@ -293,7 +293,7 @@ class FreeplayState extends MusicBeatState
 			curSpeed = 0.25;
 
 		#if sys
-		speedText.text = "Speed: " + curSpeed + " (Shift+L/R)";
+		speedText.text = "Speed: " + curSpeed + " (L_Shift+Left/Right)";
 		#else
 		speedText.text = "";
 		#end
