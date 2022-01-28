@@ -36,8 +36,14 @@ class NewMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
-		#if MODS_ALLOWED 'mods', #end
-		#if ACHIEVEMENTS_ALLOWED 'awards', #end #if !switch 'donate', #end
+		#if MODS_ALLOWED 'mods',
+		#end
+		#if ACHIEVEMENTS_ALLOWED
+		'awards',
+		#end
+		#if !switch
+		'donate',
+		#end
 		'credits',
 		'options'
 	];
@@ -391,9 +397,11 @@ class NewMenuState extends MusicBeatState
 		switch (whatvar)
 		{
 			case 'create':
+				var assets:String = 'NOTE_assets';
+				var library:String = 'shared';
 				{
 					note1 = new FlxSprite();
-					note1.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note1.frames = Paths.getSparrowAtlas(assets, library);
 					note1.scrollFactor.set();
 					note1.antialiasing = ClientPrefs.globalAntialiasing;
 					note1.animation.addByPrefix('purpleScroll', 'purple0', 24, false);
@@ -426,7 +434,7 @@ class NewMenuState extends MusicBeatState
 					}
 
 					note2 = new FlxSprite();
-					note2.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note2.frames = Paths.getSparrowAtlas(assets, library);
 					note2.scrollFactor.set();
 					note2.antialiasing = ClientPrefs.globalAntialiasing;
 					note2.animation.addByPrefix('blueScroll', 'blue0');
@@ -459,7 +467,7 @@ class NewMenuState extends MusicBeatState
 					}
 
 					note3 = new FlxSprite();
-					note3.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note3.frames = Paths.getSparrowAtlas(assets, library);
 					note3.scrollFactor.set();
 					note3.antialiasing = ClientPrefs.globalAntialiasing;
 					note3.animation.addByPrefix('greenScroll', 'green0');
@@ -492,7 +500,7 @@ class NewMenuState extends MusicBeatState
 					}
 
 					note4 = new FlxSprite();
-					note4.frames = Paths.getSparrowAtlas('NOTE_assets');
+					note4.frames = Paths.getSparrowAtlas(assets, library);
 					note4.scrollFactor.set();
 					note4.antialiasing = ClientPrefs.globalAntialiasing;
 					note4.animation.addByPrefix('redScroll', 'red0');
