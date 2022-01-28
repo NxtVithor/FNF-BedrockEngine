@@ -1080,7 +1080,7 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 17, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -1192,7 +1192,7 @@ class PlayState extends MusicBeatState
 
 		// for Info
 		judgCountTxt = new FlxText(0, healthBarBG.y + 56, FlxG.width, "", 20);
-		judgCountTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		judgCountTxt.setFormat(Paths.font("vcr.ttf"), 17, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		judgCountTxt.scrollFactor.set();
 		judgCountTxt.borderSize = 1.25;
 		judgCountTxt.visible = !ClientPrefs.hideHud;
@@ -2567,9 +2567,9 @@ class PlayState extends MusicBeatState
 		// Info Bar (Needs to be changed later)
 
 		if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank: ' + ratingFC + '(?)';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank: ' + ratingFC + ratingName;
 
 		// Letter Grades Info Bar (the old one except for when you have Letter Grades on)
 
@@ -4780,23 +4780,23 @@ class PlayState extends MusicBeatState
 			// Rating FC
 			ratingFC = "";
 			if (marvelouses > 0) 
-				ratingFC = "// PFC "; // Perfect Full Combo
+				ratingFC = "PFC "; // Perfect Full Combo
 			if (sicks > 0 && ClientPrefs.marvelouses == false) // if Marv is off, then PFC is used for Sicks
-				ratingFC = "// PFC ";
+				ratingFC = "PFC ";
 			else if (sicks > 0 && ClientPrefs.marvelouses)
-				ratingFC = "// SFC "; // Sick Full Combo
+				ratingFC = "SFC "; // Sick Full Combo
 			if (goods > 0)
-				ratingFC = "// GFC "; // Good Full Combo
+				ratingFC = "GFC "; // Good Full Combo
 			if (bads > 0)
-				ratingFC = "// FC "; // Full Combo
+				ratingFC = "FC "; // Full Combo
 			else if (bads > 0 && ClientPrefs.keAccuracy)
-				ratingFC = "// SDB "; // Single Digit Bad - this should count as losing FC despite not giving you misses, needs Complex Accuracy on
+				ratingFC = "SDB "; // Single Digit Bad - this should count as losing FC despite not giving you misses, needs Complex Accuracy on
 			if (shits > 0)
-				ratingFC ="// SDS "; // Single Digit Shit - same as SDB, for when Complex Accuracy is off
+				ratingFC ="SDS "; // Single Digit Shit - same as SDB, for when Complex Accuracy is off
 			if (songMisses > 0 && songMisses < 10)
-				ratingFC = "// SDCB "; //Single Digit Combo Break
+				ratingFC = "SDCB "; //Single Digit Combo Break
 			else if (songMisses >= 10)
-				ratingFC = "// Clear ";
+				ratingFC = "Clear ";
 		}
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
