@@ -2750,11 +2750,11 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		// Info Bar (Needs to be changed later)
+		// Info Bar
 
 		if (ratingFC == "")
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses
-				+ ' // Rank: (?)';
+				+ ' // Rank: ?';
 		else
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + '[' + ratingFC + '] '
 				+ ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
