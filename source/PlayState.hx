@@ -68,25 +68,6 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
-	/*public static var ratingStuff:Array<Dynamic> = [
-			['You Suck!', 0.4], // 50%
-			['Shit', 0.7], // 80%
-			['Bad', 0.8], // 90%
-			['Okay', 0.951], // 95%
-			['Sick!', 0.986], // 98%
-			['Marvelous!', 0.991], // 99%
-			['Amazing!!', 0.999], // 99.1%
-			['Perfect!!', 1] // 100%
-		]; 
-	public static var ratingStuff:Array<Dynamic> = [
-		['D', 0.4], // 50%
-		['C', 0.7], // 80%
-		['B', 0.8], // 90%
-		['A', 0.951], // 95%
-		['S', 0.999], // 99%
-		['S+', 1] // 100%
-	];
-	*/
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
 	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
 	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
@@ -4034,8 +4015,8 @@ class PlayState extends MusicBeatState
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
 
-		 if (ClientPrefs.keAccuracy)
-			totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale); 
+		 /*if (ClientPrefs.keAccuracy)
+			totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale);*/
 	
 		// trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 

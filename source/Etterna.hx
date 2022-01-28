@@ -1,4 +1,4 @@
-package;
+/*package;
 
 // STOLEN FROM KE BRUH!!!!!!!!!
 class Etterna
@@ -79,3 +79,4 @@ class Etterna
 			return miss_weight;
 	}
 }
+*/
