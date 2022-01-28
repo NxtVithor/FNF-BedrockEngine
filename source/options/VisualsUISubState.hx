@@ -22,7 +22,7 @@ class VisualsUISubState extends BaseOptionsMenu
 	#end
 
 		var option:Option = new Option('Glow CPU Strums', "If disabled, the CPU's Notes will no longer glow once the CPU hits them", 'lightcpustrums', 'bool', true);
-	addOption(Option);
+	addOption(option);
 
 		var option:Option = new Option('Hide HUD', 'If checked, hides most HUD elements.', 'hideHud', 'bool', false);
 	addOption(option);
