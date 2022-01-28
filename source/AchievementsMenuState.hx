@@ -77,9 +77,11 @@ class AchievementsMenuState extends MusicBeatState
 		super.update(elapsed);
 
 		if (controls.UI_UP_P) {
+			FlxG.sound.play(Paths.sound('scrollMenu'));
 			changeSelection(-1);
 		}
 		if (controls.UI_DOWN_P) {
+			FlxG.sound.play(Paths.sound('scrollMenu'));
 			changeSelection(1);
 		}
 

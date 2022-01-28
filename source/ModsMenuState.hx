@@ -440,6 +440,8 @@ class ModsMenuState extends MusicBeatState
 	}
 
 	var noModsSine:Float = 0;
+	var noModsSine2:Float = 0; // needed because if Sine 1 is being used by noModsTxt2 or 3, it crashes
+	var noModsSine3:Float = 0;
 	var canExit:Bool = true;
 	override function update(elapsed:Float)
 	{
@@ -447,6 +449,18 @@ class ModsMenuState extends MusicBeatState
 		{
 			noModsSine += 180 * elapsed;
 			noModsTxt.alpha = 1 - Math.sin((Math.PI * noModsSine) / 180);
+		}
+
+		if(noModsTxt.visible)
+		{
+			noModsSine2 += 180 * elapsed;
+			noModsTxt2.alpha = 1 - Math.sin((Math.PI * noModsSine2) / 180);
+		}
+
+		if(noModsTxt.visible)
+		{
+			noModsSine3 += 180 * elapsed;
+			noModsTxt3.alpha = 1 - Math.sin((Math.PI * noModsSine3) / 180);
 		}
 
 		if(canExit && controls.BACK)
