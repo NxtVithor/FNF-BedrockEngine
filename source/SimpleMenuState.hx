@@ -36,13 +36,19 @@ using StringTools;
 class SimpleMenuState extends MusicBeatState
 {
 	var options:Array<String> = [
-	'story_mode',
-	'freeplay',
-	#if MODS_ALLOWED 'mods', #end
-	#if ACHIEVEMENTS_ALLOWED 'awards', #end
-	'credits',
-	#if !switch 'donate', #end
-	'options'
+		'story_mode',
+		'freeplay',
+		#if MODS_ALLOWED
+		'mods',
+		#end
+		#if ACHIEVEMENTS_ALLOWED
+		'awards',
+		#end
+		#if !switch
+		'donate',
+		#end
+		'credits',
+		'options'
 	];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
