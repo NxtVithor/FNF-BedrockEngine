@@ -2564,25 +2564,25 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-				// Info Bar (Needs to be changed later)
+		// Info Bar (Needs to be changed later)
 
 		if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
 
 		// Letter Grades Info Bar (the old one except for when you have Letter Grades on)
 
 		/*if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + '(?)';
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + '(?)';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + ratingFC + ' ' + ratingName;*/
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + ratingFC + ' ' + ratingName;*/
 
 		// Judgement Counters (on Info)
 		if (ClientPrefs.judgCounters == 'Info')
-			judgCountTxt.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
+			judgCountTxt.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits; /*+ ' // Misses: ' + songMisses;*/
 		if (ClientPrefs.judgCounters == 'Info' && ClientPrefs.marvelouses)
-			judgCountTxt.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
+			judgCountTxt.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits; /*+ ' // Misses: ' + songMisses;*/
 
 		if (ClientPrefs.judgCounters == 'Disabled' && ClientPrefs.marvelouses)
 			judgCountTxt.text = '';
