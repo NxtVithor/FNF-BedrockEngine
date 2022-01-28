@@ -335,7 +335,7 @@ class MainMenuState extends MusicBeatState
 				if (coolSprite != null)
 					coolSprite.angle = spr.angle;
 				coolSprite = spr;
-				coolTween = FlxTween.tween(spr, spr.angle, -spr.angle, 2.5, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+				coolTween = FlxTween.tween(spr, spr.angle, -spr.angle, Conductor.crochet / 1000, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 			}
 		});
 	}
