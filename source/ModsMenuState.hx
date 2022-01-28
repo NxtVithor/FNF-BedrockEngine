@@ -43,7 +43,6 @@ class ModsMenuState extends MusicBeatState
 	
 	var noModsTxt:Alphabet;
 	var noModsTxt2:Alphabet;
-	var noModsTxt3:Alphabet;
 	var selector:AttachedSprite;
 	var descriptionTxt:FlxText;
 	var needaReset = false;
@@ -92,17 +91,6 @@ class ModsMenuState extends MusicBeatState
 		noModsTxt2.scrollFactor.set();
 		add(noModsTxt2);
 		visibleWhenNoMods.push(noModsTxt2);
-		if(FlxG.random.bool(0.1))
-		{
-			noModsTxt3 = new Alphabet(0, 420, "BITCH.", true, false, 0.05, 0.66);
-			noModsTxt3.screenCenter(X);
-			noModsTxt3.scrollFactor.set();
-			add(noModsTxt3);
-			visibleWhenNoMods.push(noModsTxt3);
-			noModsTxt.y -= 25;
-			noModsTxt2.y -= 25;
-			noModsTxt3.y -= 25;
-		}
 
 		var path:String = 'modsList.txt';
 		if(FileSystem.exists(path))
@@ -239,10 +227,7 @@ class ModsMenuState extends MusicBeatState
 
 		// more buttons
 		var startX:Int = 1100;
-		
-		
-		
-		
+
 		/*
 		installButton = new FlxButton(startX, 620, "Install Mod", function()
 		{
@@ -440,8 +425,7 @@ class ModsMenuState extends MusicBeatState
 	}
 
 	var noModsSine:Float = 0;
-	var noModsSine2:Float = 0; // needed because if Sine 1 is being used by noModsTxt2 or 3, it crashes
-	var noModsSine3:Float = 0;
+	var noModsSine2:Float = 0; // needed because if Sine 1 is being used by noModsTxt2, it crashes
 	var canExit:Bool = true;
 	override function update(elapsed:Float)
 	{
@@ -451,16 +435,10 @@ class ModsMenuState extends MusicBeatState
 			noModsTxt.alpha = 1 - Math.sin((Math.PI * noModsSine) / 180);
 		}
 
-		if(noModsTxt.visible)
+		if(noModsTxt2.visible)
 		{
 			noModsSine2 += 180 * elapsed;
 			noModsTxt2.alpha = 1 - Math.sin((Math.PI * noModsSine2) / 180);
-		}
-
-		if(noModsTxt.visible)
-		{
-			noModsSine3 += 180 * elapsed;
-			noModsTxt3.alpha = 1 - Math.sin((Math.PI * noModsSine3) / 180);
 		}
 
 		if(canExit && controls.BACK)
