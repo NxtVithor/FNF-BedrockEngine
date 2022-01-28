@@ -1169,11 +1169,8 @@ class PlayState extends MusicBeatState
 		// left and right judgement counters
 		judgementCounter = new FlxText(20, 0, 0, "", 20);
 
-		// Set Text Stuffs
-		if (ClientPrefs.judgCounters == "Left")
-			judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-
-		// Set Border Size, quality, etc
+		// Set Text Position, Size, Font, etc
+		judgementCounter.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		judgementCounter.borderSize = 2;
 		judgementCounter.borderQuality = 2;
 		judgementCounter.scrollFactor.set();
@@ -1202,7 +1199,7 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.judgCounters == 'Info')
 		remove(judgementCounter);
 
-		//Completely Disabled
+		//or Completely Disabled
 		if (ClientPrefs.judgCounters == "Disabled")
 		remove(judgementCounter);
 
@@ -1210,13 +1207,14 @@ class PlayState extends MusicBeatState
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
-		botplayTxt.borderSize = 1.25;
+		botplayTxt.borderSize = 2;
 		botplayTxt.visible = cpuControlled;
 		add(botplayTxt);
 		if(ClientPrefs.downScroll) {
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 
+		//now we set da cameras stuff
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -4176,8 +4174,10 @@ class PlayState extends MusicBeatState
 		if(note.isSustainNote && !note.animation.curAnim.name.endsWith('end')) {
 			time += 0.15;
 		}
-		StrumPlayAnim(true, Std.int(Math.abs(note.noteData)) % 4, time);
-		note.hitByOpponent = true;
+		if (ClientPrefs.lightcpustrums == true) {
+			StrumPlayAnim(true, Std.int(Math.abs(note.noteData)) % 4, time);
+			note.hitByOpponent = true;
+		}
 
 		callOnLuas('opponentNoteHit', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
 
