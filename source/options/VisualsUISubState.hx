@@ -13,7 +13,7 @@ class VisualsUISubState extends BaseOptionsMenu
 	addOption(option);
 
 		var option:Option = new Option('Disable Note Glow', "If checked, will disable Player Note Glow, simple enough.", 'noteGlow', 'bool', false);
-	addOption(option);
+	//addOption(option);
 
 		var option:Option = new Option('Flashing Lights', "Uncheck this if you're sensitive to flashing lights!", 'flashing', 'bool', true);
 	addOption(option);
