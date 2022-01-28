@@ -12,23 +12,16 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Camera Zooms', "If unchecked, the camera won't zoom in on a beat hit.", 'camZooms', 'bool', true);
 	addOption(option);
 
-		var option:Option = new Option('Disable Note Glow', "If checked, will disable Player Note Glow, simple enough.", 'noteGlow', 'bool', false);
-	//addOption(option);
-
 		var option:Option = new Option('Flashing Lights', "Uncheck this if you're sensitive to flashing lights!", 'flashing', 'bool', true);
 	addOption(option);
 
 	#if !mobile
-	var option:Option = new Option('FPS Counter',
-		'If unchecked, hides FPS Counter.',
-		'showFPS',
-		'bool',
-		true);
+		var option:Option = new Option('FPS Counter', 'If unchecked, hides FPS Counter.', 'showFPS', 'bool', true);
 	addOption(option);
 	option.onChange = onChangeFPSCounter;
 	#end
 
-		var Option = new Option('Glow CPU Strums', "If disabled, the CPU's Notes will no longer glow once the CPU hits them", 'lightcpustrums', 'bool', true);
+		var option:Option = new Option('Glow CPU Strums', "If disabled, the CPU's Notes will no longer glow once the CPU hits them", 'lightcpustrums', 'bool', true);
 	addOption(Option);
 
 		var option:Option = new Option('Hide HUD', 'If checked, hides most HUD elements.', 'hideHud', 'bool', false);
