@@ -90,7 +90,7 @@ class Conductor
 			//tryna do MS based judgment due to popular demand
 			var windowNames:Array<String> = ['sick', 'good', 'bad'];
 			if (ClientPrefs.marvelouses)
-				windowNames = 'marvelous' + windowNames;
+				windowNames = ['marvelous', 'sick', 'good', 'bad']; //i dont think that works on haxe
 
 			// var diff = Math.abs(note.strumTime - Conductor.songPosition) / (PlayState.songMultiplier >= 1 ? PlayState.songMultiplier : 1);
 			for(i in 0...timingWindows.length) // based on 4 timing windows, will break with anything else

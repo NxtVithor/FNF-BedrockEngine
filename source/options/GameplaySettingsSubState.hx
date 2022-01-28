@@ -60,8 +60,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Instant Respawn', "If checked, skips the Game Over Screen entirely.", 'instantRespawn', 'bool', false);
 	addOption(option);
 
-		var option:Option = new Option('Letter Grades', "If checked, will use letter ratings, based on Yoshubs' Forever Engine.", 'letterGrades', 'bool', false);
-	//addOption(option);
+		var option:Option = new Option('Letter Grades', "If unchecked, engine won't use letter ratings, letters are based on Yoshubs' Forever Engine.", 'letterGrades', 'bool', true);
+	addOption(option);
 
 		var option:Option = new Option('Marvelous Ratings', 'If unchecked, marvelous ratings will disappear.', 'marvelouses', 'bool', true);
 	addOption(option);

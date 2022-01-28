@@ -77,7 +77,7 @@ class PlayState extends MusicBeatState
 			['Marvelous!', 0.991], // 99%
 			['Amazing!!', 0.999], // 99.1%
 			['Perfect!!', 1] // 100%
-		]; */
+		]; 
 	public static var ratingStuff:Array<Dynamic> = [
 		['D', 0.4], // 50%
 		['C', 0.7], // 80%
@@ -86,7 +86,7 @@ class PlayState extends MusicBeatState
 		['S', 0.999], // 99%
 		['S+', 1] // 100%
 	];
-
+	*/
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
 	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
 	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
@@ -2751,7 +2751,8 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		// Info Bar
-
+		var ratingNameTwo:String = ratingName;
+		
 		if (ratingFC == "")
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses
 				+ ' // Rank: ?';
@@ -4033,8 +4034,9 @@ class PlayState extends MusicBeatState
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
 
-		if (ClientPrefs.keAccuracy)
-			totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale);
+		 if (ClientPrefs.keAccuracy)
+			totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale); 
+	
 		// trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
 		if (ClientPrefs.playHitSounds)
@@ -5274,17 +5276,36 @@ class PlayState extends MusicBeatState
 
 			// Rating Name
 			if (ratingPercent >= 1)
-				ratingName = ratingStuff[ratingStuff.length - 1][0]; // Uses last string
+				if (ClientPrefs.letterGrades)
+					ratingName = Ratings.ratingStuff[Ratings.ratingStuff.length - 1][0]; // Uses last string
+				else
+					ratingName = Ratings.ratingSimple[Ratings.ratingSimple.length - 1][0]; // Uses last string
 			else
 			{
-				for (i in 0...ratingStuff.length - 1)
+			
+				if (ClientPrefs.letterGrades)
 				{
-					if (ratingPercent < ratingStuff[i][1])
+					for (i in 0...Ratings.ratingStuff.length - 1)
 					{
-						ratingName = ratingStuff[i][0];
-						break;
+						if (ratingPercent < Ratings.ratingStuff[i][1])
+						{
+							ratingName = Ratings.ratingStuff[i][0];
+							break;
+						}
 					}
 				}
+				
+				else 
+					{
+					for (i in 0...Ratings.ratingSimple.length - 1)
+						{
+							if (ratingPercent < Ratings.ratingSimple[i][1])
+							{
+								ratingName = Ratings.ratingSimple[i][0];
+								break;
+							}
+						}
+				 	}
 			}
 
 			// Rating FC

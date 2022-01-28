@@ -77,7 +77,7 @@ class ClientPrefs {
 	public static var keAccuracy:Bool = false;
 	public static var noteGlow:Bool = false;
 	public static var instantRespawn:Bool = false;
-	public static var letterGrades:Bool = false;
+	public static var letterGrades:Bool = true;
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
