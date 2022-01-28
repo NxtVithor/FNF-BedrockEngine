@@ -94,7 +94,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 			var option:Option = new Option('Note Skin:', "Funny Notes, going up and down, How should they look like?", 'noteSkin', 'string', 'Default',
-		['Default', 'Future', 'Chip']);
+		['Default', 'Circle', 'Bar']);
 		option.showNotes = true;
 		option.onChange = onChangeNoteSkin;
 		//addOption(option);
