@@ -4032,6 +4032,9 @@ class PlayState extends MusicBeatState
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
+
+		if (ClientPrefs.keAccuracy)
+			totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale);
 		// trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
 		if (ClientPrefs.playHitSounds)
@@ -4073,12 +4076,14 @@ class PlayState extends MusicBeatState
 				score = 200;
 				goods++;
 			case "sick": // sick
-                     /*Quick talk, if marvelouses are not disabled sicks should not give %100 rating
-                     so instead, it will give you %87.5*/
-			if(!ClientPrefs.marvelouses) totalNotesHit += 1;
-                        else {totalNotesHit += 0.875;}
+            	/*Quick talk, if marvelouses are not disabled sicks should not give %100 rating
+                so instead, it will give you %87.5*/
+				if (!ClientPrefs.marvelouses)
+					totalNotesHit += 1;
+				else
+					totalNotesHit += 0.875;
 				sicks++;
-			case "marvelous":
+			case "marvelous": // marvelous
 				totalNotesHit += 1;
 				marvelouses++;
 		}
@@ -4090,7 +4095,10 @@ class PlayState extends MusicBeatState
 
 		if (!practiceMode && !cpuControlled)
 		{
-			songScore += score;
+			if (ClientPrefs.keAccuracy)
+				songScore += Math.round(score);
+			else
+				songScore += score;
 			songHits++;
 			totalPlayed++;
 			RecalculateRating();
