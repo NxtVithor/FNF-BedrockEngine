@@ -35,7 +35,15 @@ using StringTools;
 
 class SimpleMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Story Mode',  'Freeplay',  #if MODS_ALLOWED 'Mods', #end /*#if ACHIEVEMENTS_ALLOWED 'Awards', #end*/ 'Credits', #if !switch 'Donate', #end 'Options'];
+	var options:Array<String> = [
+	'story_mode',
+	'freeplay',
+	#if MODS_ALLOWED 'mods', #end
+	#if ACHIEVEMENTS_ALLOWED 'awards', #end
+	'credits',
+	#if !switch 'donate', #end
+	'options'
+	];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
@@ -50,19 +58,19 @@ class SimpleMenuState extends MusicBeatState
 	{
 		switch (label)
 		{
-			case 'Story Mode':
+			case 'story_mode':
 				MusicBeatState.switchState(new StoryMenuState());
-			case 'Freeplay':
+			case 'freeplay':
 				MusicBeatState.switchState(new FreeplayState());
-			case 'Mods':
+			case 'mods':
 				MusicBeatState.switchState(new ModsMenuState());
-			case 'Awards':
+			case 'awards':
 				MusicBeatState.switchState(new AchievementsMenuState());
-			case 'Credits':
+			case 'credits':
 				MusicBeatState.switchState(new CreditsState());
-			case 'Donate':
+			case 'donate':
 				CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-			case 'Options':
+			case 'options':
 				MusicBeatState.switchState(new options.OptionsState());
 		}
 	}
