@@ -4073,7 +4073,10 @@ class PlayState extends MusicBeatState
 				score = 200;
 				goods++;
 			case "sick": // sick
-				totalNotesHit += 1;
+                     /*Quick talk, if marvelouses are not disabled sicks should not give %100 rating
+                     so instead, it will give you %87.5*/
+			if(!ClientPrefs.marvelouses) totalNotesHit += 1;
+                        else {totalNotesHit += 0.875;}
 				sicks++;
 			case "marvelous":
 				totalNotesHit += 1;
