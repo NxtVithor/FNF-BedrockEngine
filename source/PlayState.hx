@@ -70,7 +70,7 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	/*public static var ratingStuff:Array<Dynamic> = [
-		['Awful', 0.4], // 50%
+		['You Suck!', 0.4], // 50%
 		['Shit', 0.7], // 80%
 		['Bad', 0.8], // 90%
 		['Okay', 0.951], // 95%
@@ -81,14 +81,12 @@ class PlayState extends MusicBeatState
 	];*/
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['(D)', 0.4], // 50%
-		['(C)', 0.7], // 80%
-		['(B)', 0.8], // 90%
-		['(A)', 0.951], // 95%
-		['(AA)', 0.986], // 98%
-		['(AAA)', 0.991], // 99%
-		['(AAAA)', 0.999], // 99.1%
-		['(S+)', 1] // 100%
+		['D', 0.4], // 50%
+		['C', 0.7], // 80%
+		['B', 0.8], // 90%
+		['A', 0.951], // 95%
+		['S', 0.986], // 98%
+		['S+', 1] // 100%
 	];
 	
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
@@ -2567,16 +2565,9 @@ class PlayState extends MusicBeatState
 		// Info Bar (Needs to be changed later)
 
 		if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank: ' + ratingFC + '(?)';
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses + ' // Rank: (?)';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank: ' + ratingFC + ratingName;
-
-		// Letter Grades Info Bar (the old one except for when you have Letter Grades on)
-
-		/*if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + '(?)';
-		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% // Rank:' + ratingFC + ' ' + ratingName;*/
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + '[' + ratingFC + '] ' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
 
 		// Judgement Counters (on Info)
 		if (ClientPrefs.judgCounters == 'Info')
@@ -4780,23 +4771,23 @@ class PlayState extends MusicBeatState
 			// Rating FC
 			ratingFC = "";
 			if (marvelouses > 0) 
-				ratingFC = "PFC "; // Perfect Full Combo
+				ratingFC = "PFC"; // Perfect Full Combo
 			if (sicks > 0 && ClientPrefs.marvelouses == false) // if Marv is off, then PFC is used for Sicks
-				ratingFC = "PFC ";
+				ratingFC = "PFC";
 			else if (sicks > 0 && ClientPrefs.marvelouses)
-				ratingFC = "SFC "; // Sick Full Combo
+				ratingFC = "SFC"; // Sick Full Combo
 			if (goods > 0)
-				ratingFC = "GFC "; // Good Full Combo
+				ratingFC = "GFC"; // Good Full Combo
 			if (bads > 0)
-				ratingFC = "FC "; // Full Combo
+				ratingFC = "FC"; // Full Combo
 			else if (bads > 0 && ClientPrefs.keAccuracy)
-				ratingFC = "SDB "; // Single Digit Bad - this should count as losing FC despite not giving you misses, needs Complex Accuracy on
+				ratingFC = "SDB"; // Single Digit Bad - this should count as losing FC despite not giving you misses, needs Complex Accuracy on
 			if (shits > 0)
-				ratingFC ="SDS "; // Single Digit Shit - same as SDB, for when Complex Accuracy is off
+				ratingFC ="SDS"; // Single Digit Shit - same as SDB, for when Complex Accuracy is off
 			if (songMisses > 0 && songMisses < 10)
-				ratingFC = "SDCB "; //Single Digit Combo Break
+				ratingFC = "SDCB"; //Single Digit Combo Break
 			else if (songMisses >= 10)
-				ratingFC = "Clear ";
+				ratingFC = "Clear";
 		}
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
