@@ -55,7 +55,9 @@ class SimpleMenuState extends MusicBeatState
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
 	private static var curSelected:Int = 0;
+
 	private var camAchievement:FlxCamera;
+
 	public static var menuBG:FlxSprite;
 
 	var bg:FlxSprite;
@@ -69,8 +71,8 @@ class SimpleMenuState extends MusicBeatState
 				MusicBeatState.switchState(new StoryMenuState());
 			case 'freeplay':
 				MusicBeatState.switchState(new FreeplayState());
-			case 'ost':
-				MusicBeatState.switchState(new MusicPlayerState());
+			/*case 'ost':
+				MusicBeatState.switchState(new MusicPlayerState()); */
 			case 'mods':
 				MusicBeatState.switchState(new ModsMenuState());
 			case 'awards':
@@ -154,18 +156,23 @@ class SimpleMenuState extends MusicBeatState
 			MusicBeatState.switchState(new TitleState());
 		}
 
-		if (controls.ACCEPT && ClientPrefs.flashing) {
+		if (controls.ACCEPT && ClientPrefs.flashing)
+		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			grpOptions.forEach(function(grpOptions:Alphabet) {
-				FlxFlicker.flicker(grpOptions, 1, 0.06, false, false, function(flick:FlxFlicker) {
+			grpOptions.forEach(function(grpOptions:Alphabet)
+			{
+				FlxFlicker.flicker(grpOptions, 1, 0.06, false, false, function(flick:FlxFlicker)
+				{
 					openSelectedSubstate(options[curSelected]);
 				});
 			});
 		}
 
-		if (controls.ACCEPT && !ClientPrefs.flashing) {
+		if (controls.ACCEPT && !ClientPrefs.flashing)
+		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			new FlxTimer().start(1, function (tmr:FlxTimer) {
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
 				openSelectedSubstate(options[curSelected]);
 			});
 		}
@@ -204,7 +211,8 @@ class SimpleMenuState extends MusicBeatState
 		FlxG.cameras.add(camAchievement);
 		#if ACHIEVEMENTS_ALLOWED
 		// Unlocks "Freaky on a Friday Night" achievement
-		function giveAchievement() {
+		function giveAchievement()
+		{
 			add(new AchievementObject('friday_night_play', camAchievement));
 			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 			trace('Giving achievement "friday_night_play"');
@@ -212,14 +220,16 @@ class SimpleMenuState extends MusicBeatState
 		#end
 		#if ACHIEVEMENTS_ALLOWED
 		var leDate = Date.now();
-		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
-		var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
-		if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //It's a friday night. WEEEEEEEEEEEEEEEEEE
-			Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
-			giveAchievement();
-			ClientPrefs.saveSettings();
+		if (leDate.getDay() == 5 && leDate.getHours() >= 18)
+		{
+			var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
+			if (!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2]))
+			{ // It's a friday night. WEEEEEEEEEEEEEEEEEE
+				Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
+				giveAchievement();
+				ClientPrefs.saveSettings();
+			}
 		}
-	}
 		#end
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
