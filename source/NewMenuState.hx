@@ -36,8 +36,7 @@ class NewMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
-		#if MODS_ALLOWED
-		'mods',
+		#if MODS_ALLOWED 'mods',
 		#end
 		#if ACHIEVEMENTS_ALLOWED
 		'awards',
@@ -425,8 +424,21 @@ class NewMenuState extends MusicBeatState
 		switch (whatvar)
 		{
 			case 'create':
-				var assets:String = 'NOTE_assets';
+				var assets:String = '';
 				var library:String = 'shared';
+				switch (ClientPrefs.noteSkin)
+				{
+					case 'Default':
+						assets = 'NOTE_assets';
+					case 'Bar':
+						assets = 'NOTE_bar';
+					case 'Circle':
+						assets = 'NOTE_circle';
+					case 'Diamond':
+						assets = 'NOTE_diamond';
+					case 'square':
+						assets = 'NOTE_square';
+				}
 				{
 					note1 = new FlxSprite();
 					note1.frames = Paths.getSparrowAtlas(assets, library);
@@ -462,7 +474,6 @@ class NewMenuState extends MusicBeatState
 							}
 							FlxTween.tween(note1, {alpha: 0}, 8.5);
 					}
-
 					note2 = new FlxSprite();
 					note2.frames = Paths.getSparrowAtlas(assets, library);
 					note2.scrollFactor.set();
@@ -497,7 +508,6 @@ class NewMenuState extends MusicBeatState
 							}
 							FlxTween.tween(note2, {alpha: 0}, 8.6);
 					}
-
 					note3 = new FlxSprite();
 					note3.frames = Paths.getSparrowAtlas(assets, library);
 					note3.scrollFactor.set();
@@ -532,7 +542,6 @@ class NewMenuState extends MusicBeatState
 							}
 							FlxTween.tween(note3, {alpha: 0}, 8.9);
 					}
-
 					note4 = new FlxSprite();
 					note4.frames = Paths.getSparrowAtlas(assets, library);
 					note4.scrollFactor.set();
@@ -567,7 +576,6 @@ class NewMenuState extends MusicBeatState
 							}
 							FlxTween.tween(note4, {alpha: 0}, 8.5);
 					}
-
 					note5 = new FlxSprite();
 					note5.frames = Paths.getSparrowAtlas(assets, library);
 					note5.scrollFactor.set();
@@ -611,7 +619,6 @@ class NewMenuState extends MusicBeatState
 						case 3:
 							note5.y - 800;
 					}
-
 					note6 = new FlxSprite();
 					note6.frames = Paths.getSparrowAtlas(assets, library);
 					note6.scrollFactor.set();
@@ -655,7 +662,6 @@ class NewMenuState extends MusicBeatState
 						case 3:
 							note6.y - 800;
 					}
-
 					note7 = new FlxSprite();
 					note7.frames = Paths.getSparrowAtlas(assets, library);
 					note7.scrollFactor.set();
