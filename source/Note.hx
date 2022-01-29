@@ -266,7 +266,7 @@ class Note extends FlxSprite
 						skin = 'NOTE_circle';
 					case 'Diamond':
 						skin = 'NOTE_diamond';
-					case 'square':
+					case 'Square':
 						skin = 'NOTE_square';
 				}
 			}
