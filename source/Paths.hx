@@ -215,7 +215,7 @@ class Paths
 		return inst;
 	}
 
-	inline static public function image(key:String, ?library:String):Dynamic
+	inline static public function image(key:String, ?library:String):FlxGraphic
 	{
 		// streamlined the assets process more
 		var returnAsset:FlxGraphic = returnGraphic(key, library);
@@ -226,8 +226,8 @@ class Paths
 	{
 		#if sys
 		#if MODS_ALLOWED
-		if (!ignoreMods && FileSystem.exists(mods(key)))
-			return File.getContent(mods(key));
+		if (!ignoreMods && FileSystem.exists(modFolders(key)))
+			return File.getContent(modFolders(key));
 		#end
 
 		if (FileSystem.exists(getPreloadPath(key)))
