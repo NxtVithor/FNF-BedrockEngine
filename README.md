@@ -234,6 +234,5 @@ I will keep updating this fork as much as possible for it to be in sync with the
 
 # Future Plans
 * Softcoded Judgement Skins
-* Noteskins on Options Menu
 * Speed Modifiers on Freeplay Menu
 * Fix all current issues with Opponent Mode
