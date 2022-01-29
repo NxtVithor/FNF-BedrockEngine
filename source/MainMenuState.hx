@@ -25,7 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var bedrockEngineVersion:String = '0.3-Patch-1'; // This is also used for Discord RPC
+	public static var bedrockEngineVersion:String = '0.4-Alpha'; // This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.5.1'; // this one too
 	public static var curSelected:Int = 0;
 
@@ -33,7 +33,21 @@ class MainMenuState extends MusicBeatState
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 	
-	var optionShit:Array<String> = [ 'story_mode', 'freeplay', #if MODS_ALLOWED 'mods', #end /*#if ACHIEVEMENTS_ALLOWED 'awards', #end*/ 'credits', #if !switch 'donate', #end 'options'];
+	var optionShit:Array<String> = [
+		'story_mode',
+		'freeplay',
+		#if MODS_ALLOWED
+		'mods',
+		#end
+		#if ACHIEVEMENTS_ALLOWED
+		'awards',
+		#end
+		#if !switch
+		'donate',
+		#end
+		'credits',
+		'options'
+	];
 
 	var magenta:FlxSprite;
 	var bg:FlxSprite;

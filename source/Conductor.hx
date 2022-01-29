@@ -60,21 +60,48 @@ class Conductor
 
 	public static function judgeNote(note:Note, diff:Float=0) //STOLEN FROM KADE ENGINE (bbpanzu) - I had to rewrite it later anyway after i added the custom hit windows lmao (Shadow Mario)
 	{
-		//tryna do MS based judgment due to popular demand
 		var timingWindows:Array<Int> = [ClientPrefs.marvelousWindow, ClientPrefs.sickWindow, ClientPrefs.goodWindow, ClientPrefs.badWindow];
-		var windowNames:Array<String> = ['marvelous', 'sick', 'good', 'bad'];
-		if (ClientPrefs.marvelouses==true){windowNames = ['marvelous', 'sick', 'good', 'bad'];}
-		else{windowNames = ['sick', 'good', 'bad'];}
-
-		// var diff = Math.abs(note.strumTime - Conductor.songPosition) / (PlayState.songMultiplier >= 1 ? PlayState.songMultiplier : 1);
-		for(i in 0...timingWindows.length) // based on 4 timing windows, will break with anything else
+		if (ClientPrefs.keAccuracy)
 		{
-			if (diff <= timingWindows[Math.round(Math.min(i, timingWindows.length - 1))])
+			var daDiff:Float = Math.abs(diff);
+			for (index in 0...timingWindows.length) // based on 4 timing windows, will break with anything else
 			{
-				return windowNames[i];
+				var time = timingWindows[index];
+				var nextTime = index + 1 > timingWindows.length - 1 ? 0 : timingWindows[index + 1];
+				if (daDiff < time && daDiff >= nextTime)
+				{
+					switch (index)
+					{
+						case 0: // marvelous
+							return ClientPrefs.marvelouses ? "marvelous" : "sick";
+						case 1: // sick
+							return "sick";
+						case 2: // good
+							return "good";
+						case 3: // bad
+							return "bad";
+					}
+				}
 			}
+			return "good";
 		}
-		return 'shit';
+		else
+		{
+			//tryna do MS based judgment due to popular demand
+			var windowNames:Array<String> = ['sick', 'good', 'bad'];
+			if (ClientPrefs.marvelouses)
+				windowNames = ['marvelous', 'sick', 'good', 'bad']; //i dont think that works on haxe
+
+			// var diff = Math.abs(note.strumTime - Conductor.songPosition) / (PlayState.songMultiplier >= 1 ? PlayState.songMultiplier : 1);
+			for(i in 0...timingWindows.length) // based on 4 timing windows, will break with anything else
+			{
+				if (diff <= timingWindows[Math.round(Math.min(i, timingWindows.length - 1))])
+				{
+					return windowNames[i];
+				}
+			}
+			return 'shit';
+		}
 	}
 	public static function mapBPMChanges(song:SwagSong, ?songMultiplier:Float = 1.0)
 	{

@@ -68,25 +68,6 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
-	/*public static var ratingStuff:Array<Dynamic> = [
-			['You Suck!', 0.4], // 50%
-			['Shit', 0.7], // 80%
-			['Bad', 0.8], // 90%
-			['Okay', 0.951], // 95%
-			['Sick!', 0.986], // 98%
-			['Marvelous!', 0.991], // 99%
-			['Amazing!!', 0.999], // 99.1%
-			['Perfect!!', 1] // 100%
-		]; */
-	public static var ratingStuff:Array<Dynamic> = [
-		['D', 0.4], // 50%
-		['C', 0.7], // 80%
-		['B', 0.8], // 90%
-		['A', 0.951], // 95%
-		['S', 0.999], // 99%
-		['S+', 1] // 100%
-	];
-
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
 	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
 	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
@@ -2750,11 +2731,12 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		// Info Bar (Needs to be changed later)
-
+		// Info Bar
+		var ratingNameTwo:String = ratingName;
+		
 		if (ratingFC == "")
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses
-				+ ' // Rank: (?)';
+				+ ' // Rank: ?';
 		else
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + '[' + ratingFC + '] '
 				+ ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
@@ -4032,6 +4014,10 @@ class PlayState extends MusicBeatState
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
+
+		 /*if (ClientPrefs.keAccuracy)
+			totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale);*/
+	
 		// trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
 		if (ClientPrefs.playHitSounds)
@@ -4073,9 +4059,14 @@ class PlayState extends MusicBeatState
 				score = 200;
 				goods++;
 			case "sick": // sick
-				totalNotesHit += 1;
+            	/*Quick talk, if marvelouses are not disabled sicks should not give %100 rating
+                so instead, it will give you %87.5*/
+				if (!ClientPrefs.marvelouses)
+					totalNotesHit += 1;
+				else
+					totalNotesHit += 0.875;
 				sicks++;
-			case "marvelous":
+			case "marvelous": // marvelous
 				totalNotesHit += 1;
 				marvelouses++;
 		}
@@ -4087,7 +4078,10 @@ class PlayState extends MusicBeatState
 
 		if (!practiceMode && !cpuControlled)
 		{
-			songScore += score;
+			if (ClientPrefs.keAccuracy)
+				songScore += Math.round(score);
+			else
+				songScore += score;
 			songHits++;
 			totalPlayed++;
 			RecalculateRating();
@@ -5263,17 +5257,36 @@ class PlayState extends MusicBeatState
 
 			// Rating Name
 			if (ratingPercent >= 1)
-				ratingName = ratingStuff[ratingStuff.length - 1][0]; // Uses last string
+				if (ClientPrefs.letterGrades)
+					ratingName = Ratings.ratingStuff[Ratings.ratingStuff.length - 1][0]; // Uses last string
+				else
+					ratingName = Ratings.ratingSimple[Ratings.ratingSimple.length - 1][0]; // Uses last string
 			else
 			{
-				for (i in 0...ratingStuff.length - 1)
+			
+				if (ClientPrefs.letterGrades)
 				{
-					if (ratingPercent < ratingStuff[i][1])
+					for (i in 0...Ratings.ratingStuff.length - 1)
 					{
-						ratingName = ratingStuff[i][0];
-						break;
+						if (ratingPercent < Ratings.ratingStuff[i][1])
+						{
+							ratingName = Ratings.ratingStuff[i][0];
+							break;
+						}
 					}
 				}
+				
+				else 
+					{
+					for (i in 0...Ratings.ratingSimple.length - 1)
+						{
+							if (ratingPercent < Ratings.ratingSimple[i][1])
+							{
+								ratingName = Ratings.ratingSimple[i][0];
+								break;
+							}
+						}
+				 	}
 			}
 
 			// Rating FC
