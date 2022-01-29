@@ -2722,11 +2722,9 @@ class PlayState extends MusicBeatState
 		var ratingNameTwo:String = ratingName;
 
 		if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses
-				+ ' // Rank: ?';
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + '[' + ratingFC + '] '
-				+ ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + '[' + ratingFC + '] ' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
 
 		// Judgement Counters (on Info)
 		if (ClientPrefs.judgCounters == 'Info')
@@ -4099,6 +4097,8 @@ class PlayState extends MusicBeatState
 				uiSkin = 'classic';
 			case 'Bedrock':
 				uiSkin = 'bedrock';
+			case 'Score':
+				uiSkin = 'score';
 		}
 
 		rating.loadGraphic(Paths.image(getUiSkin(uiSkin, daRating, altPart)));
@@ -4534,6 +4534,7 @@ class PlayState extends MusicBeatState
 	{
 		if (Paths.formatToSongPath(SONG.song) != 'tutorial')
 			camZooming = true;
+		// Health Drain for Opponent Mode
 		if (opponentChart && health > 0.1)
 		{
 			health - 0.02;
@@ -5277,10 +5278,8 @@ class PlayState extends MusicBeatState
 			// Rating FC
 			ratingFC = "";
 			if (marvelouses > 0)
-				ratingFC = "PFC"; // Perfect Full Combo
-			if (sicks > 0 && ClientPrefs.marvelouses == false) // if Marv is off, then PFC is used for Sicks
-				ratingFC = "PFC";
-			else if (sicks > 0 && ClientPrefs.marvelouses)
+				ratingFC = "MFC"; // Marvelous Full Combo
+			if (sicks > 0)
 				ratingFC = "SFC"; // Sick Full Combo
 			if (goods > 0)
 				ratingFC = "GFC"; // Good Full Combo

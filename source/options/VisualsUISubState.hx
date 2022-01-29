@@ -68,7 +68,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.maxValue = 1;
 		option.changeValue = 0.1;
 		option.decimals = 1;
-		//addOption(option);
+		//addOption(option); // god I need to actually code this stupid thing in. - Gui iago
 
 			var option:Option = new Option('Time Bar:', "What should the Time Bar display?", 'timeBarType', 'string', 'Time Left',
 		['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
@@ -83,7 +83,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 			var option:Option = new Option('Judgement Skin:', "What should your Judgements look like?", 'uiSkin', 'string', 'Bedrock',
-		['Classic', 'Bedrock']);
+		['Classic', 'Bedrock'/*, 'Score'*/]);
 		addOption(option);
 
 			var option:Option = new Option('Note Skin:', "Funny Notes, going up and down, How should they look like?", 'noteSkin', 'string', 'Default',
@@ -103,6 +103,11 @@ class VisualsUISubState extends BaseOptionsMenu
 	{
 		updateNotes();
 	}
+
+	/*function onChangeJudgSkin()
+	{
+		updateJudgements();
+	}*/
 
 	#if !mobile
 	function onChangeFPSCounter()
