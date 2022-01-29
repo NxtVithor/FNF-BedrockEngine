@@ -82,7 +82,7 @@ class NotesSubState extends MusicBeatSubstate
 					note.frames = Paths.getSparrowAtlas('NOTE_diamond');
 				case "Square":
 					note.frames = Paths.getSparrowAtlas('NOTE_square');
-			} //haxe jumpscare - Gui iago
+			}
 					
 			var animations:Array<String> = ['purple0', 'blue0', 'green0', 'red0'];
 			note.animation.addByPrefix('idle', animations[i]);
