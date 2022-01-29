@@ -55,14 +55,24 @@ class NewMenuState extends MusicBeatState
 	public var note2:FlxSprite;
 	public var note3:FlxSprite;
 	public var note4:FlxSprite;
+	public var note5:FlxSprite;
+	public var note6:FlxSprite;
+	public var note7:FlxSprite;
+	public var note8:FlxSprite;
 	public var note1go:Bool = false;
 	public var note2go:Bool = false;
 	public var note3go:Bool = false;
 	public var note4go:Bool = false;
+	public var note5go:Bool = false;
+	public var note6go:Bool = false;
+	public var note7go:Bool = false;
+	public var note8go:Bool = false;
 	public var notes:FlxTypedGroup<Note>;
 
-	var randomY1:Array<Float> = [54, 46, 24, 67, 45, 34, 76];
-	var randomY2:Array<Float> = [65, 85, 43, 86, 87, 29, 95];
+	var randomY1:Array<Float> = [54, 46, 24, 67, 45, 34, 76, 86];
+	var randomY2:Array<Float> = [65, 85, 43, 86, 87, 29, 95, 87];
+	var randomY3:Array<Float> = [75, 34, 86, 67, 23, 54, 12, 76];
+	var randomY4:Array<Float> = [65, 56, 12, 23, 84, 34, 87, 35];
 
 	var downshadow:FlxSprite; // idk how to exsit --Luis
 
@@ -70,6 +80,8 @@ class NewMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
+	var coolTween:FlxTween;
+	var coolSprite:FlxSprite;
 
 	override function create()
 	{
@@ -259,6 +271,12 @@ class NewMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
+			if (controls.UI_LEFT_P)
+			{
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				MusicBeatState.resetState();
+			}
+
 			if (controls.BACK)
 			{
 				selectedSomethin = true;
@@ -342,12 +360,15 @@ class NewMenuState extends MusicBeatState
 		}
 
 		danote('update');
-		danote('move them');
 
 		FlxG.watch.addQuick("note1.y:", note1.y);
 		FlxG.watch.addQuick("note2.y:", note2.y);
 		FlxG.watch.addQuick("note3.y:", note3.y);
 		FlxG.watch.addQuick("note4.y:", note4.y);
+		FlxG.watch.addQuick("note5.y:", note5.y);
+		FlxG.watch.addQuick("note6.y:", note6.y);
+		FlxG.watch.addQuick("note7.y:", note7.y);
+		FlxG.watch.addQuick("note8.y:", note8.y);
 
 		super.update(elapsed);
 
@@ -381,6 +402,12 @@ class NewMenuState extends MusicBeatState
 				}
 				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
 				spr.centerOffsets();
+				if (coolTween != null)
+					coolTween.destroy();
+				if (coolSprite != null)
+					coolSprite.angle = spr.angle;
+				coolSprite = spr;
+				coolTween = FlxTween.angle(spr, spr.angle, -spr.angle, Conductor.crochet / 1000, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 			}
 		});
 	}
@@ -421,6 +448,7 @@ class NewMenuState extends MusicBeatState
 								default:
 									note1.y += 86;
 							}
+							FlxTween.tween(note1, {alpha: 0}, 7.8);
 						default:
 							switch (FlxG.random.int(1, 3))
 							{
@@ -431,6 +459,7 @@ class NewMenuState extends MusicBeatState
 								case 3:
 									note1.y -= 72;
 							}
+							FlxTween.tween(note1, {alpha: 0}, 8.5);
 					}
 
 					note2 = new FlxSprite();
@@ -454,6 +483,7 @@ class NewMenuState extends MusicBeatState
 								default:
 									note2.y += 86;
 							}
+							FlxTween.tween(note2, {alpha: 0}, 7);
 						default:
 							switch (FlxG.random.int(1, 3))
 							{
@@ -464,6 +494,7 @@ class NewMenuState extends MusicBeatState
 								case 3:
 									note2.y -= 6;
 							}
+							FlxTween.tween(note2, {alpha: 0}, 8.6);
 					}
 
 					note3 = new FlxSprite();
@@ -487,6 +518,7 @@ class NewMenuState extends MusicBeatState
 								default:
 									note3.y += 86;
 							}
+							FlxTween.tween(note3, {alpha: 0}, 7.3);
 						default:
 							switch (FlxG.random.int(1, 3))
 							{
@@ -497,6 +529,7 @@ class NewMenuState extends MusicBeatState
 								case 3:
 									note3.y -= 6;
 							}
+							FlxTween.tween(note3, {alpha: 0}, 8.9);
 					}
 
 					note4 = new FlxSprite();
@@ -520,6 +553,7 @@ class NewMenuState extends MusicBeatState
 								default:
 									note4.y += 104;
 							}
+							FlxTween.tween(note4, {alpha: 0}, 7.3);
 						default:
 							switch (FlxG.random.int(1, 3))
 							{
@@ -530,12 +564,193 @@ class NewMenuState extends MusicBeatState
 								case 3:
 									note4.y -= 141;
 							}
+							FlxTween.tween(note4, {alpha: 0}, 8.5);
+					}
+
+					note5 = new FlxSprite();
+					note5.frames = Paths.getSparrowAtlas(assets, library);
+					note5.scrollFactor.set();
+					note5.antialiasing = ClientPrefs.globalAntialiasing;
+					note5.animation.addByPrefix('purpleScroll', 'purple0', 24, false);
+					note5.setGraphicSize(Std.int(note5.width * 0.7));
+					note5.animation.play('purpleScroll');
+					note5.updateHitbox();
+					note5.x = note1.x;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note5.y += 132;
+								case 2:
+									note5.y += 96;
+								default:
+									note5.y += 86;
+							}
+							FlxTween.tween(note5, {alpha: 0}, 14.8);
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note5.y -= 304;
+								case 2:
+									note5.y -= 35;
+								case 3:
+									note5.y -= 72;
+							}
+							FlxTween.tween(note5, {alpha: 0}, 16.5);
+					}
+					switch (FlxG.random.int(1, 3))
+					{
+						case 1:
+							note5.y - 400;
+						case 2:
+							note5.y - 600;
+						case 3:
+							note5.y - 800;
+					}
+
+					note6 = new FlxSprite();
+					note6.frames = Paths.getSparrowAtlas(assets, library);
+					note6.scrollFactor.set();
+					note6.antialiasing = ClientPrefs.globalAntialiasing;
+					note6.animation.addByPrefix('blueScroll', 'blue0');
+					note6.setGraphicSize(Std.int(note6.width * 0.7));
+					note6.animation.play('blueScroll');
+					note6.updateHitbox();
+					note6.x = note1.x + 120;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note6.y += 132;
+								case 2:
+									note6.y += 96;
+								default:
+									note6.y += 86;
+							}
+							FlxTween.tween(note6, {alpha: 0}, 14);
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note6.y -= 304;
+								case 2:
+									note6.y -= 35;
+								case 3:
+									note6.y -= 6;
+							}
+							FlxTween.tween(note6, {alpha: 0}, 16.6);
+					}
+					switch (FlxG.random.int(1, 3))
+					{
+						case 1:
+							note6.y - 400;
+						case 2:
+							note6.y - 600;
+						case 3:
+							note6.y - 800;
+					}
+
+					note7 = new FlxSprite();
+					note7.frames = Paths.getSparrowAtlas(assets, library);
+					note7.scrollFactor.set();
+					note7.antialiasing = ClientPrefs.globalAntialiasing;
+					note7.animation.addByPrefix('greenScroll', 'green0');
+					note7.setGraphicSize(Std.int(note7.width * 0.7));
+					note7.animation.play('greenScroll');
+					note7.updateHitbox();
+					note7.x = note2.x + 120;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note7.y += 132;
+								case 2:
+									note7.y += 96;
+								default:
+									note7.y += 86;
+							}
+							FlxTween.tween(note7, {alpha: 0}, 14.3);
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note7.y -= 304;
+								case 2:
+									note7.y -= 104;
+								case 3:
+									note7.y -= 6;
+							}
+							FlxTween.tween(note7, {alpha: 0}, 16.9);
+					}
+					switch (FlxG.random.int(1, 3))
+					{
+						case 1:
+							note7.y - 400;
+						case 2:
+							note7.y - 600;
+						case 3:
+							note7.y - 800;
+					}
+
+					note8 = new FlxSprite();
+					note8.frames = Paths.getSparrowAtlas(assets, library);
+					note8.scrollFactor.set();
+					note8.antialiasing = ClientPrefs.globalAntialiasing;
+					note8.animation.addByPrefix('redScroll', 'red0');
+					note8.setGraphicSize(Std.int(note8.width * 0.7));
+					note8.animation.play('redScroll');
+					note8.updateHitbox();
+					note8.x = note3.x + 120;
+					switch (FlxG.random.int(1, 2))
+					{
+						case 1:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note8.y += 132;
+								case 2:
+									note8.y += 96;
+								default:
+									note8.y += 104;
+							}
+							FlxTween.tween(note8, {alpha: 0}, 14.3);
+						default:
+							switch (FlxG.random.int(1, 3))
+							{
+								case 1:
+									note8.y -= 250;
+								case 2:
+									note8.y -= 35;
+								case 3:
+									note8.y -= 141;
+							}
+							FlxTween.tween(note8, {alpha: 0}, 16.5);
+					}
+					switch (FlxG.random.int(1, 3))
+					{
+						case 1:
+							note8.y - 400;
+						case 2:
+							note8.y - 600;
+						case 3:
+							note8.y - 800;
 					}
 
 					add(note1);
 					add(note2);
 					add(note3);
 					add(note4);
+					add(note5);
+					add(note6);
+					add(note7);
+					add(note8);
 				}
 			case 'update':
 				{
@@ -563,9 +778,30 @@ class NewMenuState extends MusicBeatState
 						note3go = true;
 					if (note4.y > 800)
 						note4go = true;
-				}
-			case 'move them':
-				{
+					if (note5.y < 800)
+					{
+						note5.y += 1 / (ClientPrefs.framerate / 100);
+					}
+					if (note6.y < 800)
+					{
+						note6.y += 1 / (ClientPrefs.framerate / 100);
+					}
+					if (note7.y < 800)
+					{
+						note7.y += 1 / (ClientPrefs.framerate / 100);
+					}
+					if (note8.y < 800)
+					{
+						note8.y += 1 / (ClientPrefs.framerate / 100);
+					}
+					if (note5.y > 800)
+						note5go = true;
+					if (note6.y > 800)
+						note6go = true;
+					if (note7.y > 800)
+						note3go = true;
+					if (note8.y > 800)
+						note8go = true;
 					if (note1go)
 					{
 						switch (FlxG.random.int(1, 3))
@@ -579,6 +815,8 @@ class NewMenuState extends MusicBeatState
 							case 4:
 								note1.y -= 800 + 30 + 16;
 						}
+						note1.alpha = 1;
+						FlxTween.tween(note1, {alpha: 0}, 8.5);
 						note1go = false;
 					}
 					if (note2go)
@@ -594,6 +832,8 @@ class NewMenuState extends MusicBeatState
 							case 4:
 								note2.y -= 800 + 30 + 12;
 						}
+						note2.alpha = 1;
+						FlxTween.tween(note2, {alpha: 0}, 8.5);
 						note2go = false;
 					}
 					if (note3go)
@@ -609,6 +849,8 @@ class NewMenuState extends MusicBeatState
 							case 4:
 								note3.y -= 800 + 30 + 16;
 						}
+						note3.alpha = 1;
+						FlxTween.tween(note3, {alpha: 0}, 8.5);
 						note3go = false;
 					}
 					if (note4go)
@@ -624,7 +866,105 @@ class NewMenuState extends MusicBeatState
 							case 4:
 								note4.y -= 800 + 30 + 10;
 						}
+						note4.alpha = 1;
+						FlxTween.tween(note4, {alpha: 0}, 8.5);
 						note4go = false;
+					}
+					if (note5go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note5.y -= 850 + 30 + 68;
+							case 2:
+								note5.y -= 850 + 30 + 76;
+							case 3:
+								note5.y -= 800 + 30 + 56;
+							case 4:
+								note5.y -= 800 + 30 + 16;
+						}
+						switch (FlxG.random.int(1, 2))
+						{
+							case 1:
+								note5.y - 200;
+							case 2:
+								note5.y - 400;
+						}
+						note5.alpha = 1;
+						FlxTween.tween(note5, {alpha: 0}, 8.5);
+						note5go = false;
+					}
+					if (note6go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note6.y -= 800 + 30 + 104;
+							case 2:
+								note6.y -= 800 + 30 + 76;
+							case 3:
+								note6.y -= 850 + 30 + 72;
+							case 4:
+								note6.y -= 850 + 30 + 12;
+						}
+						switch (FlxG.random.int(1, 2))
+						{
+							case 1:
+								note6.y - 200;
+							case 2:
+								note6.y - 400;
+						}
+						note6.alpha = 1;
+						FlxTween.tween(note6, {alpha: 0}, 8.5);
+						note6go = false;
+					}
+					if (note7go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note7.y -= 800 + 30 + 87;
+							case 2:
+								note7.y -= 850 + 30 + 76;
+							case 3:
+								note7.y -= 800 + 30 + 56;
+							case 4:
+								note7.y -= 850 + 30 + 16;
+						}
+						switch (FlxG.random.int(1, 2))
+						{
+							case 1:
+								note7.y - 200;
+							case 2:
+								note7.y - 400;
+						}
+						note7.alpha = 1;
+						FlxTween.tween(note7, {alpha: 0}, 8.5);
+						note7go = false;
+					}
+					if (note8go)
+					{
+						switch (FlxG.random.int(1, 3))
+						{
+							case 1:
+								note8.y -= 800 + 30 + 76;
+							case 2:
+								note8.y -= 850 + 30 + 68;
+							case 3:
+								note8.y -= 800 + 30 + 130;
+							case 4:
+								note8.y -= 850 + 30 + 10;
+						}
+						switch (FlxG.random.int(1, 2))
+						{
+							case 1:
+								note8.y - 200;
+							case 2:
+								note8.y - 400;
+						}
+						note8.alpha = 1;
+						FlxTween.tween(note8, {alpha: 0}, 8.5);
+						note8go = false;
 					}
 				}
 		}
