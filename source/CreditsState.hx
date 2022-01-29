@@ -105,6 +105,13 @@ class CreditsState extends MusicBeatState
 				'31b0d1'
 			],
 			[
+				'Stilic',
+				'stilic',
+				'Menu Animations, Freeplay Bump, Max Optimization, Complex Accuracy Lua to Source',
+				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809',
+				'fb9b4b'
+			],
+			[
 				'AquaStrikr',
 				'aqua',
 				'Artist - Judgements Design',
@@ -112,18 +119,34 @@ class CreditsState extends MusicBeatState
 				'737BCB'
 			],
 			[
-				'Dex Dousky',
-				'dex',
-				'Main Menu Music',
-				'https://twitter.com/cachorro_sonico',
-				'ffdd33'
-			],
-			[
 				'ShadowBowser',
 				'shadowbowser',
 				'Artist - Credits Screen Icons',
 				'https://www.reddit.com/u/JulioHaHaHa',
 				'444444'
+			],
+			[''],
+			['Bedrock Contribuitors'],
+			[
+				'NxtVithor',
+				'nxt',
+				'Note Skins (Circle, Bar)',
+				'https://twitter.com/NxtVithor',
+				'ff00e4'
+			],
+			[
+				'Daev',
+				'daev',
+				'Note Skins (Diamond, Square)',
+				'https://twitter.com/FnfVsAdms',
+				'F73838'
+			],
+			[
+				'Dex Dousky',
+				'dex',
+				'Main Menu Music, Game Over Music',
+				'https://twitter.com/cachorro_sonico',
+				'ffdd33'
 			],
 			[''],
 			['Original PRs'],
@@ -151,7 +174,7 @@ class CreditsState extends MusicBeatState
 			[
 				'i-winxd',
 				'i-winxd',
-				'Complex Accuracy',
+				'Complex Accuracy (Lua)',
 				'https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917',
 				'ffaee9'
 			],
@@ -182,13 +205,6 @@ class CreditsState extends MusicBeatState
 				'Time Signatures on Chart Editor',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3428',
 				'8bfa8b'
-			],
-			[
-				'Stilic',
-				'stilic',
-				'Menu Animations, Freeplay Bump, Max Optimization',
-				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809',
-				'fb9b4b'
 			],
 			[
 				'XtraXD1',
