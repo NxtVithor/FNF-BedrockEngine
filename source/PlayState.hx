@@ -987,10 +987,6 @@ class PlayState extends MusicBeatState
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
 
-		if (ClientPrefs.timeBarUi == 'Only Text')
-		remove(timeBarBG);
-		remove(timeBar);
-
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
@@ -1006,6 +1002,10 @@ class PlayState extends MusicBeatState
 			timeTxt.size = 18;
 			timeTxt.y += 5;
 		}
+
+		/*if (ClientPrefs.timeBarUi == 'Only Text')
+			remove(timeBarBG);
+		remove(timeBar);*/
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
