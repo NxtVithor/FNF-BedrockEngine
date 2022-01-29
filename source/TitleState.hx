@@ -182,14 +182,14 @@ class TitleState extends MusicBeatState
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
-		if(!initialized && FlxG.save.data != null && FlxG.save.data.fullscreen)
+		if (!initialized && FlxG.save.data != null && FlxG.save.data.fullscreen)
 		{
 			FlxG.fullscreen = FlxG.save.data.fullscreen;
-			//trace('LOADED FULLSCREEN SETTING!!');
+			// trace('LOADED FULLSCREEN SETTING!!');
 		}
-		
+
 		ClientPrefs.loadPrefs();
-		
+
 		Highscore.load();
 
 		if (FlxG.save.data.weekCompleted != null)
@@ -478,11 +478,10 @@ class TitleState extends MusicBeatState
 					}
 					else
 					{
-						MusicBeatState.switchState(new MainMenuState());
 						if (ClientPrefs.lowEndMode)
-						{
 							MusicBeatState.switchState(new SimpleMenuState());
-						}
+						else
+							MusicBeatState.switchState(new MainMenuState());
 					}
 					closedState = true;
 				});
@@ -587,20 +586,20 @@ class TitleState extends MusicBeatState
 	}
 
 	function textDataText(line:Int)
-		{
-			var lineText:Null<String> = titleTextData[line];
+	{
+		var lineText:Null<String> = titleTextData[line];
 
-			if(lineText != null)
+		if (lineText != null)
+		{
+			if (lineText.contains(";"))
 			{
-				if(lineText.contains(";"))
-				{
-					var coolText = lineText.split(";"); 
-					createCoolText(coolText);
-				}
-				else
-					addMoreText(lineText);
+				var coolText = lineText.split(";");
+				createCoolText(coolText);
 			}
+			else
+				addMoreText(lineText);
 		}
+	}
 
 	public var titleTextData:Array<String>;
 
@@ -628,7 +627,7 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		if (!closedState) //so you might want to edit delays
+		if (!closedState) // so you might want to edit delays
 		{
 			sickBeats++;
 			switch (sickBeats)
@@ -697,6 +696,7 @@ class TitleState extends MusicBeatState
 	}
 
 	var skippedIntro:Bool = false;
+
 	function skipIntro():Void
 	{
 		if (!skippedIntro)
