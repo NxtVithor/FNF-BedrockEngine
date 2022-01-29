@@ -37,9 +37,12 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		rpcTitle = 'Tweaking the Graphics'; //for Discord Rich Presence
 
 		var option:Option = new Option('Anti-Aliasing', 'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.', 'globalAntialiasing', 'bool', true);
-		option.showBoyfriend = true;
+		option.showBoyfriend = false; // this crashes for whatever reason
 		option.onChange = onChangeAntiAliasing; //Changing onChange is only needed if you want to make a special interaction after it changes the value
 		addOption(option);
+
+		var option:Option = new Option('Disable Characters', 'If checked, disable stage characters in order to imrpove performance, may not improve as much as other options.', 'disableChars', 'bool', true);
+		//addOption(option);
 
 		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		var option:Option = new Option('Framerate',

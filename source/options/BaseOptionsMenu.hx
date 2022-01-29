@@ -132,7 +132,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				previewNotes = new AttachedSprite();
 				previewNotes.loadGraphic(Paths.image('previewNotes'), true, 164, 164);
 				previewNotes.shader = colorSwap.shader;
-				previewNotes.animation.add('frames', [0, 1, 2], 0);
+				previewNotes.animation.add('frames', [0, 1, 2/*, 3, 4*/], 0);
 				previewNotes.animation.play('frames');
 				previewNotes.sprTracker = textChild;
 				previewNoteOption = optionsArray[i];

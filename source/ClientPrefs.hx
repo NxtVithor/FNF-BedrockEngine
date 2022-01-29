@@ -78,6 +78,7 @@ class ClientPrefs {
 	public static var noteGlow:Bool = false;
 	public static var instantRespawn:Bool = false;
 	public static var letterGrades:Bool = true;
+	public static var disableChars:Bool = false;
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
@@ -166,6 +167,7 @@ class ClientPrefs {
 		FlxG.save.data.noteGlow = noteGlow;
 		FlxG.save.data.instantRespawn = instantRespawn;
 		FlxG.save.data.letterGrades = letterGrades;
+		FlxG.save.data.disableChars = disableChars;
 
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
@@ -327,6 +329,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.letterGrades != null) {
 			letterGrades = FlxG.save.data.letterGrades;
+		}
+		if(FlxG.save.data.disableChars != null) {
+			disableChars = FlxG.save.data.disableChars;
 		}
 		
 		// Added by Bedrock Engine (via Pull Requests)

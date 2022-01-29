@@ -726,8 +726,17 @@ class PlayState extends MusicBeatState
 		if (curStage == 'limo')
 			add(limo);
 
-		add(dadGroup);
-		add(boyfriendGroup);
+		/*if (ClientPrefs.disableChars) {
+			remove(dadGroup);
+			remove(gfGroup);
+			remove(boyfriendGroup);
+		} else {*/
+			add(dadGroup);
+			//add(gfGroup);
+			add(boyfriendGroup);
+		//}
+
+		//need to make Disable Characters also disable camera movement, so it's commented for now - Gui iago
 
 		if (curStage == 'spooky')
 		{
