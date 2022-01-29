@@ -107,21 +107,14 @@ class CreditsState extends MusicBeatState
 			[
 				'Stilic',
 				'stilic',
-				'Menu Animations, Freeplay Bump, Max Optimization, Complex Accuracy Lua to Source',
+				'Menu Animations, Freeplay Bump, Max Optimization, Complex Accuracy Lua to Source.',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809',
 				'fb9b4b'
 			],
 			[
-				'AquaStrikr',
-				'aqua',
-				'Artist - Judgements Design',
-				'https://twitter.com/aqua_strikr',
-				'737BCB'
-			],
-			[
 				'ShadowBowser',
 				'shadowbowser',
-				'Artist - Credits Screen Icons',
+				'Artist, Credits Screen Icons',
 				'https://www.reddit.com/u/JulioHaHaHa',
 				'444444'
 			],
@@ -135,11 +128,11 @@ class CreditsState extends MusicBeatState
 				'ff00e4'
 			],
 			[
-				'Daev',
-				'daev',
-				'Note Skins (Diamond, Square)',
-				'https://twitter.com/FnfVsAdms',
-				'F73838'
+				'Suok',
+				'suok',
+				'Title Screen Logo',
+				'https://twitter.com/oSuOk3',
+				'ff0062'
 			],
 			[
 				'Dex Dousky',
