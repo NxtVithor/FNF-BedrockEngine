@@ -38,7 +38,7 @@ class SimpleMenuState extends MusicBeatState
 	var options:Array<String> = [
 		'story_mode',
 		'freeplay',
-		'ost',
+		/*'ost',*/
 		#if MODS_ALLOWED
 		'mods',
 		#end
