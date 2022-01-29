@@ -809,7 +809,7 @@ class MainMenuState extends MusicBeatState
 					if (note6.y > 800)
 						note6go = true;
 					if (note7.y > 800)
-						note3go = true;
+						note7go = true;
 					if (note8.y > 800)
 						note8go = true;
 					if (note1go)

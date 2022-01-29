@@ -1670,7 +1670,6 @@ class PlayState extends MusicBeatState
 			foundFile = true;
 		}
 		} if (foundFile)
-
 		{
 			inCutscene = true;
 			var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
@@ -1696,7 +1695,7 @@ class PlayState extends MusicBeatState
 
 	function startAndEnd()
 	{
-		if(endingSong)
+		if (endingSong)
 			endSong();
 		else
 			startCountdown();
@@ -2721,7 +2720,7 @@ class PlayState extends MusicBeatState
 
 		// Info Bar
 		var ratingNameTwo:String = ratingName;
-		
+
 		if (ratingFC == "")
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses
 				+ ' // Rank: ?';
@@ -4003,9 +4002,9 @@ class PlayState extends MusicBeatState
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
 
-		 /*if (ClientPrefs.keAccuracy)
-			totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale);*/
-	
+		/*if (ClientPrefs.keAccuracy)
+		totalNotesHit += Etterna.wife3(-noteDiff, Conductor.timeScale); */
+
 		// trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
 		if (ClientPrefs.playHitSounds)
@@ -4047,8 +4046,8 @@ class PlayState extends MusicBeatState
 				score = 200;
 				goods++;
 			case "sick": // sick
-            	/*Quick talk, if marvelouses are not disabled sicks should not give %100 rating
-                so instead, it will give you %87.5*/
+				/*Quick talk, if marvelouses are not disabled sicks should not give %100 rating
+				so instead, it will give you %87.5 */
 				if (!ClientPrefs.marvelouses)
 					totalNotesHit += 1;
 				else
@@ -4535,6 +4534,10 @@ class PlayState extends MusicBeatState
 	{
 		if (Paths.formatToSongPath(SONG.song) != 'tutorial')
 			camZooming = true;
+		if (opponentChart && health > 0.1)
+		{
+			health - 0.02;
+		}
 
 		var char:Character = dad;
 		if (opponentChart)
@@ -5247,7 +5250,6 @@ class PlayState extends MusicBeatState
 					ratingName = Ratings.ratingSimple[Ratings.ratingSimple.length - 1][0]; // Uses last string
 			else
 			{
-			
 				if (ClientPrefs.letterGrades)
 				{
 					for (i in 0...Ratings.ratingStuff.length - 1)
@@ -5259,18 +5261,17 @@ class PlayState extends MusicBeatState
 						}
 					}
 				}
-				
-				else 
-					{
+				else
+				{
 					for (i in 0...Ratings.ratingSimple.length - 1)
+					{
+						if (ratingPercent < Ratings.ratingSimple[i][1])
 						{
-							if (ratingPercent < Ratings.ratingSimple[i][1])
-							{
-								ratingName = Ratings.ratingSimple[i][0];
-								break;
-							}
+							ratingName = Ratings.ratingSimple[i][0];
+							break;
 						}
-				 	}
+					}
+				}
 			}
 
 			// Rating FC
