@@ -75,7 +75,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 			var option:Option = new Option('Time Bar Style:', "What should the Time Bar look like?", 'timeBarUi', 'string', 'Psych Engine',
-		['Psych Engine', 'Kade Engine']);
+		['Psych Engine', 'Kade Engine', 'Only Text']);
 		addOption(option);
 
 			var option:Option = new Option('Judgement Counters:', "In which position should the Judgement Counters be?", 'judgCounters', 'string', 'Left',

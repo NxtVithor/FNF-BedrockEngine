@@ -987,6 +987,10 @@ class PlayState extends MusicBeatState
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
 
+		if (ClientPrefs.timeBarUi == 'Only Text')
+		remove(timeBarBG);
+		remove(timeBar);
+
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
