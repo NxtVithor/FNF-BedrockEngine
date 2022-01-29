@@ -72,7 +72,7 @@ class NotesSubState extends MusicBeatSubstate
 			
 			switch(ClientPrefs.noteSkin)
 			{
-				case "Default:":
+				case "Default":
 					note.frames = Paths.getSparrowAtlas('NOTE_assets');
 				case "Circle":
 					note.frames = Paths.getSparrowAtlas('NOTE_circle');
