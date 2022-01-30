@@ -68,7 +68,7 @@ class HealthIcon extends FlxSprite
 					trace(iconSupport);
 				}
 
-			if (!iconSupport)
+			if (iconSupport)
 			{
 				var name:String = 'icons/' + char;
 				if (!Paths.fileExists('images/' + name + '.png', IMAGE))

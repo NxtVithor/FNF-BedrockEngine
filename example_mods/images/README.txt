@@ -1,5 +1,3 @@
-OLD ICON SUPPORT COMES BY DEFAULT, WHICH MEANS THERE WON'T BE ANY WINNING ICON
-AND ENGINE WON'T USE 450X150 IMAGES. IF YOU DO NOT WANT ORIGINAL ICON SUPPORT
-DELETE THE iconSupport.txt FILE THEN PUT YOUR ICONS TO mods/images/icons.
-IF YOU DO WANT ORIGINAL ICON SUPPORT, DO NOT TOUCH THE iconSupport.txt AND PUT YOUR
-ICONS TO mods/images/icons-old!!!
+Also it does not matter if you write anything in iconSupport.txt
+If you do want winning icons, just make sure file is here and it's name is iconSupport.txt.
+If you do not want it, just move to somewhere else or delete it.
