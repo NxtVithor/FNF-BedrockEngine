@@ -57,23 +57,31 @@ class HealthIcon extends FlxSprite
 	{
 		if (this.char != char)
 		{
-			if (content=='false')
-			{
 			var name:String = 'icons/' + char;
+			if(content=='true') name = 'icons/old' + char;
 			if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-				name = 'icons/icon-' + char; // Older versions of psych engine's support
+			{
+			name = 'icons/icon-' + char; // Older versions of psych engine's support
+			if(content=='true') name = 'icons-old/icon-' + char;
+			}
 			if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-				name = 'icons/icon-face'; // Prevents crash from missing icon
+			{
+				name = 'icons/icon-face';// Prevents crash from missing icon
+				if(content=='true') name 'icons-old/icon-face';
+			}
 			var file:Dynamic = Paths.image(name);
 
 			loadGraphic(file); // Load stupidly first for getting the file size
 			loadGraphic(file, true, Math.floor(width / 3), Math.floor(height)); // Then load it fr
-			iconOffsets[0] = (width - 150) / 3;
-			iconOffsets[1] = (width - 150) / 3;
-			iconOffsets[1] = (width - 150) / 3;
+			if(content=='true') loadGraphic(file, true, Math.floor(width / 2), Math.floor(height)); 
+			
+			iconOffsets[0] = (width - 150) / 2;
+			iconOffsets[1] = (width - 150) / 2;
+			if(content !='true') iconOffsets[2] = (width - 150) / 2; //you really dont need to threes there
 			updateHitbox();
 
 			animation.add(char, [0, 1, 2], 0, false, isPlayer);
+			if(content=='true') animation.add(char, [0, 1], 0, false, isPlayer);
 			animation.play(char);
 			this.char = char;
 
@@ -82,57 +90,6 @@ class HealthIcon extends FlxSprite
 				{
 					antialiasing = false;
 				}
-		}
-		else if (content=='true')
-			{
-				var name:String = 'icons-old/' + char;
-				if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-					name = 'icons-old/icon-' + char; // Older versions of psych engine's support
-				if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-					name = 'icons-old/icon-face'; // Prevents crash from missing icon
-				var file:Dynamic = Paths.image(name);
-
-				loadGraphic(file); // Load stupidly first for getting the file size
-				loadGraphic(file, true, Math.floor(width / 2), Math.floor(height)); // Then load it fr
-				iconOffsets[0] = (width - 150) / 2;
-				iconOffsets[1] = (width - 150) / 2;
-				updateHitbox();
-
-				animation.add(char, [0, 1], 0, false, isPlayer);
-				animation.play(char);
-				this.char = char;
-
-				antialiasing = ClientPrefs.globalAntialiasing;
-				if (char.endsWith('-pixel'))
-					{
-						antialiasing = false;
-					}
-			}
-		else 
-			{
-				var name:String = 'icons-old/' + char;
-				if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-					name = 'icons-old/icon-' + char; // Older versions of psych engine's support
-				if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-					name = 'icons-old/icon-face'; // Prevents crash from missing icon
-				var file:Dynamic = Paths.image(name);
-
-				loadGraphic(file); // Load stupidly first for getting the file size
-				loadGraphic(file, true, Math.floor(width / 2), Math.floor(height)); // Then load it fr
-				iconOffsets[0] = (width - 150) / 2;
-				iconOffsets[1] = (width - 150) / 2;
-				updateHitbox();
-
-				animation.add(char, [0, 1], 0, false, isPlayer);
-				animation.play(char);
-				this.char = char;
-
-				antialiasing = ClientPrefs.globalAntialiasing;
-				if (char.endsWith('-pixel'))
-					{
-						antialiasing = false;
-					}
-			}
 		}
 	}
 
