@@ -167,7 +167,7 @@ class FunkinConfirm extends FlxSpriteGroup
     **/
     public function show()
     {
-        if (_title.lettersArray[_title.lettersArray.length - 1].angle != 25)
+        if (_title.lettersArray[_title.lettersArray.length - 1].angle != 25 || isShown)
             return false;
         FlxTween.tween(_bg, {alpha: 0.6}, 1, {ease: FlxEase.sineInOut});
         for (i in 0..._title.lettersArray.length)
@@ -185,7 +185,7 @@ class FunkinConfirm extends FlxSpriteGroup
     **/
     public function hide()
     {
-        if (_title.lettersArray[_title.lettersArray.length - 1].angle != 0)
+        if (_title.lettersArray[_title.lettersArray.length - 1].angle != 0 || !isShown)
             return false;
         FlxTween.tween(_bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
         for (i in 0..._title.lettersArray.length)
