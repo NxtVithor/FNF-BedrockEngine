@@ -389,7 +389,7 @@ class CreditsState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		warningDialogue.setText("YOU ARE ABOUT TO GO TO: \n"
-		+ creditsStuff[curSelected][3] + "\nARE YOU ABSOLUTELY SURE YOU WANT TO GO TO THIS URL? \n(Y - Yes, N - No)");
+		+ creditsStuff[curSelected][3] + "\nARE YOU ABSOLUTELY SURE YOU WANT TO GO TO THIS URL? \n(Y - Yes, N - No, C - Close this window)");
 
 		if (FlxG.sound.music.volume < 0.7)
 		{

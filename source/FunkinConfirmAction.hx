@@ -4,5 +4,5 @@ enum FunkinConfirmAction
 {
     YES_BUTTON_PRESSED;
     NO_BUTTON_PRESSED;
-    ESCAPE_PRESSED;
+    CLOSE;
 }
