@@ -94,26 +94,26 @@ class CreditsState extends MusicBeatState
 				'gui',
 				'Engine Coder and Publisher',
 				'https://github.com/Gui-iago',
-				'8344CC'
+				'26B65B'
 			],
 			[
 				'Luisinh010',
 				'luis',
 				'Engine Coder',
 				'https://github.com/Luisinhi010',
-				'31b0d1'
+				'DBAC50'
 			],
 			[
 				'Stilic',
 				'stilic',
 				'Menu Animations, Freeplay Bump, Max Optimization, Complex Accuracy Lua to Source.',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809',
-				'fb9b4b'
+				'FF873C'
 			],
 			[
 				'ShadowBowser',
 				'shadowbowser',
-				'Artist, Credits Screen Icons',
+				'Artist, Old Credits Screen Icons',
 				'https://www.reddit.com/u/JulioHaHaHa',
 				'444444'
 			],
@@ -121,24 +121,38 @@ class CreditsState extends MusicBeatState
 			['Bedrock Contribuitors'],
 			[
 				'NxtVithor',
-				'nxt',
-				'Note Skins (Circle, Bar)',
+				'nxtvithor',
+				'Note Skins',
 				'https://twitter.com/NxtVithor',
-				'ff00e4'
+				'FF00E4'
 			],
 			[
 				'Suok',
 				'suok',
-				'Title Screen Logo',
+				'Title Screen Logo, Credits Icons',
 				'https://twitter.com/oSuOk3',
 				'ff0062'
+			],
+			[
+				'Prynnho',
+				'prynn',
+				'Rich Presence Designer',
+				'https://twitter.com/PrynnShilvaru',
+				'4253A2'
 			],
 			[
 				'Dex Dousky',
 				'dex',
 				'Main Menu Music, Game Over Music',
 				'https://twitter.com/cachorro_sonico',
-				'ffdd33'
+				'58320D'
+			],
+			[
+				'LazyBudd',
+				'lazyb',
+				'Offset Song',
+				'https://twitter.com/Lazy_Weeddy_boy',
+				'FF6200'
 			],
 			[''],
 			['Original PRs'],
@@ -147,35 +161,35 @@ class CreditsState extends MusicBeatState
 				'burger',
 				'Json-editable Menus',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3891',
-				'e7e224'
+				'D78B50'
 			],
 			[
 				'CerBor',
 				'cerbor',
 				'Difficulty Drop Down on Chart Menu',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/2896',
-				'c764db'
+				'C952E0'
 			],
 			[
 				'HiroMizuki',
 				'hirom',
 				'Pixel Note Splashes',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/1792',
-				'722905'
+				'31FF7C'
 			],
 			[
 				'i-winxd',
 				'i-winxd',
-				'Complex Accuracy (Lua)',
+				'Complex Accuracy (Old Lua)',
 				'https://github.com/ShadowMario/FNF-PsychEngine/discussions/2917',
-				'ffaee9'
+				'FFA6D2'
 			],
 			[
 				'lemz1',
 				'lemz1',
 				'Play as Opponent',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/2770',
-				'74c3fb'
+				'48C7FF'
 			],
 			[
 				'l1ttleO',
@@ -189,21 +203,21 @@ class CreditsState extends MusicBeatState
 				'magnums',
 				'Credits Warning',
 				'https://github.com/magnumsrtisswag',
-				'7e7b6d'
+				'333333'
 			],
 			[
 				'Starmapo',
 				'starmapo',
 				'Time Signatures on Chart Editor',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3428',
-				'8bfa8b'
+				'83FF87'
 			],
 			[
 				'XtraXD1',
 				'xtraxd1',
 				'Show/Hide Weeks temporally + Getting/Setting on Source Code',
 				'https://github.com/ShadowMario/FNF-PsychEngine/pull/3192',
-				'76aac5'
+				'91CBFF'
 			],
 			[''],
 			['Engine Shoutouts'],
@@ -219,7 +233,7 @@ class CreditsState extends MusicBeatState
 				'verwex',
 				'Made Mic´d Up Engine, Winning Icons, Original Code for Menu Animations',
 				'https://github.com/Verwex/Funkin-Mic-d-Up-SC',
-				'2e3d62'
+				'F3B56B'
 			],
 			[''],
 			['Psych Engine Team'],
