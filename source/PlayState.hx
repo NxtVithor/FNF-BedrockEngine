@@ -118,8 +118,6 @@ class PlayState extends MusicBeatState
 
 	public var vocals:FlxSound;
 
-	public static var content:String = sys.io.File.getContent('assets/data/oldIcons.txt');
-
 	public var dad:Character;
 	public var gf:Character;
 	public var boyfriend:Boyfriend;
@@ -2839,15 +2837,8 @@ class PlayState extends MusicBeatState
 		}
 		else if (healthBar.percent > 85)
 		{
-			if (content=='false')
-			{
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
-			}
-			else
-			{
-				trace("old icon support is enabled??");
-			}
 		}
 		else
 		{
