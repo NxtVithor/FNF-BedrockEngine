@@ -3,6 +3,9 @@ package;
 import flixel.math.FlxMath;
 import flixel.FlxSprite;
 import openfl.utils.Assets as OpenFlAssets;
+#if sys
+import sys.FileSystem;
+#end
 
 using StringTools;
 
@@ -14,6 +17,7 @@ class HealthIcon extends FlxSprite
 	private var isOldIcon:Bool = false;
 	private var isPlayer:Bool = false;
 	private var char:String = '';
+	public static var iconSupport:Bool = false;
 
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{
@@ -49,32 +53,70 @@ class HealthIcon extends FlxSprite
 
 	private var iconOffsets:Array<Float> = [0, 0, 0];
 
-	public function changeIcon(char:String)
+	public function changeIcon(char:String) //this should stay like this until i find a way to softcode
 	{
 		if (this.char != char)
 		{
-			var name:String = 'icons/' + char;
-			if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-				name = 'icons/icon-' + char; // Older versions of psych engine's support
-			if (!Paths.fileExists('images/' + name + '.png', IMAGE))
-				name = 'icons/icon-face'; // Prevents crash from missing icon
-			var file:Dynamic = Paths.image(name);
+			if (!FileSystem.exists('mods/images/iconSupport.txt')) 
+				{
+					trace(iconSupport);
+				}
 
-			loadGraphic(file); // Load stupidly first for getting the file size
-			loadGraphic(file, true, Math.floor(width / 3), Math.floor(height)); // Then load it fr
-			iconOffsets[0] = (width - 150) / 3;
-			iconOffsets[1] = (width - 150) / 3;
-			iconOffsets[1] = (width - 150) / 3;
-			updateHitbox();
+			else 
+				{
+					iconSupport = true;
+					trace(iconSupport);
+				}
 
-			animation.add(char, [0, 1, 2], 0, false, isPlayer);
-			animation.play(char);
-			this.char = char;
-
-			antialiasing = ClientPrefs.globalAntialiasing;
-			if (char.endsWith('-pixel'))
+			if (!iconSupport)
 			{
-				antialiasing = false;
+				var name:String = 'icons/' + char;
+				if (!Paths.fileExists('images/' + name + '.png', IMAGE))
+					name = 'icons/icon-' + char; // Older versions of psych engine's support
+				if (!Paths.fileExists('images/' + name + '.png', IMAGE))
+					name = 'icons/icon-face'; // Prevents crash from missing icon
+				var file:Dynamic = Paths.image(name);
+
+				loadGraphic(file); // Load stupidly first for getting the file size
+				loadGraphic(file, true, Math.floor(width / 3), Math.floor(height)); // Then load it fr
+				iconOffsets[0] = (width - 150) / 3;
+				iconOffsets[1] = (width - 150) / 3;
+				iconOffsets[1] = (width - 150) / 3;
+				updateHitbox();
+
+				animation.add(char, [0, 1, 2], 0, false, isPlayer);
+				animation.play(char);
+				this.char = char;
+
+				antialiasing = ClientPrefs.globalAntialiasing;
+				if (char.endsWith('-pixel'))
+				{
+					antialiasing = false;
+				}
+			}
+			else 
+			{
+				iconOffsets = [0, 0];
+				var name:String = 'icons-old/' + char;
+				if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons-old/icon-' + char; 
+				if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons-old/icon-face'; 
+				var file:Dynamic = Paths.image(name);
+
+				loadGraphic(file); 
+				loadGraphic(file, true, Math.floor(width / 2), Math.floor(height)); 
+				iconOffsets[0] = (width - 150) / 2;
+				iconOffsets[1] = (width - 150) / 2;
+				updateHitbox();
+
+				animation.add(char, [0, 1], 0, false, isPlayer);
+				animation.play(char);
+				this.char = char;
+
+				antialiasing = ClientPrefs.globalAntialiasing;
+				if(char.endsWith('-pixel'))
+				{
+					antialiasing = false;
+				}
 			}
 		}
 	}

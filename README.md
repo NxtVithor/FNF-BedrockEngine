@@ -180,7 +180,7 @@ this disables everything related to backgrounds and characters, leaving only the
 
 ![image](https://user-images.githubusercontent.com/45212377/150618792-8be1b189-5603-4743-b23a-0b07df877576.png)
 
-## Letter Grading System!
+## Letter Grading System (plus original graders)!
 
 ![image](https://user-images.githubusercontent.com/45212377/151047810-9bb0c459-8714-41bd-b861-3d90e001ef9e.png)
 
@@ -192,6 +192,9 @@ this disables everything related to backgrounds and characters, leaving only the
 * B   80% Accuracy.
 * C   70% Accuracy.
 * D   40% Accuracy or below.
+
+If you do not want engine to use letters, toggle them in Visuals and UI menu.
+
 
 Extra Grades
 * PFC - Full Combo with Only Marvelouses (Sicks if Marvelouses are disabled)
@@ -223,7 +226,19 @@ right now this feature is hardcoded, but I plan to make it softcoded soon
 
 in case you wanna add your own, on source, go to PlayState.hx, search for switch ``(ClientPrefs.uiSkin)``, then add a new case with a new name ad folder attached to it
 
+## Note Skins:
+
+You can change your note skins, available skins are "Default", "Circle" and "Bar".
+Change them in Visual and UI menu!
+
+![image](https://imgyukle.com/f/2022/01/30/olXLUI.png)
+
+
 ## Winning Icons
+
+ATTENTION: ENGINE COMES WITH ORIGINAL ICON SUPPORT, WHICH MEANS IT'LL USE ORIGINAL ICONS
+INSTEAD OF 450x150 ICONS. IF YOU DON'T WANT ORIGINAL ICON SUPPORT, DELETE or MOVE TO SOMEWHERE ELSE
+the iconSupport.txt. IT IS IN mods/images!!!
 
 ![image](https://user-images.githubusercontent.com/45212377/151046960-011d0af2-d638-4f30-9169-3e8dee41ba91.png)
 

@@ -2834,11 +2834,24 @@ class PlayState extends MusicBeatState
 		{
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
+			if(HealthIcon.iconSupport)
+			{
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;	
+			}
 		}
 		else if (healthBar.percent > 85)
 		{
+			if (!HealthIcon.iconSupport) 
+			{
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
+			}
+			else 
+			{
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
+			}
 		}
 		else
 		{
