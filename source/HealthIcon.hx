@@ -67,7 +67,7 @@ class HealthIcon extends FlxSprite
 			if (!Paths.fileExists('images/' + name + '.png', IMAGE))
 			{
 				name = 'icons/icon-face';// Prevents crash from missing icon
-				if(content=='true') name 'icons-old/icon-face';
+				if(content=='true') name = 'icons-old/icon-face';
 			}
 			var file:Dynamic = Paths.image(name);
 
