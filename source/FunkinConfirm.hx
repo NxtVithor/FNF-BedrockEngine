@@ -56,15 +56,14 @@ class FunkinConfirm extends FlxSpriteGroup
         _action = action != null ? action : (action:FunkinConfirmAction) -> {
             if (action == FunkinConfirmAction.YES_BUTTON_PRESSED) {
                 trace ("Yes btn clicked");
-                hide();
             }
             else if (action == FunkinConfirmAction.NO_BUTTON_PRESSED) {
                 trace ("No btn clicked");
-                hide();
             }
-            else if (action == FunkinConfirmAction.ESCAPE_PRESSED) {
-                trace ("Esc pressed");
+            else if (action == FunkinConfirmAction.CLOSE) {
+                trace ("Window closed");
             }
+            hide();
         }
     }
 
@@ -74,8 +73,8 @@ class FunkinConfirm extends FlxSpriteGroup
             _action(FunkinConfirmAction.YES_BUTTON_PRESSED);
         else if (isShown && FlxG.keys.justPressed.N)
             _action(FunkinConfirmAction.NO_BUTTON_PRESSED);
-        else if (isShown && FlxG.keys.justPressed.SPACE)
-            _action(FunkinConfirmAction.ESCAPE_PRESSED);
+        else if (isShown && FlxG.keys.justPressed.C)
+            _action(FunkinConfirmAction.CLOSE);
     }
 
     /**
