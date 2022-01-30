@@ -118,7 +118,7 @@ class CreditsState extends MusicBeatState
 				'444444'
 			],
 			[''],
-			['Bedrock Contribuitors'],
+			['Bedrock Contributors'],
 			[
 				'NxtVithor',
 				'nxtvithor',
