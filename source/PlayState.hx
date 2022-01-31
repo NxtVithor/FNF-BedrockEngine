@@ -238,9 +238,11 @@ class PlayState extends MusicBeatState
 	var judgementCounter:FlxText;
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
+	var judgCountTxtTween:FlxTween;
 	var beWatermark:FlxText;
 	var peWatermark:FlxText;
 	var songNameTxt:FlxText;
+	var opponentText:FlxText;
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -731,12 +733,12 @@ class PlayState extends MusicBeatState
 			remove(gfGroup);
 			remove(boyfriendGroup);
 		} else {*/
-			add(dadGroup);
-			//add(gfGroup);
-			add(boyfriendGroup);
-		//}
+		add(dadGroup);
+		// add(gfGroup);
+		add(boyfriendGroup);
+		// }
 
-		//need to make Disable Characters also disable camera movement, so it's commented for now - Gui iago
+		// need to make Disable Characters also disable camera movement, so it's commented for now - Gui iago
 
 		if (curStage == 'spooky')
 		{
@@ -1004,8 +1006,8 @@ class PlayState extends MusicBeatState
 		}
 
 		/*if (ClientPrefs.timeBarUi == 'Only Text')
-			remove(timeBarBG);
-		remove(timeBar);*/
+				remove(timeBarBG);
+			remove(timeBar); */
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -1268,6 +1270,20 @@ class PlayState extends MusicBeatState
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 
+		opponentText = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 90, healthBarBG.y - 100, "Opponent Mode", 32);
+		opponentText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		opponentText.scrollFactor.set();
+		opponentText.borderSize = 1.25;
+		opponentText.alpha = 0;
+		if (ClientPrefs.downScroll)
+			opponentText.y = timeBarBG.y - 100;
+		add(opponentText);
+
+		if (opponentChart)
+			FlxTween.tween(opponentText, {alpha: 1}, 2, {ease: FlxEase.expoInOut});
+		else
+			opponentText.kill();
+
 		// now we set da cameras stuff
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
@@ -1285,6 +1301,7 @@ class PlayState extends MusicBeatState
 		laneunderlay.cameras = [camHUD];
 		laneunderlayOpponent.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
+		opponentText.cameras = [camHUD];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
@@ -2082,6 +2099,17 @@ class PlayState extends MusicBeatState
 		songLength = FlxG.sound.music.length;
 		FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
 		FlxTween.tween(timeTxt, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
+		// Ctrl C, Ctrl V From beat xd --Luis
+		if (opponentChart)
+		{
+			FlxTween.tween(opponentText, {alpha: 0}, 1.5, {
+				ease: FlxEase.quadOut,
+				onComplete: function(twn:FlxTween)
+				{
+					opponentText.kill();
+				}
+			});
+		}
 
 		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
@@ -2735,9 +2763,11 @@ class PlayState extends MusicBeatState
 		var ratingNameTwo:String = ratingName;
 
 		if (ratingFC == "")
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ' // Combo Breaks: ' + songMisses
+				+ ' // Rank: ?';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + '[' + ratingFC + '] ' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + '[' + ratingFC + '] '
+				+ ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
 
 		// Judgement Counters (on Info)
 		if (ClientPrefs.judgCounters == 'Info')
@@ -2834,23 +2864,23 @@ class PlayState extends MusicBeatState
 		{
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
-			if(!HealthIcon.iconSupport)
+			if (!HealthIcon.iconSupport)
 			{
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;	
+				(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
+				(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
 			}
 		}
 		else if (healthBar.percent > 85)
 		{
-			if (HealthIcon.iconSupport) 
+			if (HealthIcon.iconSupport)
 			{
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
+				(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
+				(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
 			}
-			else 
+			else
 			{
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
+				(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
+				(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
 			}
 		}
 		else
@@ -4084,7 +4114,7 @@ class PlayState extends MusicBeatState
 
 		if (daRating == (ClientPrefs.marvelouses ? 'marvelous' : 'sick') && !note.noteSplashDisabled)
 		{
-			spawnNoteSplashOnNote(note);
+			spawnNoteSplashOnNote(note, false);
 		}
 
 		if (!practiceMode && !cpuControlled)
@@ -4109,6 +4139,22 @@ class PlayState extends MusicBeatState
 					onComplete: function(twn:FlxTween)
 					{
 						scoreTxtTween = null;
+					}
+				});
+			}
+
+			if (ClientPrefs.scoreZoom && ClientPrefs.judgCounters == 'Info')
+			{
+				if (judgCountTxtTween != null)
+				{
+					judgCountTxtTween.cancel();
+				}
+				judgCountTxt.scale.x = 1.075;
+				judgCountTxt.scale.y = 1.075;
+				judgCountTxtTween = FlxTween.tween(judgCountTxt.scale, {x: 1, y: 1}, 0.2, {
+					onComplete: function(twn:FlxTween)
+					{
+						judgCountTxtTween = null;
 					}
 				});
 			}
@@ -4558,8 +4604,12 @@ class PlayState extends MusicBeatState
 
 	function opponentNoteHit(note:Note):Void
 	{
-		if (Paths.formatToSongPath(SONG.song) != 'tutorial')
-			camZooming = true;
+		if (!opponentChart)
+		{
+			if (Paths.formatToSongPath(SONG.song) != 'tutorial')
+				camZooming = true;
+		}
+
 		// Health Drain for Opponent Mode
 		if (opponentChart && health > 0.1)
 		{
@@ -4621,6 +4671,11 @@ class PlayState extends MusicBeatState
 			note.hitByOpponent = true;
 		}
 
+		if (!note.isSustainNote && !note.noteSplashDisabled)
+		{
+			spawnNoteSplashOnNote(note, true);
+		}
+
 		callOnLuas('opponentNoteHit', [
 			notes.members.indexOf(note),
 			Math.abs(note.noteData),
@@ -4638,6 +4693,13 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
+		if (opponentChart)
+		{
+			if (!camZooming)
+				if (Paths.formatToSongPath(SONG.song) != 'tutorial')
+					camZooming = true;
+		}
+
 		if (!note.wasGoodHit)
 		{
 			if (cpuControlled && (note.ignoreNote || note.hitCausesMiss))
@@ -4648,7 +4710,7 @@ class PlayState extends MusicBeatState
 				noteMiss(note);
 				if (!note.noteSplashDisabled && !note.isSustainNote)
 				{
-					spawnNoteSplashOnNote(note);
+					spawnNoteSplashOnNote(note, false);
 				}
 
 				switch (note.noteType)
@@ -4767,14 +4829,25 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function spawnNoteSplashOnNote(note:Note)
+	function spawnNoteSplashOnNote(note:Note, opponent:Bool = true)
 	{
 		if (ClientPrefs.noteSplashes && note != null)
 		{
-			var strum:StrumNote = playerStrums.members[note.noteData];
-			if (strum != null)
+			if (opponent)
 			{
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+				var strum:StrumNote = opponentStrums.members[note.noteData];
+				if (strum != null)
+				{
+					spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+				}
+			}
+			else
+			{
+				var strum:StrumNote = playerStrums.members[note.noteData];
+				if (strum != null)
+				{
+					spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+				}
 			}
 		}
 	}
