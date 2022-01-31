@@ -41,7 +41,6 @@
 	<classpath name="source" />
 
 	<assets path="assets/preload" rename="assets"/>
-	<assets path="assets/preload" rename="assets"/>
 	
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
 	<define name="MODS_ALLOWED" if="desktop" />
@@ -91,7 +90,7 @@
 	
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
-    <assets path='art/readme2.txt' rename='about old icon support.txt'/>
+    	<assets path='art/readme2.txt' rename='about old icon support.txt'/>
 	<!-- <template path='mods' /> -->
 	
 	<!-- assets path="CHANGELOG.md" rename='changelog.txt' -->
